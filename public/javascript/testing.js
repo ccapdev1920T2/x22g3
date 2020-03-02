@@ -1,0 +1,1 @@
+console.log("current link is " + document.location.href);
