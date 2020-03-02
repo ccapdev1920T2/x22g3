@@ -1,14 +1,22 @@
-var http = require('http');
-var port = 3000;
+var port = 8080;
 var express = require('express');
 var app = express();
+const hbs = require('express-handlebars');
 
-app.use('/', express.static(__dirname, { index: 'login.html' }));
-app.use('/assets', express.static(__dirname + '/assets'));
-app.use('/scripts', express.static(__dirname + '/scripts'));
+app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'main' }));
+app.set('view engine', 'hbs');
 
+// serve static files
+app.use(express.static('public'));
 
-http.createServer(app).listen(port, function () {
-    console.log("i love u " + port);
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Home | Animo.sys' });
 });
 
+app.get('/login', (req, res) => {
+    res.render('login', { title: 'Login | Animo.sys' });
+});
+
+app.listen(port, () => {
+    console.log('i love u ' + port);
+})
