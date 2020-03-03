@@ -14,7 +14,7 @@ function validateStudentLogin() {
     }
 
     if (err == 0) {
-        window.location.href = '/index.html';
+        window.location.href = './';
     } else {
         idNumber.style.borderColor = bg;
         password.style.borderColor = bg;
@@ -43,7 +43,7 @@ function validateModLogin() {
     }
 
     if (err == 0) {
-        window.location.href = '/index-mod.html';
+        window.location.href = './mod/home';
     } else {
         username.style.borderColor = bg;
         password.style.borderColor = bg;
