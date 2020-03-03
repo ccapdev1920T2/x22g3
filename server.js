@@ -14,8 +14,34 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.render('login', { title: 'Login | Animo.sys' });
+    let view = (req.query.mod) ? 'login-mod' : 'login';
+    res.render(view, {
+        layout: 'sessions',
+        addedStyles: ['session-styles'],
+        title: 'Login | Animo.sys'
+    });
 });
+
+app.get('/cart', (req, res) => {
+    res.render('cart', { title: 'Cart | Animo.sys' });
+});
+
+app.get('/profile', (req, res) => {
+    res.render('profile', { title: 'Profile | Animo.sys' });
+});
+
+app.get('/logout', (req, res) => {
+    res.render('logout', {
+        layout: 'sessions',
+        addedStyles: ['session-styles'],
+        title: 'Logout | Animo.sys'
+    });
+});
+
+
+
+// Moderator routes
+
 
 app.listen(port, () => {
     console.log('i love u ' + port);
