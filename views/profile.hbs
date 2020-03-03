@@ -1,0 +1,154 @@
+<link rel="stylesheet" href="css/profile-styles.css">
+
+<h1 class='res-48'>Your Profile</h1>
+<br>
+<div class="tab">
+    <button class="tablinks res-16" onclick="openInfo(event, 'PersonalInfo')" id="default">Personal
+        Information</button>
+    <button class="tablinks res-16" onclick="openInfo(event, 'Classes')">Classes</button>
+    <button class="tablinks res-16" onclick="openInfo(event, 'EAF')">EAF</button>
+    <button class="tablinks res-16" onclick="openInfo(event, 'Finance')">Finance</button>
+</div>
+<br>
+<div id="PersonalInfo" class="tabcontent">
+    <br>
+    <div id="info-container">
+        <div id="profile-pic">
+            <img src="assets/perm_identity-24px.svg" alt="Profile Picture">
+        </div>
+        <div id="student-info">
+            <h2 class='res-36'>Dela Gubat, Rethaniel A.</h2>
+            <p class='res-20'>11839864</p>
+            <p id='description'></p>
+        </div>
+
+    </div>
+    <script>
+        var user = "Dela Gubat, Rethaniel A.";
+        var enrolled = 2018;
+        var dt = new Date();
+        var date = dt.getFullYear() - enrolled;
+        var id = 11839864;
+        var status = "Graduating";
+        var college = 'CCS';
+        var course = 'CSS';
+
+        var description = college + ' | ' + course + ' | Year ' + date + ' | ' + status;
+        document.querySelector('p#description').innerHTML = description;
+    </script>
+</div>
+
+<div id="Classes" class="tabcontent">
+    <h2 class="res-36">Tabular Schedule</h2>
+    <br>
+    <table class='res-12' id='schedule-table'>
+        <tr>
+            <th>Time</th>
+            <th>Days</th>
+            <th>Classes</th>
+        </tr>
+    </table>
+    <script>
+        var classes = ["CCAPDEV", "STMATH", "STALGCM", "GEETHICS", "GESPORTS", "CSARCH1"];
+        var times = ["1100-1230", "730-900", "915-1045", "1245-1415", "1300-1500", "915-1045"];
+        var days = ["TH", "TH", "TH", "MW", "T", "MW"];
+        var table = document.querySelector('table#schedule-table');
+
+        for (i = 0; i < classes.length; i++) {
+            var row = '<tr> <td>' + times[i] + '</td> <td>' + days[i] + '</td> <td>' + classes[i] + '</td> </tr>';
+            table.innerHTML = table.innerHTML.concat(row);
+        }
+    </script>
+</div>
+
+<div id="EAF" class="tabcontent">
+    <br>
+    <button> Print EAF </button>
+</div>
+
+<div id="Finance" class="tabcontent">
+    <h2 class="res-36">Clearance</h2>
+    <br>
+    <div id="balance"></div>
+    <br>
+    <h2 class="res-36">Scholarship</h2>
+    <br>
+    <h3 class="res-20" id='scholarship'></h3>
+    <br>
+    <div id="details"></div>
+    <script>
+        var scholarRecord = {
+            issue: ['01-05-2020'],
+            amount: [0.50],
+            hold: ['Yes'],
+            scholarship: 'Gokongwei Grants'
+        };
+
+
+        if (scholarRecord.amount.length == 0) {
+            document.querySelector('div#balance').innerHTML = '<p>You have no unsettled balances.<p>';
+        }
+        else {
+            var table = document.createElement('table');
+            table.innerHTML = table.innerHTML.concat("<table><tr><th>Issue Date</th><th>Amount</th><th>Enrollment Hold</th></tr>");
+            table.className = 'res-12';
+            for (let i = 0; i < scholarRecord.issue.length; i++) {
+                var row = '<tr> <td>' + scholarRecord.issue[i] + '</td> <td>' + scholarRecord.amount[i] + '</td> <td>' + scholarRecord.hold[i] + '</td> </tr>';
+                table.innerHTML = table.innerHTML.concat(row);
+            }
+            document.querySelector('div#balance').appendChild(table);
+        }
+        document.querySelector('h3#scholarship').innerHTML = scholarRecord.scholarship;
+        var details = document.querySelector('div#details');
+        var detailsHTML = '';
+
+        if (scholarRecord.scholarship == "St. Mutien Marie Scholarship Grant") {
+            detailsHTML = "<p> Enjoy 50% discount on tuition (excluding miscellaneous and other fees). </p>";
+        }
+        else if (scholarRecord.scholarship == "Archer Achiever Scholarship") {
+            detailsHTML = "<p> Enjoy:</p><ul><li>Full waiver of tuition, miscellaneous and other fees (as indicated on the Enrollment Assessment Form) from the first term until the conclusion of the undergraduate program (excluding ladderized baccalaureate-master’s programs).</li>"
+                + "<li>Other privileges such as advance enrollment, waiver of adjustment fee, and waiver of graduation fees.</li>"
+                + "<li>All forms of allowances are not part of the benefits</li></ul>";
+        }
+        else if (scholarRecord.scholarship == "Star Scholars") {
+            detailsHTML = "<p> Enjoy:</p><ul><li>Full waiver on tuition, miscellaneous, and laboratory fees throughout their stay in the University</li>"
+                + "<li>receive a monthly stipend of Php 10,500 to cover transportation, books, other academic-related materials and school activities, and accommodation allowance</li></ul>";
+        }
+        else if (scholarRecord.scholarship == "Vaugirard Scholarship") {
+            detailsHTML = "<p> Enjoy:</p><ul><li>Full waiver of tuition, miscellaneous and other fees (as indicated on the Enrollment Assessment Form) from the first term until the conclusion of the undergraduate program (excluding ladderized baccalaureate-master’s programs).</li>"
+                + "<li>Monthly stipend of Php 10,000 broken down as follows: (Php 4,000.00 accommodation, Php 4,000.00 allowance and Php 2,000 meal subsidy) for the entire duration of the program. The accommodation benefit will be disbursed provided that the scholar presents an official Contract of Rent from his/her lessor.</li>"
+                + "<li>An incentive equivalent to the stipend for one (1) month for those graduating with Latin honors.</li></ul>";
+        }
+        else if (scholarRecord.scholarship == "Gokongwei Grants") {
+            detailsHTML = "<p> Enjoy:</p><ul><li>Full waiver of tuition, miscellaneous, and other fees (as indicated on the Enrollment Assessment Form) from the first term until the conclusion of any undergraduate program in the Gokongwei College of Engineering (excluding ladderized baccalaureate-master’s programs)</li>"
+                + "<li>Monthly stipend of Php 10,000 broken down as follows: (Php 4,000.00 accommodation, Php 4,000.00 allowance and Php 2,000 meal subsidy) for the entire duration of the program. The accommodation benefit will be disbursed provided that the scholar presents an official Contract of Rent from his/her lessor.</li>"
+                + "<li>An incentive equivalent to the stipend for one (1) month for those graduating with Latin honors.</li></ul>";
+        }
+        else if (scholarRecord.scholarship == "Br. Andrew Gonzalez Academic Scholarship") {
+            detailsHTML = "<p> Enjoy your full academic scholarship (tuition and fees) starting in your freshman year.</p>";
+        }
+        else {
+            detailsHTML = "br";
+        }
+
+        details.innerHTML = detailsHTML + "<p>For more information click <a href='https://www.dlsu.edu.ph/admissions/scholarships/#1516096919687-b29e5a84-9bfa'>here</a></p>";
+    </script>
+</div>
+
+<script>
+    function openInfo(evt, infoName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(infoName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.getElementById("default").click();
+</script>
+{{!-- </div> --}}
