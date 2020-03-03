@@ -51,6 +51,57 @@ button {
     padding: 5px;
 }
 
+/* ----------------Forms---------------- */
+
+.form-container {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 20px;
+    margin: 0 auto;
+    max-width: 45vw;
+    max-height: 95vh;
+    overflow: hidden;
+}
+
+.form-container label {
+    line-height: 23px;
+    letter-spacing: 0.095em;
+}
+
+.form-container input {
+    outline: none;
+    font-family: inherit;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #373b4485;
+    border-radius: 5px;
+}
+
+.form-container #wrap-button {
+    text-align: center;
+}
+
+.form-container #submit {
+    color: white;
+    font-weight: bold;
+    line-height: 23px;
+    letter-spacing: 0.195em;
+    background: #50F289;
+    border: 1px solid #50F289;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.form-container #submit:hover {
+    color: #50F289;
+    background-color: white;
+    /* cursor: pointer; */
+}
+
+.form-container #login-mod {
+    text-align: right;
+}
+
 /* ----------------Font-sizes---------------- */
 
 .res-8 {
@@ -211,8 +262,8 @@ header nav {
 
 #main a {
     border-bottom: 2px solid #2cf172;
-    
 }
+
 /* ----------------Footer---------------- */
 
 footer {
@@ -226,4 +277,18 @@ footer {
 
 footer p {
     margin: auto 15px;
+}
+
+/* ----------------Responsive---------------- */
+
+@media screen and (max-width: 1024px) {
+    .container {
+        max-width: 55vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 75vw;
+    }
 }
