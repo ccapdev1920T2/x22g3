@@ -1,1 +1,19 @@
-<h1>Login</h1>
+<div class="form-container">
+    <h1 class='res-54' id="session-header">Log in</h1>
+    <form>
+        <label class='res-8' for="idNumber">ID NUMBER</label><br>
+        <input class='res-12' type="idNumber" id="idNumber" name="idNumber"><br>
+        <label class='res-8' for="password">PASSWORD</label><br>
+        <input class='res-12' type="password" id="password" name="password"><br>
+        <br>
+        <p id="errMsg"></p>
+        <br><br>
+        <div id="wrap-button">
+            <input type="button" class='res-8' id="submit" onclick="validateStudentLogin()" value="LOG IN">
+        </div>
+    </form>
+    <br><br>
+    <p class='res-8' id="login-mod"><a href="./login?mod=true">(Moderator? Click here)</a></p>
+</div>
+
+<script type="text/javascript" src="javascript/validate.js"></script>
