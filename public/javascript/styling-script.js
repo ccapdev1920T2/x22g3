@@ -1,32 +1,51 @@
-var list = document.getElementById('navlist').children;
+// var list = document.getElementById('navlist').children;
 var href = document.location.href;
 
 // if this is a moderator page, remove margin left
-if (href.search('-mod') != -1) {
-    var main = document.getElementById('main');
-    main.style.maxWidth = '100vw';
-    var content = document.getElementById('content');
-    content.style.marginLeft = 0;
-} else {
-    activate('sidebarlist');
+// if (href.search('-mod') != -1) {
+//     var main = document.getElementById('main');
+//     main.style.maxWidth = '100vw';
+//     var content = document.getElementById('content');
+//     content.style.marginLeft = 0;
+// } else {
+//     activate('sidebarlist');
 
-}
+// }
 
-activate('navlist');
+// activate('navlist');
 
 // give the current list item an 'active' effect
-function activate(listSelector) {
-    var list = document.getElementById(listSelector).children;
-    for (let i = 0; i < list.length; i++) {
-        var file = document.location.href.match(/[^\/]+$/)[0] || 'index.html';
-        if (file == list[i].firstElementChild.getAttribute('href')) {
-            list[i].firstElementChild.id = 'active';
-        }
-    }
-}
+// function activate(listSelector) {
+//     var list = document.getElementById(listSelector).children;
+//     for (let i = 0; i < list.length; i++) {
+//         var file = document.location.href.match(/[^\/]+$/)[0] || 'index.html';
+//         if (file == list[i].firstElementChild.getAttribute('href')) {
+//             list[i].firstElementChild.id = 'active';
+//         }
+//     }
+// }
 
 // For the 2 cart pages, to be refactored in Milestone 2
-if(document.location.href.includes('cart')) {
-    list[0].firstElementChild.id = 'active';
+// if(document.location.href.includes('cart')) {
+//     list[0].firstElementChild.id = 'active';
+// }
+
+
+function responsiveFontSize() {
+    var regex = /s?/;
+    console.log(regex);
+    // var resList = document.getElementsByClassName()
+    var resList = document.querySelectorAll("[class^='res-']");
+    console.log(resList);
+
+    resList.forEach(e => {
+        var regex = /\d+/;
+        var num = (e.className.match(regex)[0]) / 2;
+
+        // console.log(num);
+        e.style.fontSize = "calc(" + (num / 16) + "rem + " + ((num / 1200) * 100) + "vw)";
+        console.log(e.style.fontSize);
+    });
 }
 
+responsiveFontSize();
