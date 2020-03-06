@@ -27,7 +27,10 @@ app.get('/cart', (req, res) => {
 });
 
 app.get('/profile', (req, res) => {
-    res.render('profile', { title: 'Profile | Animo.sys' });
+    res.render('profile', {
+        addedStyles: ['profile-styles'],
+        title: 'Profile | Animo.sys'
+    });
 });
 
 app.get('/logout', (req, res) => {
