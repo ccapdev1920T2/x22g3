@@ -49,7 +49,20 @@ th, td {
 
 button {
     padding: 5px;
+    outline: none;
+    background-color: inherit;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.195em;
+    cursor: pointer;
+    border: none;
+    border-bottom: 2px solid transparent;
 }
+
+/* button:hover {
+    border-bottom: 2px solid #50F289;
+} */
 
 /* ----------------Forms---------------- */
 
@@ -138,6 +151,7 @@ img#logo {
 header nav {
     max-width: 75vw;
     align-self: center;
+    font-weight: bold;
 }
 
 #navlist li {
@@ -174,6 +188,7 @@ header nav {
     justify-content: flex-end;
     padding: 15px;
     letter-spacing: 0.155em;
+    font-weight: bold;
     text-align: right;
     background-color: white;
 }
@@ -210,7 +225,7 @@ header nav {
     min-height: 1000px;
 }
 
-#main p {
+#main p, #main li {
     line-height: 2em;
 }
 
