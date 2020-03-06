@@ -22,8 +22,27 @@ app.get('/login', (req, res) => {
     });
 });
 
-app.get('/cart', (req, res) => {
-    res.render('cart', { title: 'Cart | Animo.sys' });
+app.get('/cart/:from?', (req, res) => {
+    var from = req.params.from;
+    var view;
+    if (from == undefined) {
+        view = 'cart';
+    } else if (from == 'preenlistment') {
+        view = 'cart_preenlistment';
+    } else if (from == 'enrollment') {
+        view = 'cart_enrollment';
+    } else {
+        view = '404';
+    }
+
+    if (view == '404') {
+        res.status(404).render('404', {
+            title: 'Page not found!',
+            layout: false
+        });
+    } else {
+        res.render(view, { title: 'Cart | Animo.sys' });
+    }
 });
 
 app.get('/profile', (req, res) => {
@@ -41,7 +60,18 @@ app.get('/logout', (req, res) => {
     });
 });
 
+app.get('/preenlistment', (req, res) => {
+    res.render('preenlistment', {
+        title: "Pre-enlistment | Animo.sys"
+    });
+})
 
+app.get('/enrollment', (req, res) => {
+    res.render('enrollment', {
+        title: 'Enrollment | Animo.sys',
+        addedStyles: ['enrollment-styles']
+    });
+})
 
 // Moderator routes
 
