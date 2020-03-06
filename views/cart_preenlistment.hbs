@@ -1,0 +1,82 @@
+<h1>My Pre-Enlistment Shopping Cart</h1>
+<br>
+<div class="table-container">
+    <table class="res-12" id="list">
+        <tr>
+            <th>Course Name</th>
+        </tr>
+    </table>
+</div>
+<br>
+<h2>My Electives</h2>
+<br>
+<div class="table-container">
+    <table class="res-12" id="elist">
+        <tr>
+            <th>Course Name</th>
+        </tr>
+    </table>
+</div>
+<br><br>
+<button onclick="alert('Pre-enlistment saved!')">Pre-Enlist</button>
+
+
+
+
+<script>
+    // Courses table
+    var tableList = document.querySelector('table#list');
+    tableList.style.border = 'none';
+
+    $(function () {
+        $('table').on('click', 'tr a', function (e) {
+            e.preventDefault();
+            $(this).parents('tr').remove();
+        });
+    });
+
+    var course = [
+        { name: "CSSWENG" },
+        { name: "MOBDEVE" },
+        { name: "CSNETWK" },
+        { name: "CSMODEL" },
+        { name: "GETEAMS" },
+        { name: "LCENWRD" }
+    ];
+    var ecourse = [
+        { name: "NATLANG" }
+    ];
+
+    for (i = 0; i < course.length; i++) {
+        var row = tableList.insertRow(-1);
+        for (const key in course[i]) {
+            if (course[i].hasOwnProperty(key)) {
+                const element = course[i][key];
+                var cell = row.insertCell(-1);
+                cell.innerHTML = element;
+            }
+        }
+        var lastCell = row.insertCell(-1);
+        lastCell.innerHTML = "<a href='#'>Remove</a>";
+        lastCell.style.border = 'none';
+
+    }
+
+    // Electives table
+    var tableElist = document.querySelector('table#elist');
+    tableElist.style.border = 'none';
+
+    for (i = 0; i < ecourse.length; i++) {
+        var row = tableElist.insertRow(-1);
+        for (const key in ecourse[i]) {
+            if (ecourse[i].hasOwnProperty(key)) {
+                const element = ecourse[i][key];
+                var cell = row.insertCell(-1);
+                cell.innerHTML = element;
+            }
+        }
+        var lastCell = row.insertCell(-1);
+        lastCell.innerHTML = "<a href='#'>Remove</a>";
+        lastCell.style.border = 'none';
+    }
+</script>
