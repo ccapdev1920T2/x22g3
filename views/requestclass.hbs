@@ -1,0 +1,38 @@
+<h1>Request a Class</h1>
+<br>
+<p>Students are allowed to petition for a subject to be offered for the next academic term. Fill out the form below and
+    wait for further announcements. Processing of requests may take 10-14 days.</p>
+<p>Kindly upload the following documents:<br>1. Special Class Form<br>2. ID of Legal Guardian</p>
+<br>
+
+<form>
+    <label for="FullName">Fullname:</label>
+    <input type="text" id="fname" name="fname"><br><br>
+    <label for="IDNumber">ID Number:</label>
+    <input type="text" id="idnum" name="idnum"><br><br>
+    <label for="IDNumber">Year/Degree Program:</label>
+    <input type="text" id="deg" name="deg"><br><br>
+    <label for="IDNumber">Subject to be Requested:</label>
+    <input type="text" id="req" name="req"><br><br>
+
+
+    <form id="uploadbanner" enctype="multipart/form-data" method="post" action="#">
+        <label for="Files">Upload Files:</label>
+        <input id="fileupload" name="myfile" type="file">
+        <button id="add" onclick="myFunctionAlert()">Submit File</button>
+    </form><br><br>
+
+    <div id="wrap-button">
+        <input type="button" id="submit" onclick="myFunctionAlertPetition()" value="Submit Petition">
+    </div>
+</form>
+
+<script>
+    function myFunctionAlert() {
+        alert("File Uploaded!");
+    }
+
+    function myFunctionAlertPetition() {
+        alert("Petition submitted!");
+    }
+</script>
