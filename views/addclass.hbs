@@ -1,0 +1,123 @@
+<h1 class='res-48'>Add a Class</h1>
+<br>
+<label for="addclass">Class Nbr: </label>
+<input type="text" id="addclass">
+<button id="add" onclick="myFunctionAlert()">Add Class</button>
+<br><br>
+
+<div class="table-container">
+    <table class='res-12' id="list">
+        <tr>
+            <th>Class Nbr</th>
+            <th>Course Name</th>
+            <th>Section</th>
+            <th>Day/Time</th>
+            <th>Room</th>
+            <th>Professor</th>
+            <th>Status</th>
+        </tr>
+    </table>
+</div>
+<br><br>
+<h2 class="res-20">My Electives</h2>
+<br>
+<div class="table-container">
+    <table class="res-12" id="elist">
+        <tr>
+            <th>Class Nbr</th>
+            <th>Course Name</th>
+            <th>Section</th>
+            <th>Day/Time</th>
+            <th>Room</th>
+            <th>Professor</th>
+            <th>Status</th>
+        </tr>
+    </table>
+</div>
+<br><br>
+<a href="cart_enrollment.html"><button>Proceed to Enrollment</button></a>
+
+
+<script>
+    var sample = { nbr: "123456", name: "GERIZAL", section: "X21", time: "MW 0730-0900", room: "GT200", prof: "", stat: "Open" };
+    var course = [
+        { nbr: "111111", name: "CSARCH1", section: "X22", time: "MW 0915-1045", room: "GT201", prof: "PERADILLA, M.", stat: "Open" },
+        { nbr: "222222", name: "GEETHIC", section: "X22", time: "MW 1245-1415", room: "GT202", prof: "ESTEVES, M.", stat: "Open" },
+        { nbr: "333333", name: "STMATH", section: "X22", time: "TH 0730-0900", room: "GT203", prof: "LAWAS, C.", stat: "Open" },
+        { nbr: "444444", name: "STALGCM", section: "X22", time: "TH 0915-1045", room: "GT204", prof: "AZCARRAGA, A.", stat: "Open" },
+        { nbr: "555555", name: "CCAPDEV", section: "X22", time: "TH 1100-1230", room: "GT205", prof: "ANTIOQUIA, A.", stat: "Closed" },
+        { nbr: "666666", name: "GESPORT", section: "X22", time: "T 1300-1500", room: "GT206", prof: "CALABIO, V.", stat: "Open" }
+    ];
+    var ecourse = [
+        { nbr: "777777", name: "NATLANG", section: "X22", time: "F 0915-1045", room: "GT206", prof: "", stat: "Open" }
+    ];
+
+    var tableList = document.querySelector('table#list');
+    tableList.style.border = 'none';
+
+    for (i = 0; i < course.length; i++) {
+        var row = tableList.insertRow(-1);
+        for (const key in course[i]) {
+            if (course[i].hasOwnProperty(key)) {
+                const element = course[i][key];
+                var cell = row.insertCell(-1);
+                cell.innerHTML = element;
+            }
+        }
+        var lastCell = row.insertCell(-1);
+        lastCell.innerHTML = "<a href='#'>Remove</a>";
+
+        document.querySelectorAll('tr td:last-child')[i].style.border = 'none';
+    }
+
+    var tableElist = document.querySelector('table#elist');
+    tableElist.style.border = 'none';
+
+    for (i = 0; i < ecourse.length; i++) {
+        var row = tableElist.insertRow(-1);
+        for (const key in ecourse[i]) {
+            if (ecourse[i].hasOwnProperty(key)) {
+                const element = ecourse[i][key];
+                var cell = row.insertCell(-1);
+                cell.innerHTML = element;
+            }
+        }
+        var lastCell = row.insertCell(-1);
+        lastCell.innerHTML = "<a href='#'>Remove</a>";
+        lastCell.style.border = 'none';
+    }
+
+
+    $(function () {
+        $('table').on('click', 'tr a', function (e) {
+            e.preventDefault();
+            $(this).parents('tr').remove();
+        });
+    });
+
+    function myFunctionAlert() {
+        if (NewClass())
+            alert("Class added to cart!");
+
+    }
+
+    function NewClass() {
+        if (document.getElementById("addclass").value == "123456") {
+            var row = tableList.insertRow(-1);
+
+            for (const key in sample) {
+                if (sample.hasOwnProperty(key)) {
+                    var value = sample[key];
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = value;
+                }
+            }
+            var lastCell = row.insertCell(-1);
+            lastCell.innerHTML = "<a href='#'>Remove</a>";
+            lastCell.style.border = 'none';
+
+            return true;
+        }
+    }
+
+</script>
