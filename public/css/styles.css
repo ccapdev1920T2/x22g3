@@ -14,6 +14,12 @@ body {
     color: #021c0b;
 }
 
+/* ----------------Headings---------------- */
+
+h1, h2, h3 {
+    font-weight: 100;
+}
+
 /* ----------------Lists---------------- */
 
 li {
@@ -32,15 +38,27 @@ table {
 
 th {
     text-align: left;
+    background-color: #2cf172;
 }
 
 table, th, td {
-    border: 1px solid #021c0b;
+    /* border-top: 1px solid #2cf172; */
+    border-bottom: 1px solid #bffbd4;
     border-collapse: collapse;
 }
 
 th, td {
     padding: 5px;
+}
+
+tr:hover {
+    background-color: #bffbd4;
+}
+
+/* ----------------Inputs---------------- */
+
+input {
+    font-family: 'DM Sans', sans-serif;
 }
 
 /* ----------------Buttons---------------- */
@@ -75,6 +93,7 @@ button {
 .form-container label {
     line-height: 23px;
     letter-spacing: 0.095em;
+    text-transform: uppercase;
 }
 
 .form-container input {
@@ -86,6 +105,15 @@ button {
     border-radius: 5px;
 }
 
+.form-container input[type="file"] {
+    font-family: 'DM Sans', sans-serif;
+    border: none;
+}
+
+.form-container input[type="file"] button {
+    font-family: 'DM Sans', sans-serif;
+}
+
 .form-container #wrap-button {
     text-align: center;
 }
@@ -93,6 +121,7 @@ button {
 .form-container #submit {
     color: white;
     font-weight: bold;
+    text-transform: uppercase;
     line-height: 23px;
     letter-spacing: 0.195em;
     background: #50F289;
@@ -230,6 +259,10 @@ header nav {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: .155rem;
+}
+
+#main .form-container {
+    border: 1px solid #021c0b0f;
 }
 
 /* ----------------Footer---------------- */
