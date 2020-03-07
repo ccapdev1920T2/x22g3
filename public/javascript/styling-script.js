@@ -35,7 +35,6 @@ function active(selector) {
     for (let i = 0; i < list.length; i++) {
         const element = list[i];
         var route = element.firstElementChild.getAttribute('href').slice(1);
-        console.log(element);
         if (window.location.href.includes(route)) {
             element.firstElementChild.id = "active";
         }
