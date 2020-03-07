@@ -60,10 +60,6 @@ button {
     border-bottom: 2px solid transparent;
 }
 
-/* button:hover {
-    border-bottom: 2px solid #50F289;
-} */
-
 /* ----------------Forms---------------- */
 
 .form-container {
@@ -214,7 +210,7 @@ header nav {
 
 #content {
     margin: 15vh 0 0 20vw;
-    background-color: #f6fef9;
+    background-color: #fbfffd;
 }
 
 /* TODO: remove margin-right */
@@ -231,12 +227,14 @@ header nav {
 
 #main a {
     border-bottom: 2px solid #2cf172;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .155rem;
 }
 
 /* ----------------Footer---------------- */
 
 footer {
-    height: calc(15vh + 10px);
     padding: 15px;
     text-align: center;
     height: 10vh;
