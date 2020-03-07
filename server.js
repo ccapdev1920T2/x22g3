@@ -8,11 +8,16 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // Routes
 var indexController = require('./controllers/indexController');
+var cartController = require('./controllers/cartController');
+var preenlistmentController = require('./controllers/preenlistmentController');
 var enrollmentController = require('./controllers/enrollmentController');
-
+var degreeprocessController = require('./controllers/degreeprocessController');
 
 app.use('/', indexController);
+app.use('/cart', cartController);
+app.use('/preenlistment', preenlistmentController);
 app.use('/enrollment', enrollmentController);
+app.use('/degree-process', degreeprocessController);
 
 app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'main' }));
 app.set('view engine', 'hbs');
@@ -39,7 +44,7 @@ app.post('/login', urlencodedParser, (req, res) => {
         errMsg = "Invalid ID Number/Password.";
     }
 
-    
+
     res.render(view, {
         layout: 'sessions',
         addedStyles: ['session-styles'],
@@ -49,28 +54,7 @@ app.post('/login', urlencodedParser, (req, res) => {
     });
 })
 
-app.get('/cart/:from?', (req, res) => {
-    var from = req.params.from;
-    var view;
-    if (from == undefined) {
-        view = 'cart';
-    } else if (from == 'preenlistment') {
-        view = 'cart_preenlistment';
-    } else if (from == 'enrollment') {
-        view = 'cart_enrollment';
-    } else {
-        view = '404';
-    }
 
-    if (view == '404') {
-        res.status(404).render('404', {
-            title: 'Page not found!',
-            layout: false
-        });
-    } else {
-        res.render(view, { title: 'Cart | Animo.sys' });
-    }
-});
 
 app.get('/profile', (req, res) => {
     res.render('profile', {
@@ -87,11 +71,7 @@ app.get('/logout', (req, res) => {
     });
 });
 
-app.get('/preenlistment', (req, res) => {
-    res.render('preenlistment', {
-        title: "Pre-enlistment | Animo.sys"
-    });
-})
+
 
 
 
