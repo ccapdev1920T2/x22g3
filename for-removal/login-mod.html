@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/login-styles.css">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans|DM+Serif+Display&display=swap" rel="stylesheet">
+    <title>Login | Animo.sys</title>
+</head>
+
+<body class='res-12'>
+    <div class="gradient-bg">
+        <div class="container">
+            <h1 class='res-54' id="heading">Log in<br>(Moderator)</h1>
+            <form>
+                <label class='res-8' for="username">USERNAME</label><br>
+                <input class='res-12' type="username" id="username" name="username" required><br>
+                <label class='res-8' for="password">PASSWORD</label><br>
+                <input class='res-12' type="password" id="password" name="password" required><br>
+                <br>
+                <p id="errMsg"></p>
+                <br><br>
+                <div id="wrap-button">
+                    <input type="button" class='res-8' id="submit" onclick="validateModLogin()" value="LOG IN">
+                </div>
+            </form>
+            <br><br>
+            <!-- <p class='res-8' id="login-mod"><a href="login-mod.html">(Moderator? Click here)</a></p> -->
+        </div>
+    </div>
+
+    <script type="text/javascript" src="scripts/validate.js"></script>
+</body>
+
+</html>

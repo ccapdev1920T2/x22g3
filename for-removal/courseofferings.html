@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css" type="text/css">
+    <link rel="stylesheet" href="assets/courseofferings-styles.css">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="scripts/template-script.js"></script>
+    <title>Course Offerings | Animo.sys</title>
+</head>
+
+<body>
+    <div id="template"></div>
+    <div id="content">
+        <div id="main">
+            <h1 class='res-48'>Course Offerings</h1>
+            <br>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter 6-digit class number..."
+                title="Enter Class nbr">
+            <div class="table-container">
+                <table class='res-12' id="myTable">
+                    <tr class="header">
+                        <th>Class Nbr</th>
+                        <th>Course</th>
+                        <th>Section</th>
+                        <th>Day/s</th>
+                        <th>Time</th>
+                        <th>Room</th>
+                        <th>Enl Cap</th>
+                        <th>Enrolled</th>
+                        <th>Remarks</th>
+                    </tr>
+                    <tr id="subject">
+                        <td>111111</td>
+                        <td>CSARCH1</td>
+                        <td>X22</td>
+                        <td>MW</td>
+                        <td>0915-1045</td>
+                        <td>GT203</td>
+                        <td>15</td>
+                        <td>10</td>
+                        <td>OPEN</td>
+                    </tr>
+                    <tr id="subject">
+                        <td>222222</td>
+                        <td>GEETHIC</td>
+                        <td>X22</td>
+                        <td>MW</td>
+                        <td>1245-1415</td>
+                        <td>GT203</td>
+                        <td>31</td>
+                        <td>31</td>
+                        <td>CLOSED</td>
+                    </tr>
+                    <tr id="subject">
+                        <td>333333</td>
+                        <td>STMATH</td>
+                        <td>X22</td>
+                        <td>TH</td>
+                        <td>0730-0900</td>
+                        <td>GT206</td>
+                        <td>25</td>
+                        <td>25</td>
+                        <td>CLOSED</td>
+                    </tr>
+                    <tr id="subject">
+                        <td>444444</td>
+                        <td>STALGCM</td>
+                        <td>X22</td>
+                        <td>TH</td>
+                        <td>0915-1045</td>
+                        <td>GT206</td>
+                        <td>15</td>
+                        <td>12</td>
+                        <td>OPEN</td>
+                    </tr>
+                    <tr id="subject">
+                        <td>555555</td>
+                        <td>CCAPDEV</td>
+                        <td>X22</td>
+                        <td>TH</td>
+                        <td>1100-1230</td>
+                        <td>MRELBA</td>
+                        <td>17</td>
+                        <td>15</td>
+                        <td>OPEN</td>
+                    </tr>
+                    <tr id="subject">
+                        <td>666666</td>
+                        <td>GESPORT</td>
+                        <td>X22</td>
+                        <td>T</td>
+                        <td>1300-1500</td>
+                        <td>CVDCRT</td>
+                        <td>40</td>
+                        <td>38</td>
+                        <td>OPEN</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <footer class='res-16'></footer>
+    </div>
+
+
+
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = ""; //subject found in table
+                    } else {
+                        tr[i].style.display = "none"; //subject not available
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

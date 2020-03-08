@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css" type="text/css">
+    <link rel="stylesheet" href="assets/index-styles.css">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="scripts/template-script.js"></script>
+    <title>Enrollment | Animo.sys</title>
+
+    <script>
+        function myFunctionAlert() {
+        alert("File Uploaded!");
+        }
+
+        function myFunctionAlertPetition() {
+        alert("Petition submitted!");
+        }
+    </script>
+</head>
+
+<body>
+    <!-- The #template will take care of the layout stuff -->
+    <!-- NOTE: DO NOT FORGET TO INSTALL NODE.JS AND EXPRESS PACKAGE :) -->
+    <div id="template">
+    </div>
+    <div id="content">
+        <div class='res-16' id="main">
+            <h1 class='res-36'>Request a Class</h1>
+            <br>
+            <p>Students are allowed to petition for a subject to be offered for the next academic term. Fill out the form below and wait for further announcements. Processing of requests may take 10-14 days.</p>
+            <p>Kindly upload the following documents:<br>1. Special Class Form<br>2. ID of Legal Guardian</p>
+            <br>
+
+            <form>
+              <label for="FullName">Fullname:</label>
+              <input type="text" id="fname" name="fname"><br><br>
+              <label for="IDNumber">ID Number:</label>
+              <input type="text" id="idnum" name="idnum"><br><br>
+              <label for="IDNumber">Year/Degree Program:</label>
+              <input type="text" id="deg" name="deg"><br><br>
+              <label for="IDNumber">Subject to be Requested:</label>
+              <input type="text" id="req" name="req"><br><br>
+              
+
+            <form id="uploadbanner" enctype="multipart/form-data" method="post" action="#">
+                <label for="Files">Upload Files:</label>
+                <input id="fileupload" name="myfile" type="file">
+                <button id="add" onclick="myFunctionAlert()">Submit File</button>
+             </form><br><br>
+
+              <div id="wrap-button">
+                    <input type="button" id="submit"  onclick="myFunctionAlertPetition()" value="Submit Petition">
+                </div>
+            </form>
+
+        </div>
+        <footer class='res-16'>
+
+        </footer>
+    </div>
+
+
+</body>
+
+</html>

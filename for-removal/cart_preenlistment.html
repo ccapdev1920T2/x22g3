@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="scripts/template-script.js"></script>
+
+    <title>Pre-Enlistment | Animo.sys</title>
+
+</head>
+
+<body>
+    <div id="template"></div>
+    <div id="content">
+        <div class="res-16" id="main">
+            <h1 class="res-48">My Pre-Enlistment Shopping Cart</h1>
+            <br>
+            <div class="table-container">
+                <table class="res-12" id="list">
+                    <tr>
+                        <th>Course Name</th>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <h2 class='res-20'>My Electives</h2>
+            <br>
+            <div class="table-container">
+                <table class="res-12" id="elist">
+                    <tr>
+                        <th>Course Name</th>
+                    </tr>
+                </table>
+            </div>
+            <br><br>
+            <button onclick="alert('Pre-enlistment saved!')">Pre-Enlist</button>
+        </div>
+        <footer class="res-16"></footer>
+    </div>
+
+
+    <script>
+        // Courses table
+        var tableList = document.querySelector('table#list');
+        tableList.style.border = 'none';
+
+        $(function () {
+            $('table').on('click', 'tr a', function (e) {
+                e.preventDefault();
+                $(this).parents('tr').remove();
+            });
+        });
+        
+        var course = [
+            { name: "CSSWENG" },
+            { name: "MOBDEVE" },
+            { name: "CSNETWK" },
+            { name: "CSMODEL" },
+            { name: "GETEAMS" },
+            { name: "LCENWRD" }
+        ];
+        var ecourse = [
+            { name: "NATLANG" }
+        ];
+
+        for (i = 0; i < course.length; i++) {
+            var row = tableList.insertRow(-1);
+            for (const key in course[i]) {
+                if (course[i].hasOwnProperty(key)) {
+                    const element = course[i][key];
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = element;
+                }
+            }
+            var lastCell = row.insertCell(-1);
+            lastCell.innerHTML = "<a href='#'>Remove</a>";
+            lastCell.style.border = 'none';
+
+        }
+
+        // Electives table
+        var tableElist = document.querySelector('table#elist');
+        tableElist.style.border = 'none';
+
+        for (i = 0; i < ecourse.length; i++) {
+            var row = tableElist.insertRow(-1);
+            for (const key in ecourse[i]) {
+                if (ecourse[i].hasOwnProperty(key)) {
+                    const element = ecourse[i][key];
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = element;
+                }
+            }
+            var lastCell = row.insertCell(-1);
+            lastCell.innerHTML = "<a href='#'>Remove</a>";
+            lastCell.style.border = 'none';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="scripts/template-script.js"></script>
+    <title>Settings | Animo.sys</title>
+
+    <style>
+        /* ----------------Form---------------- */
+
+        .form-container {
+            background-color: white;
+            padding: 3rem;
+            border: 1px solid #373b4485;
+            border-radius: 5px;
+            max-width: 35vw;
+            display: none;
+        }
+
+        .form-container label {
+            line-height: 23px;
+            letter-spacing: 0.095em;
+            text-transform: uppercase;
+        }
+
+        .form-container input {
+            outline: none;
+            font-family: inherit;
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #373b4485;
+            border-radius: 5px;
+        }
+
+        .form-container .submit {
+            color: white;
+            font-weight: bold;
+            line-height: 23px;
+            letter-spacing: 0.195em;
+            background: #50F289;
+            border: 1px solid #50F289;
+            border-radius: 5px;
+            width: 50%;
+            text-transform: uppercase;
+        }
+
+        .form-container .submit:hover {
+            color: #50F289;
+            background-color: white;
+        }
+
+        .wrap-button {
+            text-align: center;
+        }
+
+        #ch-user-header,
+        #ch-pass-header {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="template">
+    </div>
+    <div id="content">
+        <div class='res-16' id="main">
+            <h1 class='res-48'>Settings</h1>
+            <br>
+            <h2 class="res-24">Moderator Details</h2>
+            <br>
+            <span id="ch-user-header" onclick='toggle(this)'>Change Username</span>
+            <br><br>
+            <div class="form-container">
+                <form id='changeusername'>
+                    <label class='res-8' for="curusername">Current Username</label>
+                    <input class='res-12' type="text" name="curusername"><br>
+                    <label class='res-8' for="curpassword">Current Password</label>
+                    <input class='res-12' type="password" name="curpassword"><br>
+                    <label class='res-8' for="newusername">New Username</label>
+                    <input class='res-12' type="text" name="newusername"><br>
+                    <br>
+                    <div class="wrap-button"><input class='res-8 submit' type="button" value="Submit"
+                            onclick="validate(this)"></div>
+                </form>
+            </div>
+            <br>
+            <span id="ch-pass-header" onclick='toggle(this)'>Change Password</span>
+            <br><br>
+            <div class="form-container">
+                <form id='changepassword'>
+                    <label class='res-8' for="curusername">Current Username</label>
+                    <input class='res-12' type="text" name="curusername"><br>
+                    <label class='res-8' for="curpassword">Current Password</label>
+                    <input class='res-12' type="password" name="curpassword"><br>
+                    <label class='res-8' for="newpassword">New Password</label>
+                    <input class='res-12' type="password" name="newpassword"><br>
+                    <label for="connewpassword" class="res-8">Confirm New Password</label>
+                    <input type="password" class="res-12"><br>
+                    <br>
+                    <div class="wrap-button"><input class='res-8 submit' type="button" value="Submit"
+                            onclick="validate(this)"></div>
+                </form>
+            </div>
+            <br>
+        </div>
+        <footer class='res-16'></footer>
+    </div>
+
+
+    <script>
+        function toggle(span) {
+            var show, hide;
+
+            if (span.id == 'ch-user-header') {
+                show = document.getElementsByClassName('form-container')[0];
+                hide = document.getElementsByClassName('form-container')[1];
+            } else {
+                show = document.getElementsByClassName('form-container')[1];
+                hide = document.getElementsByClassName('form-container')[0];
+            }
+
+            show.style.display = 'block';
+            hide.style.display = 'none';
+        }
+
+        function validate(submitInputButton) {
+            if (!areEmptyFields(submitInputButton)) {
+                alert('Credentials Changed!');
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Return true if there is at least one empty field
+        function areEmptyFields(submitInputButton) {
+            const parentForm = submitInputButton.closest('form');
+            var inputs = Array.prototype.slice.call(parentForm.querySelectorAll('input')).slice(0, -1);
+            var err = 0;
+
+            inputs.forEach(input => {
+                if (input.value === '') {
+                    input.style.borderColor = 'red';
+                    err++;
+                } else {
+                    input.style.borderColor = '#373b4485';
+
+                }
+            });
+
+            return (err > 0);
+        }
+    </script>
+</body>
+
+</html>

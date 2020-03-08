@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css" type="text/css">
+    <link rel="stylesheet" href="assets/profile-styles.css">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="scripts/template-script.js"></script>
+    <title>Profile | Animo.sys</title>
+    <style>
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+        
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+        }
+
+        /* Fade in tabs */
+        @-webkit-keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+        table{
+            width: 30%;
+            border: 1px solid black;
+        }
+        td, th{
+            text-align: center;
+            border: 1px solid black
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The #template will take care of the layout stuff -->
+    <!-- NOTE: DO NOT FORGET TO INSTALL NODE.JS AND EXPRESS PACKAGE :) -->
+    <div id="template">
+    </div>
+    <div id="content">
+        <div class='res-16' id="main">
+            <h3>Student Information</h3>
+
+            <div class="tab">
+                <button class="tablinks" onclick="openInfo(event, 'PersonalInfo')" id="default">Personal
+                    Information</button>
+                <button class="tablinks" onclick="openInfo(event, 'Classes')">Classes</button>
+                <button class="tablinks" onclick="openInfo(event, 'EAF')">EAF</button>
+                <button class="tablinks" onclick="openInfo(event, 'Finance')">Finance</button>
+            </div>
+
+            <div id="PersonalInfo" class="tabcontent">
+                <h3>Personal Information</h3>
+                <script>
+                    var user = "Dela Gubat, Rethaniel A.";
+                    var enrolled = 2018;
+                    var dt = new Date();
+                    var id = 11839864;
+                    var status = "Not Graduating";
+                    document.write("<br><br><br>Name: " + user + "<br>");
+                    document.write("ID: " + id + "<br>");
+                    document.write("Year: " + (dt.getFullYear() - enrolled) + "<br>");
+                    document.write("Status: " + status);
+                </script>
+            </div>
+
+            <div id="Classes" class="tabcontent">
+                <h3>Class Schedule</h3>
+                <script>
+                    var classes = ["CCAPDEV", "STMATH", "STALGCM", "GEETHICS", "GESPORTS", "CSARCH1"];
+                    var times = ["1100-1230", "730-900", "915-1045", "1245-1415", "1300-1500", "915-1045"];
+                    var days = ["TH", "TH", "TH", "MW", "T", "MW"];
+                    document.write("<table><tr><th>Time</th><th>Days</th><th>Classes</th></tr>");
+                    for (i = 0; i < classes.length; i++) {
+                        document.write("<tr><td>" + times[i] + "</td>");
+                        document.write("<td>" + days[i] + "</td>");
+                        document.write("<td>" + classes[i] + "</td></tr>");
+
+                    }
+                    document.write("</table>");
+                </script>
+            </div>
+
+            <div id="EAF" class="tabcontent">
+                <br>
+                <button> Print EAF </button>
+            </div>
+            
+            <div id="Finance" class="tabcontent">
+	
+                <script>
+                var issue = [];
+                var amount = [];
+                var hold = [];
+                var Scholarship = "Brother President Scholarship Program (BPSP)";
+
+                document.write("<h3>Clearance</h3><table><tr><th>Issue Date</th><th>Amount</th><th>Erollment Hold</th></tr>");
+                for(i=0;i<issue.length;i++)
+                        {
+                            document.write("<tr><td>" + issue[i] + "</td>");
+                            document.write("<td>" + amount[i] + "</td>");
+                            document.write("<td>" + hold[i] + "</td></tr>");
+
+                        }
+                document.write("</table>");
+                document.write("<br><h3>Scholarship</h3>");
+                document.write("<h4>" + Scholarship + "</h4>");
+                if(Scholarship=="St. Mutien Marie Scholarship Grant"){
+                    document.write("<p> Enjoy 50% discount on tuition (excluding miscellaneous and other fees). </p>");}
+                else if(Scholarship=="Archer Achiever Scholarship"){
+                    document.write("<p> Enjoy:</p><ul><li>Full waiver of tuition, miscellaneous and other fees (as indicated on the Enrollment Assessment Form) from the first term until the conclusion of the undergraduate program (excluding ladderized baccalaureate-master’s programs).</li>");
+                    document.write("<li>Other privileges such as advance enrollment, waiver of adjustment fee, and waiver of graduation fees.</li>");
+                    document.write("<li>All forms of allowances are not part of the benefits</li></ul>");}
+                else if(Scholarship=="Star Scholars"){
+                    document.write("<p> Enjoy:</p><ul><li>Full waiver on tuition, miscellaneous, and laboratory fees throughout their stay in the University</li>");
+                    document.write("<li>receive a monthly stipend of Php 10,500 to cover transportation, books, other academic-related materials and school activities, and accommodation allowance</li></ul>");
+                    }
+                else if(Scholarship=="Vaugirard Scholarship"){
+                    document.write("<p> Enjoy:</p><ul><li>Full waiver of tuition, miscellaneous and other fees (as indicated on the Enrollment Assessment Form) from the first term until the conclusion of the undergraduate program (excluding ladderized baccalaureate-master’s programs).</li>");
+                    document.write("<li>Monthly stipend of Php 10,000 broken down as follows: (Php 4,000.00 accommodation, Php 4,000.00 allowance and Php 2,000 meal subsidy) for the entire duration of the program. The accommodation benefit will be disbursed provided that the scholar presents an official Contract of Rent from his/her lessor.</li>");
+                    document.write("<li>An incentive equivalent to the stipend for one (1) month for those graduating with Latin honors.</li></ul>");}
+                else if(Scholarship=="Gokongwei Grants"){
+                    document.write("<p> Enjoy:</p><ul><li>Full waiver of tuition, miscellaneous, and other fees (as indicated on the Enrollment Assessment Form) from the first term until the conclusion of any undergraduate program in the Gokongwei College of Engineering (excluding ladderized baccalaureate-master’s programs)</li>");
+                    document.write("<li>Monthly stipend of Php 10,000 broken down as follows: (Php 4,000.00 accommodation, Php 4,000.00 allowance and Php 2,000 meal subsidy) for the entire duration of the program. The accommodation benefit will be disbursed provided that the scholar presents an official Contract of Rent from his/her lessor.</li>");
+                    document.write("<li>An incentive equivalent to the stipend for one (1) month for those graduating with Latin honors.</li></ul>");}
+                else if(Scholarship=="Br. Andrew Gonzalez Academic Scholarship"){
+					document.write("<p> Enjoy your full academic scholarship (tuition and fees) starting in your freshman year.</p>");}
+				else{
+                    document.write("<br>");
+                }
+
+                document.write("<p> For more information click <a href='https://www.dlsu.edu.ph/admissions/scholarships/#1516096919687-b29e5a84-9bfa'>here<\p>");
+                </script> 
+            </div>
+            <script>
+                function openInfo(evt, infoName) {
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("tablinks");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+                    document.getElementById(infoName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                }
+                document.getElementById("default").click();
+            </script>
+        </div>
+        <footer class='res-16'>
+            
+        </footer>
+    </div>
+</body>
+
+</html>

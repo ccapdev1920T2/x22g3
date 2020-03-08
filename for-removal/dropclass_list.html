@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="scripts/template-script.js"></script>
+    <title>Drop Class List | Animo.sys</title>
+    </script>
+</head>
+
+<body>
+    <div id="template"></div>
+    <div id="content">
+        <div class="res-16" id="main">
+            <h1 class='res-36'>Dropped Subjects List</h1>
+            <br>
+            <p>The table below shows the breakdown of the subjects you are dropping for this term. Kindly check your
+                DLSU e-mail from time to time for updates.</p>
+            <br>
+            <div class="table-container">
+                <table class='res-12' id="list">
+                    <tr>
+                        <th>Class Nbr</th>
+                        <th>Course Name</th>
+                        <th>Section</th>
+                        <th>Day/Time</th>
+                        <th>Room</th>
+                        <th>Professor</th>
+                    </tr>
+
+                </table>
+            </div>
+            <br>
+            <!-- Line 89 should be a tick box. Once ticked, sure na yung person with his/her subjects na eenrollan niya tapos proceed to printing of EAF-->
+            <p>Upon pressing the submit button, your request for dropped subjects will be assessed and processed.</p>
+            <br>
+            <div id="wrap-button">
+                <input type="button" id="submit" onclick="myFunctionAlert()" value="Submit">
+            </div>
+        </div>
+        <footer class="res-16"></footer>
+    </div>
+
+    <script>
+        var tableList = document.querySelector('table#list');
+
+        function myFunctionAlert() {
+            alert("Submitted!");
+        }
+
+        function myFunctionAlertPetition() {
+            alert("Petition submitted!");
+        }
+
+        $(function () {
+            $('table').on('click', 'tr a', function (e) {
+                e.preventDefault();
+                $(this).parents('tr').remove();
+            });
+        });
+        var sample = { nbr: "123456", name: "GERIZAL", section: "X21", time: "MW 0730-0900", prof: "" };
+        var course = [
+            { nbr: "111111", name: "CSARCH1", section: "X22", time: "MW 0915-1045", room: "GT203", prof: "PERADILLA, M." },
+            { nbr: "222222", name: "GEETHIC", section: "X22", time: "MW 1245-1415", room: "GT203", prof: "ESTEVES, M." },
+            { nbr: "333333", name: "STMATH", section: "X22", time: "TH 0730-0900", room: "GT206", prof: "LAWAS, C." },
+            { nbr: "444444", name: "STALGCM", section: "X22", time: "TH 0915-1045", room: "GT206", prof: "AZCARRAGA, A." },
+            { nbr: "555555", name: "CCAPDEV", section: "X22", time: "TH 1100-1230", room: "MRELBA", prof: "ANTIOQUIA, A." },
+            { nbr: "666666", name: "GESPORT", section: "X22", time: "T 1300-1500", room: "CVDCRT", prof: "CALABIO, V." }
+        ];
+
+        for (i = 0; i < course.length; i++) {
+            var row = tableList.insertRow(-1);
+
+            for (const key in course[i]) {
+                if (course[i].hasOwnProperty(key)) {
+                    const element = course[i][key];
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = element;
+                }
+            }
+
+            // ----------------Need pa ba mag remove sa dropped classes?
+            // var lastCell = row.insertCell(-1);
+            // lastCell.innerHTML = "<a href='#'>Remove</a>";
+
+        }
+
+    </script>
+</body>
+
+</html>
