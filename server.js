@@ -12,12 +12,16 @@ var cartController = require('./controllers/cartController');
 var preenlistmentController = require('./controllers/preenlistmentController');
 var enrollmentController = require('./controllers/enrollmentController');
 var degreeprocessController = require('./controllers/degreeprocessController');
+var modController = require('./controllers/modController');
+
 
 app.use('/', indexController);
+app.use('/home', indexController);
 app.use('/cart', cartController);
 app.use('/preenlistment', preenlistmentController);
 app.use('/enrollment', enrollmentController);
 app.use('/degree-process', degreeprocessController);
+app.use('/mod', modController);
 
 app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'main' }));
 app.set('view engine', 'hbs');
