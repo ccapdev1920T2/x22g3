@@ -3,7 +3,8 @@
 <h2>Add a Student</h2>
 <br>
 <div class='form-container'>
-    <form>
+    <p id="errMsg"></p>
+    <form action="/mod" method="POST">
         <label class='res-8' for="fname">First Name</label>
         <input class='res-12' type="text" name='fname'><br>
         <label class='res-8' for="mname">Middle Name</label>
@@ -27,11 +28,14 @@
             </div>
         </div>
         <br>
-        <div id='wrap-button'><input class="res-8" type="button" value="Submit" onclick='checkField()' id='submit'>
+        <div class='center-button'>
+            <input class="res-8" type="submit" value="Submit" onclick='return checkFields()' id='submit'>
         </div>
+        <br>
     </form>
 </div>
 <br><br>
+<p>Sample of getting data: {{#with data}} {{fname}} {{/with}}</p>
 <h2>Students</h2>
 <br>
 <label for="Search">Search</label>
@@ -109,18 +113,30 @@
 </div>
 
 
-<script src='scripts/table-scripts.js' type='text/javascript'></script>
-<script>
-    function checkField() {
-        var form = document.forms[0];
-        var inputs = form.querySelectorAll('input');
+<script src='/javascript/table-scripts.js' type='text/javascript'></script>
 
-        for (let i = 0; i < inputs.length - 1; i++) {
-            if (inputs[i].value == '') {
-                inputs[i].style.borderColor = 'red';
+<script>
+    function checkFields() {
+        var form = document.forms[0];
+        //var inputs = form.querySelectorAll('input');
+        var err = 0;
+        for (let i = 0; i < form.length - 1; i++) {
+            var input = form.elements[i];
+            if (input.value === "") {
+                err++;
+                input.style.borderColor = 'red';
             } else {
-                inputs[i].style.borderColor = '#373b4485';
+                input.style.borderColor = '#373b4485';
             }
         }
+
+        if (err > 0) {
+            document.querySelector('p#errMsg').innerHTML = 'Some fields are blank.';
+            return false;
+        } else {
+            form.submit();
+        }
+
+
     }
 </script>
