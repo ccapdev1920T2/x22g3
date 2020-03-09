@@ -12,6 +12,7 @@ body {
 #session-header {
     font-family: 'DM Serif Display', serif;
     text-align: center;
+    font-weight: bold;
 }
 
 .logout-container {
@@ -26,14 +27,13 @@ body {
 
 .logout-container #login {
     color: white;
-    /* font-size: calc(0.25rem + 0.333vw); */
     font-weight: bold;
     line-height: 23px;
     letter-spacing: 0.195em;
     background: #50F289;
     border: 1px solid #50F289;
     border-radius: 5px;
-    width: 100%;
+    width: 45%;
 }
 
 .logout-container #login:hover {
@@ -42,16 +42,46 @@ body {
     cursor: pointer;
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.flex-container .input-container {
+    display: inline-block;
+    max-width: 45%;
+}
+
+#errMsg {
+    text-align: center;
+}
+
+.form-container {
+    max-width: 35vw;
+}
+
 /* ----------------Responsive---------------- */
 
 @media screen and (max-width: 1024px) {
     .logout-container {
         max-width: 52.5vw;
     }
+    .flex-container {
+        flex-flow: column;
+    }
+    .flex-container .input-container {
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .logout-container {
         max-width: 70vw;
+    }
+    .flex-container {
+        flex-flow: column;
+    }
+    .flex-container .input-container {
+        max-width: 100%;
     }
 }

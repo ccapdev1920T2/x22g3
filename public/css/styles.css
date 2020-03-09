@@ -114,7 +114,7 @@ button {
     font-family: 'DM Sans', sans-serif;
 }
 
-.form-container #wrap-button {
+.center-button {
     text-align: center;
 }
 
@@ -282,13 +282,13 @@ footer p {
 /* ----------------Responsive---------------- */
 
 @media screen and (max-width: 1024px) {
-    .container {
+    .form-container {
         max-width: 55vw;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .container {
+    .form-container {
         max-width: 75vw;
     }
 }

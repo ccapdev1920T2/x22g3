@@ -1,18 +1,23 @@
 <div class="form-container">
     <h2 id="session-header">Log in (Moderator)</h2>
+    <br><br>
     <form>
-        <label class='res-8' for="username">USERNAME</label><br>
-        <input class='res-12' type="username" id="username" name="username" required><br>
-        <label class='res-8' for="password">PASSWORD</label><br>
-        <input class='res-12' type="password" id="password" name="password" required><br>
+        <div class="flex-container">
+            <div class="input-container">
+                <label class='res-8' for="username">USERNAME</label><br>
+                <input class='res-12' type="username" id="username" name="username" required><br>
+            </div>
+            <div class="input-container">
+                <label class='res-8' for="password">PASSWORD</label><br>
+                <input class='res-12' type="password" id="password" name="password" required><br>
+            </div>
+        </div>
         <br>
         <p id="errMsg"></p>
         <br><br>
-        <div id="wrap-button">
+        <div class="center-button">
             <input type="submit" class='res-8' id="submit" value="LOG IN">
         </div>
     </form>
     <br><br>
 </div>
-
-{{!-- <script src="/javascript/validate.js" type="text/javascript"></script> --}}
