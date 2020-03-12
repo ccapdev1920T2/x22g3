@@ -66,7 +66,7 @@ input {
 /* TODO: Change button font-family globally */
 
 button {
-    padding: 5px;
+    /* padding: 5px;
     outline: none;
     background-color: inherit;
     font-family: 'DM Sans', sans-serif;
@@ -75,7 +75,36 @@ button {
     letter-spacing: 0.195em;
     cursor: pointer;
     border: none;
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid transparent; */
+    outline: none;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.195em;
+    background-color: #50F289;
+    cursor: pointer;
+    padding: 0.5rem;
+    border: 1px solid #50F289;
+    border-radius: 5px;
+}
+
+button:hover {
+    color: #50F289;
+    background-color: white;
+}
+
+#main a.removebtn {
+    color: #A34946;
+    padding: 0;
+    border: none;
+    float: right;
+    opacity: 0;
+}
+
+#main tr:hover a.removebtn {
+    display: block;
+    opacity: 100;
 }
 
 /* ----------------Forms---------------- */
