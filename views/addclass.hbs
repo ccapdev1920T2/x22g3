@@ -1,6 +1,6 @@
 <h1>Add a Class</h1>
 <br>
-<label for="addclass">Class Nbr: </label>
+<label for="addclass">Course Code: </label>
 <input type="text" id="addclass">
 <button id="add" onclick="myFunctionAlert()">Add Class</button>
 <br><br>
@@ -19,22 +19,7 @@
     </table>
 </div>
 <br><br>
-<h2>My Electives</h2>
-<br>
-<div class="table-container">
-    <table class="res-12" id="elist">
-        <tr>
-            <th>Class Nbr</th>
-            <th>Course Name</th>
-            <th>Section</th>
-            <th>Day/Time</th>
-            <th>Room</th>
-            <th>Professor</th>
-            <th>Status</th>
-        </tr>
-    </table>
-</div>
-<br><br>
+
 <a href="/cart/enrollment"><button>Proceed to Enrollment</button></a>
 
 
@@ -64,17 +49,13 @@
                 cell.innerHTML = element;
             }
         }
-        var lastCell = row.insertCell(-1);
-        lastCell.innerHTML = "<a href='#'>Remove</a>";
+        var lastCell = row.lastElementChild;
+        lastCell.innerHTML += "<a class='removebtn' href='#'>X</a>";
 
-        document.querySelectorAll('tr td:last-child')[i].style.border = 'none';
     }
 
-    var tableElist = document.querySelector('table#elist');
-    tableElist.style.border = 'none';
-
     for (i = 0; i < ecourse.length; i++) {
-        var row = tableElist.insertRow(-1);
+        var row = tableList.insertRow(-1);
         for (const key in ecourse[i]) {
             if (ecourse[i].hasOwnProperty(key)) {
                 const element = ecourse[i][key];
@@ -82,9 +63,8 @@
                 cell.innerHTML = element;
             }
         }
-        var lastCell = row.insertCell(-1);
-        lastCell.innerHTML = "<a href='#'>Remove</a>";
-        lastCell.style.border = 'none';
+        var lastCell = row.lastElementChild;
+        lastCell.innerHTML += "<a class='removebtn' href='#'>X</a>";
     }
 
 
@@ -102,7 +82,7 @@
     }
 
     function NewClass() {
-        if (document.getElementById("addclass").value == "123456") {
+        if (document.getElementById("addclass").value == "GERIZAL") {
             var row = tableList.insertRow(-1);
 
             for (const key in sample) {
@@ -112,12 +92,12 @@
                     cell.innerHTML = value;
                 }
             }
-            var lastCell = row.insertCell(-1);
-            lastCell.innerHTML = "<a href='#'>Remove</a>";
-            lastCell.style.border = 'none';
+            var lastCell = row.lastElementChild;
+            lastCell.innerHTML += "<a class='removebtn' href='#'>X</a>";
 
             return true;
         }
     }
 
+    responsiveFontSize('a.removebtn', 15);
 </script>
