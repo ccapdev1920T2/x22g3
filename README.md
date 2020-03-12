@@ -14,7 +14,15 @@ Redesigned animo.sys
 <br>
 [] Links should have consistent styles
 <br>
-[] addclass: add button should be at the top of the table
+[] degreeprocess: add button should be at the top of the table
+<br>
+[] merge electives table to course table
+<br>
+[] profile: implement FullCalendar API (for weekly and tabular schedule view)
+<br>
+[] moderator: implement feature where moderator sees class requests
+<br>
+[] replace 'remove' anchors with icons
 <br>
 <br>
 <br>
