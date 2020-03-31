@@ -9,6 +9,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // Routes
 var indexController = require('./controllers/indexController');
 var cartController = require('./controllers/cartController');
+var profileController = require('./controllers/profileController');
 var preenlistmentController = require('./controllers/preenlistmentController');
 var enrollmentController = require('./controllers/enrollmentController');
 var degreeprocessController = require('./controllers/degreeprocessController');
@@ -18,6 +19,7 @@ var modController = require('./controllers/modController');
 app.use('/', indexController);
 app.use('/home', indexController);
 app.use('/cart', cartController);
+app.use('/profile', profileController);
 app.use('/preenlistment', preenlistmentController);
 app.use('/enrollment', enrollmentController);
 app.use('/degree-process', degreeprocessController);
@@ -58,14 +60,6 @@ app.post('/login', urlencodedParser, (req, res) => {
     });
 })
 
-
-
-app.get('/profile', (req, res) => {
-    res.render('profile', {
-        addedStyles: ['profile-styles'],
-        title: 'Profile | Animo.sys'
-    });
-});
 
 app.get('/logout', (req, res) => {
     res.render('logout', {
