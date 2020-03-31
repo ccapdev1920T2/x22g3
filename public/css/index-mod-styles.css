@@ -1,0 +1,63 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+table {
+    border: none;
+}
+
+/* ----------------Form---------------- */
+
+.form-container {
+    background-color: white;
+    padding: 3rem;
+    border: 1px solid #373b4485;
+    border-radius: 5px;
+    max-width: 35vw;
+}
+
+.form-container label {
+    line-height: 23px;
+    letter-spacing: 0.095em;
+    text-transform: uppercase;
+}
+
+.form-container input {
+    outline: none;
+    font-family: inherit;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #373b4485;
+    border-radius: 5px;
+}
+
+.form-container #submit {
+    color: white;
+    font-weight: bold;
+    line-height: 23px;
+    letter-spacing: 0.195em;
+    background: #50F289;
+    border: 1px solid #50F289;
+    border-radius: 5px;
+    width: 50%;
+    text-transform: uppercase;
+}
+
+.form-container #submit:hover {
+    color: #50F289;
+    background-color: white;
+}
+
+.wrap-button {
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-container .input-container {
+    display: inline-block;
+    max-width: 30%;
+}

@@ -1,0 +1,24 @@
+<div class="form-container">
+    <h2 id="session-header">Log in</h2>
+    <br><br>
+    <form method="POST" action="/login">
+        <div class="flex-container">
+            <div class="input-container">
+                <label class='res-8' for="idNumber">ID NUMBER</label><br>
+                <input class='res-12' type="idNumber" id="idNumber" name="idNumber"><br>
+            </div>
+            <div class="input-container">
+                <label class='res-8' for="password">PASSWORD</label><br>
+                <input class='res-12' type="password" id="password" name="password"><br>
+            </div>
+        </div>
+        <br>
+        <p id="errMsg">{{errMsg}}</p>
+        <br><br>
+        <div class="center-button">
+            <input type="submit" class='res-8' id="submit" value="LOG IN">
+        </div>
+    </form a>
+    <br><br>
+    <p class='res-8' id="login-mod"><a href="/login?mod=true">(Moderator? Click here)</a></p>
+</div>

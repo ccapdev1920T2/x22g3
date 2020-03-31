@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+#myInput {
+    outline: none;
+    background-image: url('/assets/search-24px.svg');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
