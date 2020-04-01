@@ -7,23 +7,25 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // Routes
-var indexController = require('./controllers/indexController');
-var cartController = require('./controllers/cartController');
-var profileController = require('./controllers/profileController');
-var preenlistmentController = require('./controllers/preenlistmentController');
-var enrollmentController = require('./controllers/enrollmentController');
-var degreeprocessController = require('./controllers/degreeprocessController');
-var modController = require('./controllers/modController');
+var indexRoute = require('./routes/index');
+var cartRoute = require('./routes/cart');
+var profileRoute = require('./routes/profile');
+var preenlistmentRoute = require('./routes/preenlistment');
+var enrollmentRoute = require('./routes/enrollment');
+var degreeprocessRoute = require('./routes/degreeprocess');
+var modRoute = require('./routes/mod');
+var loginRoute = require('./routes/login');
 
+app.use('/', indexRoute);
+app.use('/home', indexRoute);
+app.use('/cart', cartRoute);
+app.use('/profile', profileRoute);
+app.use('/preenlistment', preenlistmentRoute);
+app.use('/enrollment', enrollmentRoute);
+app.use('/degree-process', degreeprocessRoute);
+app.use('/mod', modRoute);
+app.use('/login', loginRoute);
 
-app.use('/', indexController);
-app.use('/home', indexController);
-app.use('/cart', cartController);
-app.use('/profile', profileController);
-app.use('/preenlistment', preenlistmentController);
-app.use('/enrollment', enrollmentController);
-app.use('/degree-process', degreeprocessController);
-app.use('/mod', modController);
 
 app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'main' }));
 app.set('view engine', 'hbs');
@@ -33,32 +35,32 @@ app.use(express.static('public'));
 
 
 
-app.get('/login', (req, res) => {
-    let view = (req.query.mod) ? 'login-mod' : 'login';
-    res.render(view, {
-        layout: 'sessions',
-        addedStyles: ['session-styles'],
-        title: 'Login | Animo.sys'
-    });
-});
+// app.get('/login', (req, res) => {
+//     let view = (req.query.mod) ? 'login-mod' : 'login';
+//     res.render(view, {
+//         layout: 'sessions',
+//         addedStyles: ['session-styles'],
+//         title: 'Login | Animo.sys'
+//     });
+// });
 
-app.post('/login', urlencodedParser, (req, res) => {
-    let view = (req.query.mod) ? 'login-mod' : 'login';
-    var data = req.body;
-    var errMsg = '';
-    if (!data.idNumber || !data.password) {
-        errMsg = "Invalid ID Number/Password.";
-    }
+// app.post('/login', urlencodedParser, (req, res) => {
+//     let view = (req.query.mod) ? 'login-mod' : 'login';
+//     var data = req.body;
+//     var errMsg = '';
+//     if (!data.idNumber || !data.password) {
+//         errMsg = "Invalid ID Number/Password.";
+//     }
 
 
-    res.render(view, {
-        layout: 'sessions',
-        addedStyles: ['session-styles'],
-        title: 'Login | Animo.sys',
-        data: data,
-        errMsg: errMsg
-    });
-})
+//     res.render(view, {
+//         layout: 'sessions',
+//         addedStyles: ['session-styles'],
+//         title: 'Login | Animo.sys',
+//         data: data,
+//         errMsg: errMsg
+//     });
+// })
 
 
 app.get('/logout', (req, res) => {

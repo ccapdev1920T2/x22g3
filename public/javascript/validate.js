@@ -1,8 +1,9 @@
 function validateStudentLogin() {
+    console.log('done');
+
     var idNumber = document.getElementById("idNumber");
     var password = document.getElementById("password");
     var errMsg = document.getElementById('errMsg');
-    var bg = '#F09A97';
     var err = 0;
 
     if (idNumber.value == '' || isNaN(idNumber.value)) {
@@ -14,14 +15,13 @@ function validateStudentLogin() {
     }
 
     if (err == 0) {
-        window.location.href = './';
+        return true;
     } else {
-        idNumber.style.borderColor = bg;
-        password.style.borderColor = bg;
-        errMsg.style.color = bg;
-        errMsg.innerHTML = "Invalid ID Number/Password.";
-    }
+        idNumber.classList.add('err');
+        password.classList.add('err');
 
+        return false;
+    }
 
 }
 
