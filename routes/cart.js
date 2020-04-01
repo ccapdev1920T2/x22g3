@@ -7,6 +7,7 @@ var enrolled_courses_controller = require('../controllers/enrolled_coursesContro
 
 // TODO: /cart will redirect to either /cart/preenlistment or /cart/enrollment, whichever is active
 router.get('/', (req, res) => {
+    
     res.render('cart', {
         title: 'Cart | Animo.sys'
     });

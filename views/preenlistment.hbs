@@ -1,40 +1,29 @@
 <h1>Pre-Enlistment</h1>
 <br>
 <h2>My Courses</h2><br>
-<div class="table-container">
-    <table class="res-12" id="list">
-        <tr>
-            <th>Course Name</th>
-        </tr>
-    </table>
-</div>
-<br>
-<h2>My Electives</h2>
-<br>
-<div class="table-container">
-    <table class="res-12" id="elist">
-        <tr>
-            <th>Course Code</th>
-        </tr>
-    </table>
-</div>
-<br><br>
-<h2>Add a Subject to Pre-Enlist</h2>
-<br>
-<label for="addclass">Course Code: </label>
-<input type="text" id="addclass">
-<button id="add" onclick="alertPreenlist()">Pre-Enlist in Subject</button>
-<br><br>
-<a class="button" href="/cart/preenlistment"><button>Proceed to Pre-Enlistment</button></a>
+<form action="/cart/preenlistment" method="GET">
+    <div class="table-container">
+        <table class="res-12" id="list">
+            <tr>
+                <th>Course Name</th>
+            </tr>
+        </table>
+    </div>
+    <br>
+
+    <br><br>
+    <h2>Add a Subject to Pre-Enlist</h2>
+    <br>
+    <label for="addclass">Course Code: </label>
+    <input type="text" id="addclass">
+    <button id="add" onclick="addClass()">Pre-Enlist in Subject</button>
+    <br><br>
+
+    <input type="submit" value="Proceed to Pre-Enlistment">
+</form>
 
 <script>
-    var tableList = document.querySelector('table#list');
-    tableList.style.border = 'none';
-
-    function alertPreenlist() {
-        alert("Class added to cart!");
-    }
-
+    // course and ecourse will get data from database
     var course = [
         { name: "CSARCH1" },
         { name: "GEETHIC" },
@@ -48,22 +37,37 @@
         { name: "NATLANG" }
     ];
 
-    for (i = 0; i < course.length; i++) {
+    function addClass() {
+        alert("Class added to cart!");
+    }
+
+    var tableList = document.querySelector('table#list');
+    tableList.style.border = 'none';
+
+    for (let i = 0; i < course.length; i++) {
         var row = tableList.insertRow(-1);
         for (const key in course[i]) {
             if (course[i].hasOwnProperty(key)) {
                 const element = course[i][key];
                 var cell = row.insertCell(-1);
-                cell.innerHTML = element;
+
+                // Append an input element for each cell so that the data can be submitted
+                var input = document.createElement('input');
+                input.classList.add('res-12');
+                input.type = "text";
+                input.readOnly = true;
+                input.name = key;
+
+                console.log(input);
+
+                cell.append(input);
+                input.value = element;
             }
         }
     }
 
-
-    var tableElist = document.querySelector('table#elist');
-    tableElist.style.border = 'none';
-    for (i = 0; i < ecourse.length; i++) {
-        var row = tableElist.insertRow(-1);
+    for (let i = 0; i < ecourse.length; i++) {
+        var row = tableList.insertRow(-1);
         for (const key in ecourse[i]) {
             if (ecourse[i].hasOwnProperty(key)) {
                 const element = ecourse[i][key];
@@ -73,4 +77,10 @@
         }
     }
 
+    var form = document.forms[0];
+    var formData = serialize(form);
+
+    function serialize(form) {
+
+    }
 </script>
