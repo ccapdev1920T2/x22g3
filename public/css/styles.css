@@ -1,3 +1,7 @@
+:root {
+    --err: #F09A97;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -132,6 +136,14 @@ button:hover {
     padding: 5px;
     border: 1px solid #373b4485;
     border-radius: 5px;
+}
+
+.form-container input.err {
+    border-color: var(--err);
+}
+
+p.err {
+    color: var(--err);
 }
 
 .form-container input[type="file"] {
