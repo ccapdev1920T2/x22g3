@@ -2,32 +2,34 @@
 
 Redesigned animo.sys
 
-# to-do list
+### to-do list
 
-[/] Only show 'remove' buttons on row hover
-<br>
-[ ] Make settings-mod more user-friendly
-<br>
-[ ] Change course reference from course number to course code
-<br>
-[ ] Buttons should have consistent styles
-<br>
-[ ] Links should have consistent styles
-<br>
-[ ] degreeprocess: add button should be at the top of the table
-<br>
-[/] merge electives table to course table
-<br>
-[ ] profile: implement FullCalendar API (for weekly and tabular schedule view)
-<br>
-[ ] moderator: implement feature where moderator sees class requests
-<br>
-[ ] replace 'remove' anchors with icons
-<br>
-<br>
-<br>
-[ ] Implement models
-<br>
-[/] Implement views
-<br>
-[/] Implement controllers
+- [ ] Implement models
+
+- [x] Implement views
+
+- [ ] Implement controllers
+
+other tings
+
+- [x] Only show 'remove' buttons on row hover
+
+- [ ] Make settings-mod more user-friendly
+
+- [ ] Change course reference from course number to course code
+
+- [x] Buttons should have consistent styles
+
+- [x] Links/buttons should have consistent styles (especially for inputs)
+
+- [x] degreeprocess: add button should be at the top of the table
+
+- [x] merge electives table to course table
+
+- [ ] profile: implement FullCalendar API (for weekly and tabular schedule view)
+
+- [ ] moderator: implement feature where moderator sees class requests
+
+- [ ] replace 'remove' anchors with icons
+
+- [ ] addclass: implement search-and-add feature
