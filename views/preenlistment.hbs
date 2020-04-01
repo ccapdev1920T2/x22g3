@@ -14,12 +14,14 @@
     <br><br>
     <h2>Add a Subject to Pre-Enlist</h2>
     <br>
-    <label for="addclass">Course Code: </label>
-    <input type="text" id="addclass">
-    <button id="add" onclick="addClass()">Pre-Enlist in Subject</button>
+    <div class="input-bar">
+        <label for="addclass" class="input-bar-label">Course Code</label>
+        <input type="text" id="add" class="input-bar-input">
+        <button type="button" class="input-bar-btn" onclick="addClass('input#add')">Add</button>
+    </div>
     <br><br>
 
-    <input type="submit" value="Proceed to Pre-Enlistment">
+    <input type="submit" id="submit" value="Proceed to Pre-Enlistment Cart">
 </form>
 
 <script>
@@ -37,8 +39,9 @@
         { name: "NATLANG" }
     ];
 
-    function addClass() {
-        alert("Class added to cart!");
+    function addClass(input) {
+        if (document.querySelector(input).value)
+            alert("Class added to cart!");
     }
 
     var tableList = document.querySelector('table#list');
@@ -72,15 +75,18 @@
             if (ecourse[i].hasOwnProperty(key)) {
                 const element = ecourse[i][key];
                 var cell = row.insertCell(-1);
-                cell.innerHTML = element;
+                // Append an input element for each cell so that the data can be submitted
+                var input = document.createElement('input');
+                input.classList.add('res-12');
+                input.type = "text";
+                input.readOnly = true;
+                input.name = key;
+
+                console.log(input);
+
+                cell.append(input);
+                input.value = element;
             }
         }
-    }
-
-    var form = document.forms[0];
-    var formData = serialize(form);
-
-    function serialize(form) {
-
     }
 </script>

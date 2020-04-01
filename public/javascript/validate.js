@@ -29,7 +29,7 @@ function validateModLogin() {
     var username = document.getElementById("username");
     var password = document.getElementById("password");
     var errMsg = document.getElementById('errMsg');
-    var bg = '#F09A97';
+    var bg = 'var(--err)';
     var err = 0;
 
     // Validating user details should be done in server-side

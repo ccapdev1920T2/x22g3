@@ -1,6 +1,9 @@
 :root {
+    --primary: #50F289;
+    --primary-highlight: #bffbd4;
     --err: #F09A97;
     --err-darker: #A34946;
+    --faux-black: #021c0b;
 }
 
 * {
@@ -16,7 +19,7 @@ html {
 body {
     height: auto;
     font-family: 'DM Sans', sans-serif;
-    color: #021c0b;
+    color: var(--faux-black);
 }
 
 /* ----------------Headings---------------- */
@@ -43,12 +46,11 @@ table {
 
 th {
     text-align: left;
-    background-color: #2cf172;
+    background-color: var(--primary);
 }
 
 table, th, td {
-    /* border-top: 1px solid #2cf172; */
-    border-bottom: 1px solid #bffbd4;
+    border-bottom: 1px solid var(--primary-highlight);
     border-collapse: collapse;
 }
 
@@ -68,12 +70,13 @@ td.noRecords {
 }
 
 tr:hover {
-    background-color: #bffbd4;
+    background-color: var(--primary-highlight);
 }
 
 table input {
     border: none;
     background-color: inherit;
+    padding: 0;
 }
 
 /* ----------------Inputs---------------- */
@@ -87,31 +90,21 @@ input {
 /* TODO: Change button font-family globally */
 
 button {
-    /* padding: 5px;
-    outline: none;
-    background-color: inherit;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.195em;
-    cursor: pointer;
-    border: none;
-    border-bottom: 2px solid transparent; */
     outline: none;
     color: white;
     font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.195em;
-    background-color: #50F289;
+    background-color: var(--primary);
     cursor: pointer;
     padding: 0.5rem;
-    border: 1px solid #50F289;
+    border: 1px solid var(--primary);
     border-radius: 5px;
 }
 
 button:hover {
-    color: #50F289;
+    color: var(--primary);
     background-color: white;
 }
 
@@ -125,76 +118,6 @@ button:hover {
 #main tr:hover a.removebtn {
     display: block;
     opacity: 100;
-}
-
-/* ----------------Forms---------------- */
-
-.form-container {
-    background-color: white;
-    padding: 3rem;
-    border-radius: 20px;
-    margin: 0 auto;
-    max-width: 45vw;
-    max-height: 95vh;
-    overflow: hidden;
-}
-
-.form-container label {
-    line-height: 23px;
-    letter-spacing: 0.095em;
-    text-transform: uppercase;
-}
-
-.form-container input {
-    outline: none;
-    font-family: inherit;
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #373b4485;
-    border-radius: 5px;
-}
-
-.form-container input.err {
-    border-color: var(--err);
-}
-
-p.err {
-    color: var(--err);
-}
-
-.form-container input[type="file"] {
-    font-family: 'DM Sans', sans-serif;
-    border: none;
-}
-
-.form-container input[type="file"] button {
-    font-family: 'DM Sans', sans-serif;
-}
-
-.center-button {
-    text-align: center;
-}
-
-.form-container #submit {
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    line-height: 23px;
-    letter-spacing: 0.195em;
-    background: #50F289;
-    border: 1px solid #50F289;
-    border-radius: 5px;
-    width: 50%;
-}
-
-.form-container #submit:hover {
-    color: #50F289;
-    background-color: white;
-    /* cursor: pointer; */
-}
-
-.form-container #login-mod {
-    text-align: right;
 }
 
 /* ----------------Links---------------- */
@@ -216,8 +139,8 @@ header {
     right: 0;
     padding: 15px 7.5px;
     background-color: white;
-    border-top: 5px solid #2cf172;
-    box-shadow: 0px -6px 18px 0px #3e423f;
+    border-top: 5px solid var(--primary);
+    box-shadow: 0px -16px 15px 6px #3e423f;
 }
 
 #logo-wrapper {
@@ -248,14 +171,14 @@ header nav {
 }
 
 #navlist li>a:hover {
-    color: #2cf172;
-    border: 2px solid #2cf172;
+    color: var(--primary);
+    border: 2px solid var(--primary);
     border-radius: 5px;
 }
 
 #navlist li>a#active {
-    color: #2cf172;
-    border: 2px solid #2cf172;
+    color: var(--primary);
+    border: 2px solid var(--primary);
     border-radius: 5px;
 }
 
@@ -285,11 +208,11 @@ header nav {
 }
 
 #sidebarlist li>a:hover {
-    border-bottom: 2px solid #2cf172;
+    border-bottom: 2px solid var(--primary);
 }
 
 #sidebarlist li>a#active {
-    border-bottom: 2px solid #2cf172;
+    border-bottom: 2px solid var(--primary);
 }
 
 /* ----------------Content---------------- */
@@ -312,14 +235,14 @@ header nav {
 }
 
 #main a {
-    border-bottom: 2px solid #2cf172;
+    border-bottom: 2px solid var(--primary);
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: .155rem;
 }
 
 #main .form-container {
-    border: 1px solid #021c0b0f;
+    border: 1px solid var(--faux-black);
 }
 
 /* ----------------Footer---------------- */
@@ -328,7 +251,7 @@ footer {
     padding: 15px;
     text-align: center;
     height: 10vh;
-    background-color: #021c0b;
+    background-color: var(--faux-black);
     color: whitesmoke;
 }
 

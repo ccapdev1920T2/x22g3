@@ -12,7 +12,7 @@ body {
     font-family: 'DM Sans', sans-serif;
     /* font-size: calc(.375rem + 0.5vw); */
     color: #373B44;
-    /* background: linear-gradient(to bottom right, #97F0B6 0%, #50F289 100%) no-repeat;
+    /* background: linear-gradient(to bottom right, #97F0B6 0%, var(--primary) 100%) no-repeat;
     min-height: 100vh; */
 }
 
@@ -22,7 +22,7 @@ h1 {
 }
 
 #gradient-bg {
-    background: linear-gradient(to bottom right, #97F0B6 0%, #50F289 100%);
+    background: linear-gradient(to bottom right, #97F0B6 0%, var(--primary) 100%);
     height: 100vh;
     padding-top: 100px;
 }
@@ -43,14 +43,14 @@ h1 {
     font-weight: bold;
     line-height: 23px;
     letter-spacing: 0.195em;
-    background: #50F289;
-    border: 1px solid #50F289;
+    background: var(--primary);
+    border: 1px solid var(--primary);
     border-radius: 5px;
     width: 100%;
 }
 
 #container #login:hover {
-    color: #50F289;
+    color: var(--primary);
     background-color: white;
 }
 

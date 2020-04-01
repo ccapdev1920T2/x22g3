@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-#myInput {
+.searchbar {
     outline: none;
     background-image: url('/assets/search-24px.svg');
     background-position: 10px 10px;

@@ -26,7 +26,8 @@ router.get('/dropclass', (req, res) => {
 
 router.get('/dropclass_list', (req, res) => {
     res.render('dropclass_list', {
-        title: 'List of Dropped Classes | Animo.sys'
+        title: 'List of Dropped Classes | Animo.sys',
+        addedStyles: ['forms']
     })
 })
 

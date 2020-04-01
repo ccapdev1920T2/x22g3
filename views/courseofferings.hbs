@@ -1,6 +1,6 @@
 <h1>Course Offerings</h1>
 <br>
-<input type="text" class="res-16" id="myInput" onkeyup="myFunction()" placeholder="Enter course code"
+<input type="text" class="res-16 searchbar" onkeyup="myFunction()" placeholder="Enter course code"
     title="Enter course code">
 <div class="table-container">
     <table class='res-12' id="myTable">
@@ -84,13 +84,10 @@
     </table>
 </div>
 
-
-
-
 <script>
     function myFunction() {
         var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
+        input = document.querySelector(".searchbar");
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");

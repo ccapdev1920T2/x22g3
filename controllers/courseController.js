@@ -6,7 +6,7 @@ var Student = require('../models/student');
 exports.course_offerings_list = (req, res) => {
     console.log('TODO: get data from Course');
     res.render('courseofferings', {
-        addedStyles: ['courseofferings-styles'],
+        addedStyles: ['courseofferings'],
         title: 'Course Offerings | Animo.sys'
     })
 };

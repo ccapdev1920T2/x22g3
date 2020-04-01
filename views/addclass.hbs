@@ -1,8 +1,12 @@
 <h1>Add a Class</h1>
 <br>
-<label for="addclass">Course Code: </label>
-<input type="text" id="addclass">
-<button id="add" onclick="addClass()">Add Class</button>
+<h1 style="color: red;">IMPORTANT: Change implementation to search-and-add</h1>
+<div class="input-bar">
+    <label for="addclass" class="input-bar-label">Course Code: </label>
+    <input type="text" class="input-bar-input" id="addclass">
+    <button type="button" class="input-bar-btn" id="add" onclick="addClass()">Add Class</button>
+</div>
+
 <br><br>
 
 <div class="table-container">
@@ -20,7 +24,7 @@
 </div>
 <br><br>
 
-<a href="/cart/enrollment"><button>Proceed to Enrollment</button></a>
+<input type="submit" id="submit" value="Proceed to Enrollment Cart"></button>
 
 
 <script>

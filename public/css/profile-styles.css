@@ -21,7 +21,7 @@ p#id-num {
     letter-spacing: 0.155rem;
     background-color: inherit;
     float: left;
-    color: #021c0b;
+    color: var(--faux-black);
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -31,11 +31,11 @@ p#id-num {
 }
 
 .tab button:hover {
-    border: 2px solid #021c0b;
+    border: 2px solid var(--faux-black);
 }
 
 .tab button.active {
-    border: 2px solid #021c0b;
+    border: 2px solid var(--faux-black);
 }
 
 /* Style the tab content */

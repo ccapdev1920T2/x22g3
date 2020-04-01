@@ -26,37 +26,32 @@
     </table>
 </div>
 
+<br><br>
 
-<br>
 <h3>Request a Document</h3>
 <br>
-<table id="reqs">
-    <tr>
-        <th>Date/Time</th>
-        <th>Document</th>
-        <th>Status</th>
-    </tr>
-</table>
-<br>
-<label for="documents">Select a document to request: </label>
-<select id="documents">
-    <option value="Transcript of Records">Transcript of Records</option>
-    <option value="Certificate of Good Morals">Certificate of Good Morals</option>
-</select>
+<div class="input-bar">
+    <label for="documents" class="input-bar-label">Select a document to request</label>
+    <select class="input-bar-input" id="documents">
+        <option value="Transcript of Records">Transcript of Records</option>
+        <option value="Certificate of Good Morals">Certificate of Good Morals</option>
+    </select>
 
-<button onclick="NewDoc()">Request</button>
-<script>
-    function NewDoc() {
-        var table = document.getElementById("reqs");
-        var row = table.insertRow(table.getElementsByTagName('tr').length);
-        var cell0 = row.insertCell(0);
-        var cell1 = row.insertCell(1);
-        var cell2 = row.insertCell(2);
-        cell0.innerHTML = new Date();
-        cell1.innerHTML = document.getElementById("documents").value;
-        cell2.innerHTML = "Request Sent";
-    }
-</script>
+    <button class="input-bar-btn" onclick="NewDoc()">Request</button>
+</div>
+<br>
+<div class="table-container">
+    <table class="res-12" id="reqs">
+        <tr>
+            <th>Date/Time</th>
+            <th>Document</th>
+            <th>Status</th>
+        </tr>
+    </table>
+</div>
+
+<br><br>
+
 <br>
 <h3>Documents Overview</h3>
 <br>
@@ -112,3 +107,16 @@
         </tr>
     </table>
 </div>
+
+<script>
+    function NewDoc() {
+        var table = document.getElementById("reqs");
+        var row = table.insertRow(table.getElementsByTagName('tr').length);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        cell0.innerHTML = new Date();
+        cell1.innerHTML = document.getElementById("documents").value;
+        cell2.innerHTML = "Request Sent";
+    }
+</script>
