@@ -1,5 +1,6 @@
 :root {
     --err: #F09A97;
+    --err-darker: #A34946;
 }
 
 * {
@@ -55,8 +56,24 @@ th, td {
     padding: 5px;
 }
 
+td.lastCell {
+    border: none;
+    width: 5%;
+    background-color: #fbfffd;
+}
+
+td.noRecords {
+    background-color: whitesmoke;
+    text-align: center;
+}
+
 tr:hover {
     background-color: #bffbd4;
+}
+
+table input {
+    border: none;
+    background-color: inherit;
 }
 
 /* ----------------Inputs---------------- */
@@ -99,10 +116,9 @@ button:hover {
 }
 
 #main a.removebtn {
-    color: #A34946;
+    color: var(--err-darker);
     padding: 0;
     border: none;
-    float: right;
     opacity: 0;
 }
 

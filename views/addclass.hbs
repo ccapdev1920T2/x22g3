@@ -2,7 +2,7 @@
 <br>
 <label for="addclass">Course Code: </label>
 <input type="text" id="addclass">
-<button id="add" onclick="myFunctionAlert()">Add Class</button>
+<button id="add" onclick="addClass()">Add Class</button>
 <br><br>
 
 <div class="table-container">
@@ -49,8 +49,11 @@
                 cell.innerHTML = element;
             }
         }
-        var lastCell = row.lastElementChild;
-        lastCell.innerHTML += "<a class='removebtn' href='#'>X</a>";
+        // Add remove button at last cell 
+        var lastCell = row.insertCell(-1);
+        lastCell.classList.add('lastCell');
+        lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
+
 
     }
 
@@ -63,25 +66,38 @@
                 cell.innerHTML = element;
             }
         }
-        var lastCell = row.lastElementChild;
-        lastCell.innerHTML += "<a class='removebtn' href='#'>X</a>";
+        // Add remove button at last cell 
+        var lastCell = row.insertCell(-1);
+        lastCell.classList.add('lastCell');
+        lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
     }
 
-
     $(function () {
-        $('table').on('click', 'tr a', function (e) {
+        $('table').on('click', 'a.removebtn', function (e) {
             e.preventDefault();
             $(this).parents('tr').remove();
+            if (tableList.rows.length == 1) {
+                var row = tableList.insertRow(-1);
+                var cell = row.insertCell(-1);
+                cell.classList.add('noRecords');
+                cell.colSpan = tableList.rows[0].cells.length;
+                cell.innerHTML = 'No more records.';
+            }
         });
     });
 
-    function myFunctionAlert() {
-        if (NewClass())
+    function addClass() {
+        if (validate()) {
             alert("Class added to cart!");
+            var x = document.querySelector('.noRecords');
+            console.log(x);
+            if (x)
+                x.remove();
+        }
 
     }
 
-    function NewClass() {
+    function validate() {
         if (document.getElementById("addclass").value == "GERIZAL") {
             var row = tableList.insertRow(-1);
 
@@ -92,12 +108,15 @@
                     cell.innerHTML = value;
                 }
             }
-            var lastCell = row.lastElementChild;
-            lastCell.innerHTML += "<a class='removebtn' href='#'>X</a>";
+            // Add remove button at last cell 
+            var lastCell = row.insertCell(-1);
+            lastCell.classList.add('lastCell');
+            lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
 
             return true;
         }
     }
 
     responsiveFontSize('a.removebtn', 12);
+    responsiveFontSize('.noRecords', 16);
 </script>
