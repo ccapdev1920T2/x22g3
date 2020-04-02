@@ -1,6 +1,6 @@
 :root {
     --primary: #50F289;
-    --primary-highlight: #bffbd4;
+    --primary-highlight: #d3f3de;
     --err: #F09A97;
     --err-darker: #A34946;
     --faux-black: #021c0b;
@@ -67,6 +67,10 @@ td.lastCell {
 td.noRecords {
     background-color: whitesmoke;
     text-align: center;
+}
+
+tr:nth-child(2n + 1) {
+    background-color: var(--primary-highlight);
 }
 
 tr:hover {

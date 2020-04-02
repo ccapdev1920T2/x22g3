@@ -103,3 +103,17 @@ input[type="file" i] {
     border: 2px solid var(--primary);
     color: var(--primary);
 }
+
+/* ----------------Search bar---------------- */
+
+.searchbar {
+    outline: none;
+    background-image: url('/assets/search-24px.svg');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid gainsboro;
+    margin-bottom: 12px;
+}
