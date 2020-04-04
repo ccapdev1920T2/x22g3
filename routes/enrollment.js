@@ -35,4 +35,6 @@ router.get('/requestclass', request_controller.request_create_get);
 
 router.get('/courseofferings', course_controller.course_offerings_list);
 
+router.get('/courseofferings/search', course_controller.course_offerings_search);
+
 module.exports = router;
