@@ -1,99 +1,67 @@
 <h1>Add a Class</h1>
 <br>
-<h1 style="color: red;">IMPORTANT: Change implementation to search-and-add</h1>
-<div class="input-bar">
-    <label for="addclass" class="input-bar-label">Course Code: </label>
-    <input type="text" class="input-bar-input" id="addclass">
-    <button type="button" class="input-bar-btn" id="add" onclick="addClass()">Add Class</button>
-</div>
 
-<br><br>
-
+<h3>My Courses</h3>
+<br>
 <div class="table-container">
-    <table class='res-12' id="list">
+    <table class='res-12' id="myCourses">
         <tr>
-            <th>Class Nbr</th>
-            <th>Course Name</th>
+            <th>Course Code</th>
             <th>Section</th>
-            <th>Day/Time</th>
+            <th>Days</th>
+            <th>Time</th>
             <th>Room</th>
             <th>Professor</th>
             <th>Status</th>
         </tr>
     </table>
 </div>
+
 <br><br>
 
-<input type="submit" id="submit" value="Proceed to Enrollment Cart"></button>
+<p>You can remove your courses at the enrollment cart page.</p>
+<input type="submit" id="submit" value="Save and proceed to Enrollment Cart"></button>
+
+<br><br>
+
+<h3>Course Offerings</h3>
+<br>
+<p>Search for a course then click the "Add" button to add it to your list of courses.</p>
+<input type="text" class="res-16 searchbar" onkeyup="search()" placeholder="Enter course code"
+    title="Enter course code">
+<br><br>
+<div class="table-container">
+    <table class="res-12" id="courseOfferings">
+        <tr>
+            <th>Course Code</th>
+            <th>Section</th>
+            <th>Days</th>
+            <th>Time</th>
+            <th>Room</th>
+            <th>Professor</th>
+            <th>Status</th>
+        </tr>
+    </table>
+</div>
 
 
 <script>
     var sample = { nbr: "123456", name: "GERIZAL", section: "X21", time: "MW 0730-0900", room: "GT200", prof: "", stat: "Open" };
     var course = [
-        { nbr: "111111", name: "CSARCH1", section: "X22", time: "MW 0915-1045", room: "GT201", prof: "PERADILLA, M.", stat: "Open" },
-        { nbr: "222222", name: "GEETHIC", section: "X22", time: "MW 1245-1415", room: "GT202", prof: "ESTEVES, M.", stat: "Open" },
-        { nbr: "333333", name: "STMATH", section: "X22", time: "TH 0730-0900", room: "GT203", prof: "LAWAS, C.", stat: "Open" },
-        { nbr: "444444", name: "STALGCM", section: "X22", time: "TH 0915-1045", room: "GT204", prof: "AZCARRAGA, A.", stat: "Open" },
-        { nbr: "555555", name: "CCAPDEV", section: "X22", time: "TH 1100-1230", room: "GT205", prof: "ANTIOQUIA, A.", stat: "Closed" },
-        { nbr: "666666", name: "GESPORT", section: "X22", time: "T 1300-1500", room: "GT206", prof: "CALABIO, V.", stat: "Open" }
+        { name: "CSARCH1", section: "X22", days: ['M', 'W'], time: "0915-1045", room: "GT201", prof: "PERADILLA, M.", stat: "Open" },
+        { name: "GEETHIC", section: "X22", days: ['M', 'W'], time: "1245-1415", room: "GT202", prof: "ESTEVES, M.", stat: "Open" },
+        { name: "STMATH", section: "X22", days: ['T', 'H'], time: "0730-0900", room: "GT203", prof: "LAWAS, C.", stat: "Open" },
+        { name: "STALGCM", section: "X22", days: ['T', 'H'], time: "0915-1045", room: "GT204", prof: "AZCARRAGA, A.", stat: "Open" },
+        { name: "CCAPDEV", section: "X22", days: ['T', 'H'], time: "1100-1230", room: "GT205", prof: "ANTIOQUIA, A.", stat: "Closed" },
+        { name: "GESPORT", section: "X22", days: ['T'], time: "1300-1500", room: "GT206", prof: "CALABIO, V.", stat: "Open" }
     ];
     var ecourse = [
-        { nbr: "777777", name: "NATLANG", section: "X22", time: "F 0915-1045", room: "GT206", prof: "", stat: "Open" }
+        { name: "NATLANG", section: "X22", days: ['F'], time: "0915-1045", room: "GT206", prof: "", stat: "Open" }
     ];
-
-    var tableList = document.querySelector('table#list');
-    tableList.style.border = 'none';
-
-    for (i = 0; i < course.length; i++) {
-        var row = tableList.insertRow(-1);
-        for (const key in course[i]) {
-            if (course[i].hasOwnProperty(key)) {
-                const element = course[i][key];
-                var cell = row.insertCell(-1);
-                cell.innerHTML = element;
-            }
-        }
-        // Add remove button at last cell 
-        var lastCell = row.insertCell(-1);
-        lastCell.classList.add('lastCell');
-        lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
-
-
-    }
-
-    for (i = 0; i < ecourse.length; i++) {
-        var row = tableList.insertRow(-1);
-        for (const key in ecourse[i]) {
-            if (ecourse[i].hasOwnProperty(key)) {
-                const element = ecourse[i][key];
-                var cell = row.insertCell(-1);
-                cell.innerHTML = element;
-            }
-        }
-        // Add remove button at last cell 
-        var lastCell = row.insertCell(-1);
-        lastCell.classList.add('lastCell');
-        lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
-    }
-
-    $(function () {
-        $('table').on('click', 'a.removebtn', function (e) {
-            e.preventDefault();
-            $(this).parents('tr').remove();
-            if (tableList.rows.length == 1) {
-                var row = tableList.insertRow(-1);
-                var cell = row.insertCell(-1);
-                cell.classList.add('noRecords');
-                cell.colSpan = tableList.rows[0].cells.length;
-                cell.innerHTML = 'No more records.';
-            }
-        });
-    });
 
     function addClass() {
         if (validate()) {
             alert("Class added to cart!");
-            var x = document.querySelector('.noRecords');
             console.log(x);
             if (x)
                 x.remove();
@@ -103,7 +71,7 @@
 
     function validate() {
         if (document.getElementById("addclass").value == "GERIZAL") {
-            var row = tableList.insertRow(-1);
+            var row = myCourses.insertRow(-1);
 
             for (const key in sample) {
                 if (sample.hasOwnProperty(key)) {
@@ -112,15 +80,93 @@
                     cell.innerHTML = value;
                 }
             }
-            // Add remove button at last cell 
-            var lastCell = row.insertCell(-1);
-            lastCell.classList.add('lastCell');
-            lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
+
 
             return true;
         }
     }
 
-    responsiveFontSize('a.removebtn', 12);
+
+    // table should be a table element
+    // type can either be 'add' or 'remove'
+    function addBtn(table, type) {
+        var rows = table.rows;
+        console.log(rows);
+        console.log(type);
+
+        if (rows.length > 1) {
+            for (i = 1; i < rows.length; i++) {
+                var lastCell = rows[i].insertCell(-1);
+                lastCell.classList.add('lastCell');
+                lastCell.innerHTML += `<a class='${type}' href='#'>${type}</a>`;
+            }
+        }
+    }
+
+    // transfers rowEl from its original table to toTableEl
+    function transferRow(row, toTableElement) {
+        var temp = row;
+        row.remove();
+
+        console.log(temp);
+        toTableElement.appendChild(temp);
+    }
+
+
+    var myCourses = document.querySelector('table#myCourses');
+    myCourses.style.border = 'none';
+
+    var courseOfferings = document.querySelector('table#courseOfferings');
+    courseOfferings.style.border = 'none';
+
+    for (i = 0; i < course.length; i++) {
+        var row = courseOfferings.insertRow(-1);
+        for (const key in course[i]) {
+            if (course[i].hasOwnProperty(key)) {
+                const element = course[i][key];
+                var cell = row.insertCell(-1);
+                cell.innerHTML = element;
+            }
+        }
+
+    }
+
+    for (i = 0; i < ecourse.length; i++) {
+        var row = courseOfferings.insertRow(-1);
+        for (const key in ecourse[i]) {
+            if (ecourse[i].hasOwnProperty(key)) {
+                const element = ecourse[i][key];
+                var cell = row.insertCell(-1);
+                cell.innerHTML = element;
+            }
+        }
+
+    }
+
+
+    function addBtnListener() {
+
+        var btns = document.querySelectorAll('tr a');
+        btns.forEach(btn => {
+            var table = (btn.innerHTML === 'add') ? myCourses : courseOfferings;
+
+            btn.onclick = function (e) {
+                e.preventDefault();
+                console.log(table);
+                row = this.parentElement.parentElement;
+                this.parentElement.remove();
+
+                console.log(row);
+                transferRow(row, table);
+            }
+        });
+    }
+    addBtn(myCourses, 'remove');
+    addBtn(courseOfferings, 'add');
+
+    addBtnListener();
+
+
+    responsiveFontSize('tr a', 12);
     responsiveFontSize('.noRecords', 16);
 </script>

@@ -1,11 +1,10 @@
 <h1>Course Offerings</h1>
 <br>
-<input type="text" class="res-16 searchbar" onkeyup="myFunction()" placeholder="Enter course code"
+<input type="text" class="res-16 searchbar" id="q" onchange="search()" placeholder="Enter course code"
     title="Enter course code">
 <div class="table-container">
     <table class='res-12' id="myTable">
         <tr class="header">
-            <th>Class Nbr</th>
             <th>Course</th>
             <th>Section</th>
             <th>Day/s</th>
@@ -13,10 +12,9 @@
             <th>Room</th>
             <th>Enl Cap</th>
             <th>Enrolled</th>
-            <th>Remarks</th>
+            <th>Status</th>
         </tr>
         <tr>
-            <td>111111</td>
             <td>CSARCH1</td>
             <td>X22</td>
             <td>MW</td>
@@ -27,7 +25,6 @@
             <td>OPEN</td>
         </tr>
         <tr>
-            <td>222222</td>
             <td>GEETHIC</td>
             <td>X22</td>
             <td>MW</td>
@@ -38,7 +35,6 @@
             <td>CLOSED</td>
         </tr>
         <tr>
-            <td>333333</td>
             <td>STMATH</td>
             <td>X22</td>
             <td>TH</td>
@@ -49,7 +45,6 @@
             <td>CLOSED</td>
         </tr>
         <tr>
-            <td>444444</td>
             <td>STALGCM</td>
             <td>X22</td>
             <td>TH</td>
@@ -60,7 +55,6 @@
             <td>OPEN</td>
         </tr>
         <tr>
-            <td>555555</td>
             <td>CCAPDEV</td>
             <td>X22</td>
             <td>TH</td>
@@ -71,7 +65,6 @@
             <td>OPEN</td>
         </tr>
         <tr>
-            <td>666666</td>
             <td>GESPORT</td>
             <td>X22</td>
             <td>T</td>
@@ -81,6 +74,7 @@
             <td>38</td>
             <td>OPEN</td>
         </tr>
+
     </table>
 </div>
 
@@ -103,5 +97,38 @@
                 }
             }
         }
+    }
+
+    function search() {
+        var xhr = new XMLHttpRequest();
+        var query = document.getElementById('q').value.toUpperCase();
+        var url = `/enrollment/courseofferings/search?q=${query}`;
+
+        // set timeout to 2 seconds
+        //xhr.timeout = 1000*2;
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = xhr.response;
+                console.log(xhr.response);
+                var table = document.querySelector('#myTable');
+
+                // append data in the following order:
+                const keys = ['courseCode', 'section', 'days', 'startTime', 'endTime', 'room', 'enlCap', 'enrolled', 'status'];
+                for (let r of response) {
+                    var row = table.insertRow(-1);
+                    for (let key of keys) {
+                        var cell = row.insertCell(-1);
+                        cell.innerHTML = r[key];
+                    }
+                }
+
+
+            }
+        };
+        xhr.open('GET', url, true);
+        xhr.responseType = "json";
+        xhr.timeout = 1000 * 2;
+        xhr.send(query);
     }
 </script>

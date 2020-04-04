@@ -1,0 +1,252 @@
+<html>
+    <head>
+        <style>
+            .schedule {
+                display: grid;
+                grid-column-gap: 2px;
+                grid-template-rows:
+                    [tracks] auto
+                    [time-0730] 1fr
+                    [time-0745] 1fr
+                    [time-0800] 1fr
+                    [time-0815] 1fr
+                    [time-0830] 1fr
+                    [time-0845] 1fr
+                    [time-0900] 1fr
+                    [time-0915] 1fr
+                    [time-0930] 1fr
+                    [time-0945] 1fr
+                    [time-1000] 1fr
+                    [time-1015] 1fr
+                    [time-1030] 1fr
+                    [time-1045] 1fr
+                    [time-1100] 1fr
+                    [time-1115] 1fr
+                    [time-1130] 1fr
+                    [time-1145] 1fr
+                    [time-1200] 1fr
+                    [time-1215] 1fr
+                    [time-1230] 1fr
+                    [time-1245] 1fr
+                    [time-1300] 1fr
+                    [time-1315] 1fr
+                    [time-1330] 1fr
+                    [time-1345] 1fr
+                    [time-1400] 1fr
+                    [time-1415] 1fr
+                    [time-1430] 1fr
+                    [time-1445] 1fr
+                    [time-1500] 1fr
+                    [time-1515] 1fr
+                    [time-1530] 1fr
+                    [time-1545] 1fr
+                    [time-1600] 1fr
+                    [time-1615] 1fr
+                    [time-1630] 1fr
+                    [time-1645] 1fr
+                    [time-1700] 1fr
+                    [time-1715] 1fr
+                    [time-1730] 1fr
+                    [time-1745] 1fr
+                    [time-1800] 1fr
+                    [time-1815] 1fr
+                    [time-1830] 1fr
+                    [time-1845] 1fr
+                    [time-1900] 1fr;
+                    /* Note 1:
+                    Use 24hr time for gridline names for simplicity
+
+                    Note 2: Use "auto" instead of "1fr" for a more compact schedule where height of a slot is not proportional to the session length. Implementing a "compact" shortcode attribute might make sense for this!
+                    Try 0.5fr for more compact equal rows. I don't quite understand how that works :)
+                    */
+                
+                grid-template-columns:
+                    [times] 4em
+                    [day-1-start] 1fr
+                    [day-1-end day-2-start] 1fr
+                    [day-2-end day-3-start] 1fr
+                    [day-3-end day-4-start] 1fr
+                    [day-4-end day-5-start] 1fr
+                    [day-5-end];
+            }
+
+
+        .time-slot {
+            grid-column: times;
+        }
+
+        .track-slot {
+            display: none; /* hidden on small screens and browsers without grid support */
+        }
+
+        @supports( display:grid ) {
+            @media screen and (min-width:700px) {
+                .track-slot {
+                    display: block;
+                    padding: 10px 5px 5px;
+                    position: sticky;
+                    top: 0;
+                    z-index: 1000;
+                    background-color: rgba(255,255,255,.9);
+                }
+            }
+        }
+
+        /* Small-screen & fallback styles */
+        .session {
+            margin-bottom:  1em;
+        }
+
+        @supports( display:grid ) {
+            @media screen and (min-width: 700px) {
+                .session {
+                    margin: 0;
+                }   
+            }
+        }
+
+        /*************************
+        * VISUAL STYLES
+        * Design-y stuff ot particularly important to the demo
+        *************************/
+        body {
+            padding: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .session-title,
+        .session-time,
+        .session-track,
+        .session-presenter {
+            display: block;
+        }
+
+        .session-title,
+        .time-slot {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .session-title a {
+            color: #fff;
+            text-decoration-style: dotted;
+            
+        }
+
+        .track-slot,
+        .time-slot {
+            font-weight: bold;
+            font-size:.75em;
+        }
+
+        .course {
+            background-color: #1259B2;
+            color: #fff;
+            padding: .5em;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+
+
+        .track-all {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ccc;
+            color: #000;
+            box-shadow: none;
+        }
+
+        .text {
+            max-width: 750px;
+            font-size: 18px;
+            margin: 0 auto 50px;
+        }
+
+        </style>
+    </head>
+    <body>
+        
+        <h2 id="schedule-heading">Class Schedule</h2>
+        <script>
+            var classes = ['CCAPDEV', 'CSARCH1', 'STALGCM', 'STMATH', 'GESPORT', 'GEETHIC', 'LCLSTWO'];
+            var start = ['1100', '0915', '0915', '0730', '1300', '1245', '0800'];
+            var end = ['1230', '1045', '1045', '0900', '1500', '1415', '1000'];
+            var days = ['TH', 'MW', 'TH', 'TH', 'T', 'MW', 'F'];
+        </script>
+
+        <div class="schedule" aria-labelledby="schedule-heading">
+            
+            <span class="day-slot" aria-hidden="true" style="grid-column: day-1; grid-row: tracks;">Monday</span>
+            <span class="day-slot" aria-hidden="true" style="grid-column: day-2; grid-row: tracks;">Tuesday</span>
+            <span class="day-slot" aria-hidden="true" style="grid-column: day-3; grid-row: tracks;">Wednesday</span>
+            <span class="day-slot" aria-hidden="true" style="grid-column: day-4; grid-row: tracks;">Thursday</span>
+            <span class="day-slot" aria-hidden="true" style="grid-column: day-5; grid-row: tracks;">Friday</span>
+            
+            <h2 class="time-slot" style="grid-row: time-0730;">07:30</h2>
+            <h2 class="time-slot" style="grid-row: time-0800;">08:00</h2>
+            <h2 class="time-slot" style="grid-row: time-0830;">08:30</h2>
+            <h2 class="time-slot" style="grid-row: time-0900;">09:00</h2>
+            <h2 class="time-slot" style="grid-row: time-0930;">09:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1000;">10:00</h2>
+            <h2 class="time-slot" style="grid-row: time-1030;">10:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1100;">11:00</h2>
+            <h2 class="time-slot" style="grid-row: time-1130;">11:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1200;">12:00</h2>
+            <h2 class="time-slot" style="grid-row: time-1230;">12:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1300;">13:00</h2>
+            <h2 class="time-slot" style="grid-row: time-1330;">13:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1400;">14:00</h2>
+            <h2 class="time-slot" style="grid-row: time-1430;">14:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1500;">15:00</h2>
+            <h2 class="time-slot" style="grid-row: time-1530;">15:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1600;">16:00</h2>
+            <h2 class="time-slot" style="grid-row: time-1630;">16:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1700;">17:00</h2>
+            <h2 class="time-slot" style="grid-row: time-1730;">17:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1800;">18:00</h2>
+            <h2 class="time-slot" style="grid-row: time-1830;">18:30</h2>
+            <h2 class="time-slot" style="grid-row: time-1900;">19:00</h2>
+
+            
+            <script>
+                for(i=0;i<classes.length; i++)
+                {
+                    document.write("<div class='course' style='grid-column: ");
+                    if(days[i]=='M' || days[i]=='MW')
+                        document.write("day-1;");
+                    else if(days[i]=='T' || days[i]=='TH')
+                        document.write("day-2;");
+                    else if(days[i]=='W')
+                        document.write("day-3;");
+                    else if(days[i]=='H')
+                        document.write("day-4;");
+                    else if(days[i] == 'F')
+                        document.write("day-5;");
+                    document.write(" grid-row: time-" +  start[i] + " / time-" + end[i] + ";'>");
+                    document.write("<h3 class='session-title'>" + classes[i] + "</h3>");
+                    document.write("<span class='session-time'>" + start[i] + "-" + end[i] + "</span></div>");
+                }
+                for(i=0;i<classes.length; i++)
+                {
+                    
+                    if(days[i]=='MW'){
+                    document.write("<div class='course' style='grid-column: ");
+                        document.write("day-3;");
+                        document.write(" grid-row: time-" +  start[i] + " / time-" + end[i] + ";'>");
+                    document.write("<h3 class='session-title'>" + classes[i] + "</h3>");
+                    document.write("<span class='session-time'>" + start[i] + "-" + end[i] + "</span></div>");}
+                    else if(days[i]=='TH'){
+                    document.write("<div class='course' style='grid-column: ");
+                        document.write("day-4;");
+                    document.write(" grid-row: time-" +  start[i] + " / time-" + end[i] + ";'>");
+                    document.write("<h3 class='session-title'>" + classes[i] + "</h3>");
+                    document.write("<span class='session-time'>" + start[i] + "-" + end[i] + "</span></div>");}
+                }
+            </script>
+            
+        </div>
+    </body>
+</html>
