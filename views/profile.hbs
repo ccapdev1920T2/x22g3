@@ -40,6 +40,9 @@
     <h2>Weekly Schedule</h2>
     <br>
 
+    <div class="schedule" aria-labelledby="schedule-heading"></div>
+    <br><br>
+
     <div id="calendar"></div>
     <h2>Tabular Schedule</h2>
     <br>
@@ -73,12 +76,6 @@
         var classes = ["CCAPDEV", "STMATH", "STALGCM", "GEETHICS", "GESPORTS", "CSARCH1"];
         var times = ["1100-1230", "730-900", "915-1045", "1245-1415", "1300-1500", "915-1045"];
         var days = ["TH", "TH", "TH", "MW", "T", "MW"];
-        // var table = document.querySelector('table#schedule-table');
-
-        /*for (i = 0; i < classes.length; i++) {
-            var row = '<tr> <td>' + times[i] + '</td> <td>' + days[i] + '</td> <td>' + classes[i] + '</td> </tr>';
-            table.innerHTML = table.innerHTML.concat(row);
-        }*/
 
 
         var myCourses = document.querySelector('table#schedule-table');
@@ -218,6 +215,17 @@
     }
     document.getElementById("default").click();
 
-
+    generateScheduleStyle();
+    constructCalendar();
+    plotClasses();
+    generateRandomColor([
+        "#D8456E",
+        "#E1BBB0",
+        "#628077",
+        "#D3CBAE",
+        "#E7B4A2",
+        "#F2D144",
+        "#686CF2",
+    ]);
     responsiveFontSize('button', 14);
 </script>

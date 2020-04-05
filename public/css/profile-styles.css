@@ -89,3 +89,83 @@ p#id-num {
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+/* ----------------Calendar---------------- */
+
+.time-slot {
+    grid-column: times;
+}
+
+.track-slot {
+    display: none;
+    /* hidden on small screens and browsers without grid support */
+}
+
+@supports (display: grid) {
+    @media screen and (min-width: 700px) {
+        .track-slot {
+            display: block;
+            padding: 10px 5px 5px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+    }
+}
+
+/* Small-screen & fallback styles */
+
+.session {
+    margin-bottom: 1em;
+}
+
+@supports (display: grid) {
+    @media screen and (min-width: 700px) {
+        .session {
+            margin: 0;
+        }
+    }
+}
+
+.session-title, .session-time, .session-track, .session-presenter {
+    display: block;
+}
+
+.session-title, .time-slot {
+    margin: 0;
+    font-size: 1em;
+}
+
+.session-title a {
+    color: #fff;
+    text-decoration-style: dotted;
+}
+
+.track-slot, .time-slot {
+    font-weight: bold;
+    font-size: 0.75em;
+}
+
+.course {
+    background-color: #1259b2;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+.track-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ccc;
+    color: #000;
+    box-shadow: none;
+}
+
+.text {
+    max-width: 750px;
+    font-size: 18px;
+    margin: 0 auto 50px;
+}
