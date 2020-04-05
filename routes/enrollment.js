@@ -14,6 +14,9 @@ router.get('/', (req, res) => {
     });
 });
 
+// TEST CREATE COURSES
+//router.get('/create', course_controller.course_create);
+
 router.get('/classschedule', student_controller.student_class_schedule);
 
 router.get('/addclass', student_controller.student_add_class);
