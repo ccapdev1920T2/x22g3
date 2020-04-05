@@ -21,7 +21,9 @@ const courseSchema = mongoose.Schema({
     status: {
         type: String,
         enum: ["Open", "Closed"],
-        default: this.enrolled < this.enlCap ? "Open" : "Closed",
+        default: function () {
+            return this.enrolled < this.enlCap ? "Open" : "Closed";
+        },
     },
     enlCap: Number,
     enrolled: Number,
