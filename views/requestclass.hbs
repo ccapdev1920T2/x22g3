@@ -16,11 +16,12 @@
     <input class="res-12" type="text" id="subject" name="subject"><br><br>
     <label class="res-8" for="fileupload">Upload Files</label>
     <input class="res-12" type="file" id="fileupload" name="fileupload">
-    {{!-- <button id="add" onclick="myFunctionAlert()">Submit File</button> --}}
+    <button class="res-8 input-bar-btn" type="button" style="text-align:right;" onclick="addMoreFiles()">Add more files</button>
+
     <br><br>
 
-    <div id="wrap-button">
-        <input class="res-8" type="button" id="submit" onclick="myFunctionAlertPetition()" value="Submit Petition">
+    <div class="center-button">
+        <input type="button" id="submit" onclick="myFunctionAlertPetition()" value="Submit Petition">
     </div>
 </form>
 
@@ -31,5 +32,16 @@
 
     function myFunctionAlertPetition() {
         alert("Petition submitted!");
+    }
+
+    function addMoreFiles() {
+        var input = document.createElement('input');
+        input.classList.add('res-12');
+        input.type = "file";
+        input.id = "fileupload";
+        input.name = "fileupload";
+
+        document.querySelector('form.form-container').insertBefore(input, document.querySelector('button'));
+        responsiveFontSize('input[type=file]');
     }
 </script>

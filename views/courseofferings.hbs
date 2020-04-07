@@ -1,110 +1,70 @@
 <h1>Course Offerings</h1>
-<br>
-<input type="text" class="res-16" id="myInput" onkeyup="myFunction()" placeholder="Enter course code"
+<br><br>
+
+<input type="text" class="res-16 searchbar" id="q" oninput="search()" placeholder="Enter course code"
     title="Enter course code">
 <div class="table-container">
     <table class='res-12' id="myTable">
-        <tr class="header">
-            <th>Class Nbr</th>
-            <th>Course</th>
-            <th>Section</th>
-            <th>Day/s</th>
-            <th>Time</th>
-            <th>Room</th>
-            <th>Enl Cap</th>
-            <th>Enrolled</th>
-            <th>Remarks</th>
-        </tr>
-        <tr id="subject">
-            <td>111111</td>
-            <td>CSARCH1</td>
-            <td>X22</td>
-            <td>MW</td>
-            <td>0915-1045</td>
-            <td>GT203</td>
-            <td>15</td>
-            <td>10</td>
-            <td>OPEN</td>
-        </tr>
-        <tr id="subject">
-            <td>222222</td>
-            <td>GEETHIC</td>
-            <td>X22</td>
-            <td>MW</td>
-            <td>1245-1415</td>
-            <td>GT203</td>
-            <td>31</td>
-            <td>31</td>
-            <td>CLOSED</td>
-        </tr>
-        <tr id="subject">
-            <td>333333</td>
-            <td>STMATH</td>
-            <td>X22</td>
-            <td>TH</td>
-            <td>0730-0900</td>
-            <td>GT206</td>
-            <td>25</td>
-            <td>25</td>
-            <td>CLOSED</td>
-        </tr>
-        <tr id="subject">
-            <td>444444</td>
-            <td>STALGCM</td>
-            <td>X22</td>
-            <td>TH</td>
-            <td>0915-1045</td>
-            <td>GT206</td>
-            <td>15</td>
-            <td>12</td>
-            <td>OPEN</td>
-        </tr>
-        <tr id="subject">
-            <td>555555</td>
-            <td>CCAPDEV</td>
-            <td>X22</td>
-            <td>TH</td>
-            <td>1100-1230</td>
-            <td>MRELBA</td>
-            <td>17</td>
-            <td>15</td>
-            <td>OPEN</td>
-        </tr>
-        <tr id="subject">
-            <td>666666</td>
-            <td>GESPORT</td>
-            <td>X22</td>
-            <td>T</td>
-            <td>1300-1500</td>
-            <td>CVDCRT</td>
-            <td>40</td>
-            <td>38</td>
-            <td>OPEN</td>
-        </tr>
+        <thead>
+            <tr class="header">
+                <th>Course</th>
+                <th>Section</th>
+                <th>Day/s</th>
+                <th>Time</th>
+                <th>Room</th>
+                <th>Enl Cap</th>
+                <th>Enrolled</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
     </table>
 </div>
 
-
-
-
 <script>
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
+    function search() {
+        var xhr = new XMLHttpRequest();
+        var query = document.getElementById('q').value.toUpperCase();
+        var url = `/enrollment/courseofferings/search?q=${query}`;
 
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = ""; //subject found in table
-                } else {
-                    tr[i].style.display = "none"; //subject not available
-                }
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = xhr.response;
+
+                // format data
+                response.forEach(doc => {
+                    doc.time = `${doc.time.start}-${doc.time.end}`;
+                });
+
+                updateTable('#myTable', response, ['courseCode', 'section', 'days', 'time', 'room', 'enlCap', 'enrolled', 'status']);
+            }
+        };
+
+        xhr.open('GET', url, true);
+        xhr.responseType = "json";
+        xhr.timeout = 1000 * 2;
+        xhr.send(query);
+    }
+
+    function updateTable(tableSelector, data, arrangement) {
+        var table = document.querySelector(tableSelector);
+
+        // clear tbody, if not null
+        if (document.querySelector(`${tableSelector} tbody`))
+            document.querySelector(`${tableSelector} tbody`).remove();
+
+        // create a new tbody
+        var tbody = document.createElement('tbody');
+
+        // append data in the following order:
+        const keys = arrangement;
+        for (let r of data) {
+            var row = tbody.insertRow(-1);
+            for (let key of keys) {
+                var cell = row.insertCell(-1);
+                cell.innerHTML = r[key];
             }
         }
+        table.appendChild(tbody);
     }
 </script>

@@ -1,82 +1,81 @@
-<h1>My Pre-Enlistment Shopping Cart</h1>
+<h1>My Pre-Enlistment Cart</h1>
 <br>
 <div class="table-container">
     <table class="res-12" id="list">
         <tr>
             <th>Course Name</th>
         </tr>
-    </table>
-</div>
-<br>
-<h2>My Electives</h2>
-<br>
-<div class="table-container">
-    <table class="res-12" id="elist">
+        {{#each data}}
         <tr>
-            <th>Course Name</th>
+            {{#each this}}
+            <td>{{this}}</td>
+            {{/each}}
         </tr>
+        {{/each}}
     </table>
 </div>
+<br>
+
 <br><br>
-<button onclick="alert('Pre-enlistment saved!')">Save Pre-enlistment</button>
+{{!-- TODO: connect this to database by wrapping to a form --}}
+<button onclick="savePreenlistment()">Save Pre-enlistment</button>
 
 
 
 
 <script>
-    // Courses table
-    var tableList = document.querySelector('table#list');
-    tableList.style.border = 'none';
+    function savePreenlistment() {
+        alert('Pre-enlistment saved!');
+    }
 
-    $(function () {
-        $('table').on('click', 'tr a', function (e) {
+    function addRemoveRowEvent(table) {
+        $(table).on('click', 'a.removebtn', function (e) {
             e.preventDefault();
             $(this).parents('tr').remove();
         });
-    });
-
-    var course = [
-        { name: "CSSWENG" },
-        { name: "MOBDEVE" },
-        { name: "CSNETWK" },
-        { name: "CSMODEL" },
-        { name: "GETEAMS" },
-        { name: "LCENWRD" }
-    ];
-    var ecourse = [
-        { name: "NATLANG" }
-    ];
-
-    for (i = 0; i < course.length; i++) {
-        var row = tableList.insertRow(-1);
-        for (const key in course[i]) {
-            if (course[i].hasOwnProperty(key)) {
-                const element = course[i][key];
-                var cell = row.insertCell(-1);
-                cell.innerHTML = element;
-            }
-        }
-        var lastCell = row.insertCell(-1);
-        lastCell.innerHTML = "<a href='#'>Remove</a>";
-        lastCell.style.border = 'none';
-
     }
 
-    // Electives table
-    var tableElist = document.querySelector('table#elist');
-    tableElist.style.border = 'none';
-
-    for (i = 0; i < ecourse.length; i++) {
-        var row = tableElist.insertRow(-1);
-        for (const key in ecourse[i]) {
-            if (ecourse[i].hasOwnProperty(key)) {
-                const element = ecourse[i][key];
-                var cell = row.insertCell(-1);
-                cell.innerHTML = element;
-            }
+    function addRemoveBtn(table) {
+        var rows = table.rows;
+        for (i = 1; i < rows.length; i++) {
+            var lastCell = rows[i].insertCell(-1);
+            lastCell.classList.add('lastCell');
+            lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
         }
-        var lastCell = row.insertCell(-1);
-        lastCell.innerHTML = "<a href='#'>Remove</a>";
-        lastCell.style.border = 'none';
     }
+
+    function populateTable(table) {
+        // Regular courses first, followed by electives
+
+        for (i = 0; i < course.length; i++) {
+            var row = table.insertRow(-1);
+            for (const key in course[i]) {
+                if (course[i].hasOwnProperty(key)) {
+                    const element = course[i][key];
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = element;
+                }
+            }
+            addRemoveBtn(row);
+        }
+
+        for (i = 0; i < ecourse.length; i++) {
+            var row = table.insertRow(-1);
+            for (const key in ecourse[i]) {
+                if (ecourse[i].hasOwnProperty(key)) {
+                    const element = ecourse[i][key];
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = element;
+                }
+            }
+            addRemoveBtn(row);
+        }
+    }
+
+
+    // Courses table
+    var tableList = document.querySelector('table#list');
+    tableList.style.border = 'none';
+    addRemoveBtn(tableList);
+    addRemoveRowEvent(tableList);
 </script>

@@ -2,9 +2,18 @@ var port = 8080;
 var express = require('express');
 var app = express();
 const hbs = require('express-handlebars');
-var bodyParser = require('body-parser');
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const mongoose = require('mongoose');
+const url = 'mongodb://localhost:27017/animo-sys';
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+};
+
+mongoose.connect(url, options, err => {
+    if (err) throw err;
+    console.log('connected at ' + url);
+});
 
 // Routes
 var indexRoute = require('./routes/index');

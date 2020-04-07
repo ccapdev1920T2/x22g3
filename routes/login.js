@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     console.log('login route');
     res.render('login', {
         layout: 'sessions',
-        addedStyles: ['session-styles'],
+        addedStyles: ['sessions', 'forms'],
         title: 'Login | Animo.sys'
     });
 });
@@ -26,7 +26,7 @@ router.post('/', urlencodedParser, (req, res) => {
         console.log({ idNumber, password });
         res.render('login', {
             layout: 'sessions',
-            addedStyles: ['session-styles'],
+            addedStyles: ['sessions', 'forms'],
             title: 'Login | Animo.sys',
             data: { idNumber, password },
             errMsg: errMsg
@@ -42,7 +42,7 @@ router.get('/mod', (req, res) => {
     console.log('login mod route');
     res.render('login-mod', {
         layout: 'sessions',
-        addedStyles: ['session-styles'],
+        addedStyles: ['sessions', 'forms'],
         title: 'Login | Animo.sys'
     });
 })
@@ -54,7 +54,7 @@ router.post('/mod', urlencodedParser, (req, res) => {
         errMsg = "Invalid ID Number/Password.";
         res.render('login-mod', {
             layout: 'sessions',
-            addedStyles: ['session-styles'],
+            addedStyles: ['sessions', 'forms'],
             title: 'Login | Animo.sys',
             data: data,
             errMsg: errMsg

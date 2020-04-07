@@ -39,27 +39,60 @@
 <div id="Classes" class="tabcontent">
     <h2>Weekly Schedule</h2>
     <br>
-    
+
+    <div class="schedule" aria-labelledby="schedule-heading"></div>
+    <br><br>
+
     <div id="calendar"></div>
     <h2>Tabular Schedule</h2>
     <br>
-    <table class='res-12' id='schedule-table'>
-        <tr>
-            <th>Time</th>
-            <th>Days</th>
-            <th>Classes</th>
-        </tr>
-    </table>
+    <div class="table-container">
+        <table class='res-12' id='schedule-table'>
+            <tr>
+                <th>Course Code</th>
+                <th>Section</th>
+                <th>Days</th>
+                <th>Time</th>
+                <th>Room</th>
+                <th>Professor</th>
+                <th>Status</th>
+            </tr>
+        </table>
+    </div>
+
     <script>
+        var course = [
+            { name: "CSARCH1", section: "X22", days: ['M', 'W'], time: "0915-1045", room: "GT201", prof: "PERADILLA, M.", stat: "Open" },
+            { name: "GEETHIC", section: "X22", days: ['M', 'W'], time: "1245-1415", room: "GT202", prof: "ESTEVES, M.", stat: "Open" },
+            { name: "STMATH", section: "X22", days: ['T', 'H'], time: "0730-0900", room: "GT203", prof: "LAWAS, C.", stat: "Open" },
+            { name: "STALGCM", section: "X22", days: ['T', 'H'], time: "0915-1045", room: "GT204", prof: "AZCARRAGA, A.", stat: "Open" },
+            { name: "CCAPDEV", section: "X22", days: ['T', 'H'], time: "1100-1230", room: "GT205", prof: "ANTIOQUIA, A.", stat: "Closed" },
+            { name: "GESPORT", section: "X22", days: ['T'], time: "1300-1500", room: "GT206", prof: "CALABIO, V.", stat: "Open" }
+        ];
+        var ecourse = [
+            { name: "NATLANG", section: "X22", days: ['F'], time: "0915-1045", room: "GT206", prof: "", stat: "Open" }
+        ];
+
         var classes = ["CCAPDEV", "STMATH", "STALGCM", "GEETHICS", "GESPORTS", "CSARCH1"];
         var times = ["1100-1230", "730-900", "915-1045", "1245-1415", "1300-1500", "915-1045"];
         var days = ["TH", "TH", "TH", "MW", "T", "MW"];
-        var table = document.querySelector('table#schedule-table');
 
-        for (i = 0; i < classes.length; i++) {
-            var row = '<tr> <td>' + times[i] + '</td> <td>' + days[i] + '</td> <td>' + classes[i] + '</td> </tr>';
-            table.innerHTML = table.innerHTML.concat(row);
+
+        var myCourses = document.querySelector('table#schedule-table');
+        myCourses.style.border = 'none';
+
+        for (i = 0; i < course.length; i++) {
+            var row = myCourses.insertRow(-1);
+            for (const key in course[i]) {
+                if (course[i].hasOwnProperty(key)) {
+                    const element = course[i][key];
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = element;
+                }
+            }
+
         }
+
     </script>
 </div>
 
@@ -71,7 +104,15 @@
 <div id="Finance" class="tabcontent">
     <h2>Clearance</h2>
     <br>
-    <div id="balance"></div>
+    <div class="table-container">
+        <table class="res-12" id="balance">
+            <tr>
+                <th>Issue Date</th>
+                <th>Amount</th>
+                <th>Enrollment Hold</th>
+            </tr>
+        </table>
+    </div>
     <br>
     <h2>Scholarship</h2>
     <br>
@@ -80,25 +121,46 @@
     <div id="details"></div>
     <script>
         var scholarRecord = {
-            issue: ['01-05-2020'],
-            amount: [0.50],
-            hold: ['Yes'],
+            clearance: [{
+                issue: '01-05-2020',
+                amount: 0.50,
+                hold: 'Yes',
+            },
+            {
+                issue: '01-05-2020',
+                amount: 0.50,
+                hold: 'Yes',
+            },
+            {
+                issue: '01-05-2020',
+                amount: 0.50,
+                hold: 'Yes',
+            }],
+
             scholarship: 'Gokongwei Grants'
         };
 
+        var balanceTable = document.querySelector('table#balance');
+        balanceTable.style.border = 'none';
 
-        if (scholarRecord.amount.length == 0) {
-            document.querySelector('div#balance').innerHTML = '<p>You have no unsettled balances.<p>';
+        if (scholarRecord.clearance.length === 0) {
+            console.log('hello');
+            var row = balanceTable.insertRow(-1);
+            var cell = row.insertCell(-1);
+            cell.colSpan = Object.keys(scholarRecord).length - 1;
+            cell.innerHTML = 'You have no unsettled balances.';
         }
         else {
-            var table = document.createElement('table');
-            table.innerHTML = table.innerHTML.concat("<table><tr><th>Issue Date</th><th>Amount</th><th>Enrollment Hold</th></tr>");
-            table.className = 'res-12';
-            for (let i = 0; i < scholarRecord.issue.length; i++) {
-                var row = '<tr> <td>' + scholarRecord.issue[i] + '</td> <td>' + scholarRecord.amount[i] + '</td> <td>' + scholarRecord.hold[i] + '</td> </tr>';
-                table.innerHTML = table.innerHTML.concat(row);
+            for (let i = 0; i < scholarRecord.clearance.length; i++) {
+                var row = balanceTable.insertRow(-1);
+                for (const key in scholarRecord.clearance[i]) {
+                    if (scholarRecord.clearance[i].hasOwnProperty(key)) {
+                        const element = scholarRecord.clearance[i][key];
+                        var cell = row.insertCell(-1);
+                        cell.innerHTML = element;
+                    }
+                }
             }
-            document.querySelector('div#balance').appendChild(table);
         }
         document.querySelector('h3#scholarship').innerHTML = scholarRecord.scholarship;
         var details = document.querySelector('div#details');
@@ -153,6 +215,17 @@
     }
     document.getElementById("default").click();
 
-
+    generateScheduleStyle();
+    constructCalendar();
+    plotClasses();
+    generateRandomColor([
+        "#D8456E",
+        "#E1BBB0",
+        "#628077",
+        "#D3CBAE",
+        "#E7B4A2",
+        "#F2D144",
+        "#686CF2",
+    ]);
     responsiveFontSize('button', 14);
 </script>

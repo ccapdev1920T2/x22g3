@@ -29,15 +29,15 @@
     font-weight: bold;
     line-height: 23px;
     letter-spacing: 0.195em;
-    background: #50F289;
-    border: 1px solid #50F289;
+    background: var(--primary);
+    border: 1px solid var(--primary);
     border-radius: 5px;
     width: 50%;
     text-transform: uppercase;
 }
 
 .form-container .submit:hover {
-    color: #50F289;
+    color: var(--primary);
     background-color: white;
 }
 

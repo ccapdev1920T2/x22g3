@@ -6,7 +6,8 @@ var document_controller = require('../controllers/documentController');
 
 router.get('/', (req, res) => {
     res.render('degree-process', {
-        title: "Degree Process | Animo.sys"
+        title: "Degree Process | Animo.sys",
+        addedStyles: ['forms']
     });
 })
 

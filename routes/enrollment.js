@@ -14,6 +14,9 @@ router.get('/', (req, res) => {
     });
 });
 
+// TEST CREATE COURSES
+//router.get('/create', course_controller.course_create);
+
 router.get('/classschedule', student_controller.student_class_schedule);
 
 router.get('/addclass', student_controller.student_add_class);
@@ -26,12 +29,15 @@ router.get('/dropclass', (req, res) => {
 
 router.get('/dropclass_list', (req, res) => {
     res.render('dropclass_list', {
-        title: 'List of Dropped Classes | Animo.sys'
+        title: 'List of Dropped Classes | Animo.sys',
+        addedStyles: ['forms']
     })
 })
 
 router.get('/requestclass', request_controller.request_create_get);
 
 router.get('/courseofferings', course_controller.course_offerings_list);
+
+router.get('/courseofferings/search', course_controller.course_offerings_search);
 
 module.exports = router;

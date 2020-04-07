@@ -1,0 +1,123 @@
+/* ----------------Forms---------------- */
+
+/* Wrap form in .form-container to achieve login form style */
+
+.form-container {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 20px;
+    margin: 0 auto;
+    max-width: 45vw;
+    max-height: 95vh;
+    overflow: hidden;
+}
+
+label {
+    line-height: 23px;
+    letter-spacing: 0.095em;
+    text-transform: uppercase;
+}
+
+select {
+    width: fit-content;
+}
+
+input[type], select, option {
+    outline: none;
+    font-family: "DM Sans", sans-serif;
+}
+
+input {
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #373b4485;
+    border-radius: 5px;
+}
+
+input.err {
+    border-color: var(--err);
+}
+
+p.err {
+    color: var(--err);
+}
+
+input[type="file"] {
+    border: none;
+}
+
+input[type="file" i] {
+    font-family: "DM Sans", sans-serif;
+}
+
+.center-button {
+    text-align: center;
+}
+
+.center-button>#submit {
+    width: 50%;
+}
+
+/* ----------------Generic---------------- */
+
+#submit {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 23px;
+    letter-spacing: 0.195em;
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    width: fit-content;
+}
+
+#submit:hover {
+    color: var(--primary);
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Use this to align elements across the center (think of search bars) */
+
+.input-bar {
+    display: flex;
+    align-items: center;
+}
+
+.input-bar * {
+    margin-right: 5px;
+}
+
+.input-bar-label {
+    width: fit-content;
+}
+
+.input-bar-input {
+    width: 10rem;
+}
+
+.input-bar-btn {
+    background-color: inherit;
+    border: 2px solid transparent;
+    color: var(--faux-black);
+}
+
+.input-bar-btn:hover {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+/* ----------------Search bar---------------- */
+
+.searchbar {
+    outline: none;
+    background-image: url("/assets/search-24px.svg");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-family: "DM Sans", sans-serif;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid gainsboro;
+    margin-bottom: 12px;
+}

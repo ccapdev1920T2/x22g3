@@ -4,31 +4,15 @@ var bodyParser = require('body-parser');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-router.get('/', (req, res) => {
-    res.render('index-mod', {
-        layout: 'main-mod',
-        addedStyles: ['index-mod-styles'],
-        title: 'Home | Animo.sys'
-    });
 
-});
+var moderator_controller = require('../controllers/moderatorController');
 
-router.post('/', urlencodedParser, (req, res) => {
-    res.render('index-mod', {
-        layout: 'main-mod',
-        addedStyles: ['index-mod-styles'],
-        data: JSON.stringify(req.body),
-        title: 'Home | Animo.sys'
-    });
-});
+router.get('/', moderator_controller.moderator_students_list);
 
-router.get('/settings', (req, res) => {
-    res.render('settings-mod', {
-        layout: 'main-mod',
-        addedStyles: ['settings-mod-styles'],
-        title: 'Settings | Animo.sys'
-    });
-});
+// TODO: POST request to add a new student, will modify to redirect
+router.post('/', urlencodedParser, moderator_controller.moderator_create_student_post);
+
+router.get('/settings', moderator_controller.moderator_settings_detail);
 
 
 module.exports = router;
