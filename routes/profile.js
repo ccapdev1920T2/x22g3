@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var student_controller = require('../controllers/studentController'); 
+var profile_controller = require('../controllers/profileController'); 
 
-router.get('/', student_controller.student_detail);
+router.get('/', profile_controller.student_detail);
 
 module.exports = router;

@@ -5,14 +5,14 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
-var moderator_controller = require('../controllers/moderatorController');
+var mod_controller = require('../controllers/modController');
 
-router.get('/', moderator_controller.moderator_students_list);
+router.get('/', mod_controller.moderator_students_list);
 
 // TODO: POST request to add a new student, will modify to redirect
-router.post('/', urlencodedParser, moderator_controller.moderator_create_student_post);
+router.post('/', urlencodedParser, mod_controller.moderator_create_student_post);
 
-router.get('/settings', moderator_controller.moderator_settings_detail);
+router.get('/settings', mod_controller.moderator_settings_detail);
 
 
 module.exports = router;

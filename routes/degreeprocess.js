@@ -1,14 +1,8 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-var student_controller = require('../controllers/documentController');
-var document_controller = require('../controllers/documentController');
+var degree_process_controller = require("../controllers/degreeProcessController");
 
-router.get('/', (req, res) => {
-    res.render('degree-process', {
-        title: "Degree Process | Animo.sys",
-        addedStyles: ['forms']
-    });
-})
+router.get("/", degree_process_controller.degreeprocess_landing_page_get);
 
 module.exports = router;

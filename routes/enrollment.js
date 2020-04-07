@@ -1,43 +1,38 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-var student_controller = require('../controllers/studentController');
-var course_controller = require('../controllers/courseController');
-var request_controller = require('../controllers/requestController');
+var enrollment_controller = require("../controllers/enrollmentController");
 
-// /enrollment landing page, no need for controllers
-router.get('/', (req, res) => {
-    res.render('enrollment', {
-        route: 'enrollment',
-        title: 'Enrollment | Animo.sys',
-        addedStyles: ['enrollment-styles']
-    });
-});
+// /enrollment landing page
+router.get("/", enrollment_controller.enrollment_landing_page_get);
 
 // TEST CREATE COURSES
-//router.get('/create', course_controller.course_create);
+//router.get('/create', enrollment_controller.course_create_sample);
 
-router.get('/classschedule', student_controller.student_class_schedule);
+router.get(
+    "/classschedule",
+    enrollment_controller.enrollment_class_schedule_get
+);
 
-router.get('/addclass', student_controller.student_add_class);
+router.get("/addclass", enrollment_controller.enrollment_add_class_get);
 
-router.get('/dropclass', (req, res) => {
-    res.render('dropclass', {
-        title: 'Drop a Class | Animo.sys'
-    })
-})
+router.get("/dropclass", enrollment_controller.enrollment_drop_class_get);
 
-router.get('/dropclass_list', (req, res) => {
-    res.render('dropclass_list', {
-        title: 'List of Dropped Classes | Animo.sys',
-        addedStyles: ['forms']
-    })
-})
+router.get(
+    "/dropclass_list",
+    enrollment_controller.enrollment_dropclass_list_get
+);
 
-router.get('/requestclass', request_controller.request_create_get);
+router.get("/requestclass", enrollment_controller.enrollment_request_class_get);
 
-router.get('/courseofferings', course_controller.course_offerings_list);
+router.get(
+    "/courseofferings",
+    enrollment_controller.enrollment_course_offerings_list_get
+);
 
-router.get('/courseofferings/search', course_controller.course_offerings_search);
+router.get(
+    "/courseofferings/search",
+    enrollment_controller.enrollment_course_offerings_search_get
+);
 
 module.exports = router;

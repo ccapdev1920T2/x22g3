@@ -1,8 +1,18 @@
-// REQUIRE MODELS AS NEEDED
-const mongoose = require("mongoose");
+var Student = require("../models/student");
 var Course = require("../models/course");
+var Request = require("../models/request");
 
-exports.course_create = (req, res) => {
+// Landing page for /enrollment route
+exports.enrollment_landing_page_get = (req, res) => {
+    res.render("enrollment", {
+        route: "enrollment",
+        title: "Enrollment | Animo.sys",
+        addedStyles: ["enrollment-styles"],
+    });
+};
+
+// WILL DELETE
+exports.course_create_sample_get = (req, res) => {
     // SAMPLE DATA THAT FOLLOWS COURSE MODEL
     var courses = [
         {
@@ -96,15 +106,68 @@ exports.course_create = (req, res) => {
     Course.create(docs);
 };
 
+// Display class schedule for one student
+exports.enrollment_class_schedule_get = (req, res) => {
+    console.log("TODO: get data from Student");
+    res.render("classschedule", {
+        title: "Class Schedule | Animo.sys",
+    });
+};
+
+// Add a Class
+exports.enrollment_add_class_get = (req, res) => {
+    console.log(
+        "TODO: get data from Student, EnrolledCourses, and Course (to view available courses)"
+    );
+    res.render("addclass", {
+        title: "Add a Class | Animo.sys",
+        addedStyles: ["forms"],
+    });
+};
+
+// Drop a Class
+exports.enrollment_drop_class_get = (req, res) => {
+    res.render("dropclass", {
+        title: "Drop a Class | Animo.sys",
+    });
+};
+
+// Display list of dropped classes
+exports.enrollment_dropclass_list_get = (req, res) => {
+    res.render("dropclass_list", {
+        title: "List of Dropped Classes | Animo.sys",
+        addedStyles: ["forms"],
+    });
+};
+
+// Get Request a Class landing page
+exports.enrollment_request_class_get = (req, res) => {
+    res.render("requestclass", {
+        title: "Request a Class | Animo.sys",
+        addedStyles: ["forms"],
+    });
+};
+
+// Post form data from /enrollment/requestclass
+exports.enrollment_request_class_post = (req, res) => {
+    console.log(
+        "TODO: create a new Request then update the Request collection"
+    );
+    res.render("requestclass", {
+        title: "Request a Class | Animo.sys",
+        addedStyles: ["sessions", "forms"],
+    });
+};
+
 // display course offerings page
-exports.course_offerings_list = (req, res) => {
+exports.enrollment_course_offerings_list_get = (req, res) => {
     res.render("courseofferings", {
         addedStyles: ["forms"],
         title: "Course Offerings | Animo.sys",
     });
 };
 
-exports.course_offerings_search = (req, res) => {
+exports.enrollment_course_offerings_search_get = (req, res) => {
     console.log("TODO: get data from Course");
 
     var q = req.query.q;
