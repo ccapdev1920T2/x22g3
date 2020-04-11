@@ -1,10 +1,9 @@
-
 exports.login_student_landing_page_get = (req, res) => {
     console.log('login route');
     res.render('login', {
         layout: 'sessions',
         addedStyles: ['sessions', 'forms'],
-        title: 'Login | Animo.sys'
+        title: 'Login | Animo.sys',
     });
 };
 
@@ -13,7 +12,6 @@ exports.login_student_landing_page_post = (req, res) => {
     const DUMMY_PASS = 'asdf';
 
     if (req.body.idNumber != DUMMY_ID_NUM || req.body.password != DUMMY_PASS) {
-
         var errMsg = 'Invalid ID Number/Password.';
         const { idNumber, password } = req.body;
         console.log(errMsg);
@@ -23,13 +21,12 @@ exports.login_student_landing_page_post = (req, res) => {
             addedStyles: ['sessions', 'forms'],
             title: 'Login | Animo.sys',
             data: { idNumber, password },
-            errMsg: errMsg
+            errMsg: errMsg,
         });
     } else {
         console.log('success!');
         res.redirect('/home');
     }
-
 };
 
 exports.login_mod_landing_page_get = (req, res) => {
@@ -37,7 +34,7 @@ exports.login_mod_landing_page_get = (req, res) => {
     res.render('login-mod', {
         layout: 'sessions',
         addedStyles: ['sessions', 'forms'],
-        title: 'Login | Animo.sys'
+        title: 'Login | Animo.sys',
     });
 };
 
@@ -45,13 +42,13 @@ exports.login_mod_landing_page_post = (req, res) => {
     var data = req.body;
     var errMsg = '';
     if (!data.idNumber || !data.password) {
-        errMsg = "Invalid ID Number/Password.";
+        errMsg = 'Invalid ID Number/Password.';
         res.render('login-mod', {
             layout: 'sessions',
             addedStyles: ['sessions', 'forms'],
             title: 'Login | Animo.sys',
             data: data,
-            errMsg: errMsg
+            errMsg: errMsg,
         });
     }
 };
