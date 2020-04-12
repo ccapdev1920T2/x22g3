@@ -15,6 +15,12 @@ mongoose.connect(url, options, err => {
     console.log('connected at ' + url);
 });
 
+app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'main' }));
+app.set('view engine', 'hbs');
+
+// serve static files
+app.use(express.static('public'));
+
 // Routes
 var indexRoute = require('./routes/index');
 var cartRoute = require('./routes/cart');
@@ -36,12 +42,6 @@ app.use('/degree-process', degreeprocessRoute);
 app.use('/mod', modRoute);
 app.use('/login', loginRoute);
 app.use('/logout', logoutRoute);
-
-app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'main' }));
-app.set('view engine', 'hbs');
-
-// serve static files
-app.use(express.static('public'));
 
 app.listen(port, () => {
     console.log('i love u ' + port);

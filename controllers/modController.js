@@ -7,7 +7,7 @@ exports.moderator_students_list = (req, res) => {
     console.log("TODO: get data from Moderator");
     res.render("index-mod", {
         layout: "main-mod",
-        addedStyles: ["index-mod-styles"],
+        addedStyles: ["index-mod-styles", "forms"],
         title: "Home | Animo.sys",
     });
 };
@@ -17,7 +17,7 @@ exports.moderator_create_student_post = (req, res) => {
     console.log("TODO: implement POST logic");
     res.render("index-mod", {
         layout: "main-mod",
-        addedStyles: ["index-mod-styles"],
+        addedStyles: ["index-mod-styles", "forms"],
         data: JSON.stringify(req.body),
         title: "Home | Animo.sys",
     });

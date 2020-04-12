@@ -1,55 +1,23 @@
 body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 
 table {
     border: none;
 }
 
-/* ----------------Form---------------- */
-
-.form-container {
-    background-color: white;
-    padding: 3rem;
-    border: 1px solid #373b4485;
-    border-radius: 5px;
-    max-width: 35vw;
-}
-
-.form-container label {
-    line-height: 23px;
-    letter-spacing: 0.095em;
-    text-transform: uppercase;
-}
-
-.form-container input {
-    outline: none;
-    font-family: inherit;
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #373b4485;
-    border-radius: 5px;
-}
-
-.form-container #submit {
-    color: white;
-    font-weight: bold;
-    line-height: 23px;
-    letter-spacing: 0.195em;
-    background: var(--primary);
-    border: 1px solid var(--primary);
-    border-radius: 5px;
-    width: 50%;
-    text-transform: uppercase;
-}
-
-.form-container #submit:hover {
-    color: var(--primary);
-    background-color: white;
-}
-
-.wrap-button {
+#add-student-header {
+    padding-top: 3rem;
     text-align: center;
+}
+
+#student-list-header {
+    margin-right: 1rem;
+}
+
+#student-list-header-container {
+    display: flex;
+    align-items: center;
 }
 
 .flex-container {
@@ -60,4 +28,13 @@ table {
 .flex-container .input-container {
     display: inline-block;
     max-width: 30%;
+}
+
+/* ----------------Responsive---------------- */
+
+@media screen and (max-width: 375px) {
+    #student-list-header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
