@@ -1,14 +1,61 @@
-<header>
-    <div id="logo-wrapper">
-        <a href="./"><img id="logo" src="/assets/logo larger.png" alt="Logo"></a>
+{{#*inline "nav-group"}}
+<ul class="navbar-nav align-items-lg-center">
+  {{> @partial-block}}
+</ul>
+{{/inline}}
 
-    </div>
+{{#*inline "nav-item"}}
+<li class="nav-item">
+  <a class="nav-link font-weight-bold text-uppercase px-2 mx-1" href="{{href}}">{{text}}</a>
+</li>
+{{/inline}}
 
-    <nav>
-        <ul id="navlist">
-            <li class='res-16'><a class="navlinks" href="/cart">CART</a></li>
-            <li class='res-16'><a class="navlinks" href="/profile">PROFILE</a></li>
-            <li class='res-16'><a class="navlinks" href="/logout">LOG OUT</a></li>
-        </ul>
-    </nav>
-</header>
+<nav class="navbar navbar-expand-lg navbar-light text-body bg-white shadow-sm">
+  <a class="navbar-brand" href="/{{#if mod}}mod{{/if}}">
+    <img id="logo" src="/assets/logo larger.png" alt="Logo" height="50">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header" aria-controls="header"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-{{#if mod}}end{{else}}between{{/if}}" id="header">
+    {{#if mod}}
+
+    {{#> nav-group}}
+    {{> nav-item href="/mod/settings" text="Settings"}}
+    {{> nav-item href="/logout" text="Log out"}}
+    {{/ nav-group}}
+
+    {{else}}
+
+    {{#> nav-group}}
+    {{> nav-item href="/preenlistment" text="Pre-enlistment"}}
+    {{> nav-item href="/enrollment" text="Enrollment"}}
+    {{> nav-item href="/degree-process" text="Degree Process"}}
+    {{/ nav-group}}
+
+    {{#> nav-group}}
+    {{> nav-item href="/cart" text="Cart"}}
+    {{> nav-item href="/profile#personal-information" text="Profile"}}
+    {{> nav-item href="/logout" text="Log out"}}
+    {{/ nav-group}}
+
+    {{/if}}
+  </div>
+</nav>
+
+<script>
+  // select window pathname
+  var pathname = window.location.pathname.split('/');
+
+  // check the 'active' nav item
+  var navItems = document.querySelectorAll('#header li')
+  navItems.forEach(li => {
+    var a = li.firstElementChild;
+    aPathname = a.pathname.replace('/mod', '').replace('/', '');
+
+    console.log(pathname, aPathname)
+    li.classList.toggle('active', pathname.includes(aPathname))
+  })
+</script>
