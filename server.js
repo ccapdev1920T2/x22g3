@@ -1,7 +1,7 @@
 var port = 8080;
 var express = require('express');
 var app = express();
-const hbs = require('express-handlebars');
+const hbs = require('express-handlebars').create({ extname: 'hbs', defaultLayout: 'main' });
 
 const mongoose = require('mongoose');
 const url = 'mongodb://localhost:27017/animo-sys';
@@ -15,7 +15,7 @@ mongoose.connect(url, options, err => {
     console.log('connected at ' + url);
 });
 
-app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'main' }));
+app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
 // serve static files
@@ -44,5 +44,5 @@ app.use('/login', loginRoute);
 app.use('/logout', logoutRoute);
 
 app.listen(port, () => {
-    console.log('i love u ' + port);
+    console.log(`App listening at port ${port}`);
 });
