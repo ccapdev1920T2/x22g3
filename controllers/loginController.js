@@ -1,8 +1,8 @@
 exports.login_student_landing_page_get = (req, res) => {
     console.log('login route');
     res.render('login', {
-        layout: 'sessions',
-        addedStyles: ['sessions', 'forms'],
+        layout: false,
+        // addedStyles: ['sessions', 'forms'],
         title: 'Login | Animo.sys',
     });
 };
