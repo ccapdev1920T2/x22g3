@@ -1,0 +1,71 @@
+[
+  {
+    "classNo": "111111",
+    "section": "X22",
+    "courseCode": "CSARCH1",
+    "schedules": [
+      { "day": "M", "startTime": "09:15", "endTime": "10:45" },
+      { "day": "W", "startTime": "09:15", "endTime": "10:45" }
+    ],
+    "room": "GT201",
+    "instructor": "PERADILLA, M.",
+    "offeredDuring": "ghi"
+  },
+  {
+    "classNo": "222222",
+    "section": "X22",
+    "courseCode": "GEETHIC",
+    "schedules": [
+      { "day": "M", "startTime": "12:45", "endTime": "14:15" },
+      { "day": "W", "startTime": "12:45", "endTime": "14:15" }
+    ],
+    "room": "GT202",
+    "instructor": "ESTEVES, M.",
+    "offeredDuring": "ghi"
+  },
+  {
+    "classNo": "333333",
+    "section": "X22",
+    "courseCode": "STMATH",
+    "schedules": [
+      { "day": "T", "startTime": "07:30", "endTime": "09:00" },
+      { "day": "H", "startTime": "07:30", "endTime": "09:00" }
+    ],
+    "room": "GT203",
+    "instructor": "LAWAS, C.",
+    "offeredDuring": "ghi"
+  },
+  {
+    "classNo": "444444",
+    "section": "X22",
+    "courseCode": "STALGCM",
+    "schedules": [
+      { "day": "T", "startTime": "09:15", "endTime": "10:45" },
+      { "day": "H", "startTime": "09:15", "endTime": "10:45" }
+    ],
+    "room": "GT204",
+    "instructor": "AZCARRAGA, A.",
+    "offeredDuring": "ghi"
+  },
+  {
+    "classNo": "555555",
+    "section": "X22",
+    "courseCode": "CCAPDEV",
+    "schedules": [
+      { "day": "H", "startTime": "16:15", "endTime": "17:45" },
+      { "day": "H", "startTime": "14:30", "endTime": "16:00" }
+    ],
+    "room": "GT205",
+    "instructor": "ANTIOQUIA, A.",
+    "offeredDuring": "ghi"
+  },
+  {
+    "classNo": "666666",
+    "section": "X22",
+    "courseCode": "GESPORT",
+    "schedules": [{ "day": "T", "startTime": "13:00", "endTime": "15:00" }],
+    "room": "GT206",
+    "instructor": "CALABIO, V.",
+    "offeredDuring": "ghi"
+  }
+]
