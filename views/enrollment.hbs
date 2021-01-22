@@ -1,11 +1,11 @@
 {{#*inline "enrollment-item"}}
 <a class="" href="/{{route}}/{{subroute}}" title="{{title}}">
-    <div class="d-flex px-4 py-3 mb-4 enrollment-item">
-        <div class="d-none d-md-block" id="{{iconId}}"></div>
-        <div class="d-flex flex-column ml-md-4">
-            {{> @partial-block}}
-        </div>
+  <div class="d-flex px-4 py-3 mb-4 enrollment-item">
+    <div class="d-none d-md-block" id="{{iconId}}"></div>
+    <div class="d-flex flex-column ml-md-4">
+      {{> @partial-block}}
     </div>
+  </div>
 </a>
 {{/inline}}
 
@@ -18,27 +18,27 @@
 <br><br>
 
 <div id="enrollment-container">
-    {{#> enrollment-item title="View Class Schedule" iconId="schedule" subroute="classschedule"}}
-    {{> enrollment-item-descriptor heading="View Class Schedule" description="View or save your schedule for the current
-    term"}}
-    {{/ enrollment-item}}
+  {{#> enrollment-item title="View Class Schedule" iconId="schedule" subroute="class-schedule"}}
+  {{> enrollment-item-descriptor heading="View Class Schedule" description="View or save your schedule for the
+  upcoming term"}}
+  {{/ enrollment-item}}
 
-    {{#> enrollment-item title="Add Classes" iconId="addclass" subroute="addclass"}}
-    {{> enrollment-item-descriptor heading="Add Classes" description="View all courses and add them to your enrollment
-    cart"}}
-    {{/ enrollment-item}}
+  {{#> enrollment-item title="Add Classes" iconId="addclass" subroute="addclass"}}
+  {{> enrollment-item-descriptor heading="Add Classes" description="View all courses and add them to your enrollment
+  cart"}}
+  {{/ enrollment-item}}
 
-    {{#> enrollment-item title="Drop Classes" iconId="dropclass" subroute="dropclass"}}
-    {{> enrollment-item-descriptor heading="Drop Classes" description="Drop classes from your currently enrolled
-    courses"}}
-    {{/ enrollment-item}}
+  {{#> enrollment-item title="Drop Classes" iconId="dropclass" subroute="drop-class"}}
+  {{> enrollment-item-descriptor heading="Drop Classes" description="Drop classes from your currently enrolled
+  courses"}}
+  {{/ enrollment-item}}
 
-    {{#> enrollment-item title="Request A Class" iconId="requestclass" subroute="requestclass"}}
-    {{> enrollment-item-descriptor heading="Request A Class" description="Request to open a new class"}}
-    {{/ enrollment-item}}
+  {{#> enrollment-item title="Request A Class" iconId="requestclass" subroute="requestclass"}}
+  {{> enrollment-item-descriptor heading="Request A Class" description="Request to open a new class"}}
+  {{/ enrollment-item}}
 
-    {{#> enrollment-item title="View Course Offerings" iconId="courseofferings" subroute="courseofferings"}}
-    {{> enrollment-item-descriptor heading="View Course Offerings" description="PLANNING TO REMOVE THIS (SEE ADD
-    CLASSES)"}}
-    {{/ enrollment-item}}
+  {{#> enrollment-item title="View Course Offerings" iconId="courseofferings" subroute="courseofferings"}}
+  {{> enrollment-item-descriptor heading="View Course Offerings" description="PLANNING TO REMOVE THIS (SEE ADD
+  CLASSES)"}}
+  {{/ enrollment-item}}
 </div>

@@ -1,0 +1,91 @@
+{{#section "head"}}
+<!-- AXIOS -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- TABULATOR -->
+<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+{{/section}}
+
+
+<h1>Drop a Class</h1>
+<br>
+<h2>General Guidelines</h2>
+<br>
+<p>Students are considered enrolled in their courses that appear on their Enrollment Assessment Forms (EAF)
+  that are
+  issued by the Office of the University Registrar. To drop a subject, kindly take note of these important
+  dates:
+</p><br>
+<div class="overflow-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Undergraduate</th>
+        <th scope="col">Graduate Studies</th>
+        <th scope="col">Certificate/Diploma</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dropping</td>
+        <td>End of Week 4 of the term</td>
+        <td>End of Week 2 of the term</td>
+        <td>End of Week 2 of the term</td>
+      </tr>
+
+      <tr>
+        <td>Withdrawal</td>
+        <td>Not allowed</td>
+        <td>End of Week 7 of the term</td>
+        <td>End of Week 7 of the term</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br><br>
+<h2>Deadline for dropping/withdrawal</h2>
+<br>
+<h4>Refund</h4>
+<br>
+<div class="overflow-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Deadline</th>
+        <th scope="col">Refund</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Before the start of the week</td>
+        <td>100%</td>
+      </tr>
+
+      <tr>
+        <td>End of Week 1 of the term</td>
+        <td>90%</td>
+      </tr>
+
+      <tr>
+        <td>End of Week 2 of the term</td>
+        <td>80%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br><br>
+<h2>Subjects Currently Enrolled In</h2>
+<br>
+<p>To drop a class, click on the 'Drop' button at the right side of each row. <b>Note: you can still review them at the
+    checkout page.</b></p>
+<br>
+{{!-- <label for="addclass">Class Nbr: </label>
+<input type="text" id="addclass">
+<button id="add" onclick="myFunctionAlert()">Drop Class</button> --}}
+<div id="enrolled-courses-table" class="table-striped table-bordered"></div>
+<br><br>
+<a class="btn btn-primary" href="/enrollment/drop-class/checkout">Proceed to Checkout</a>
+
+<script src="/javascript/pages/drop-class.js"></script>

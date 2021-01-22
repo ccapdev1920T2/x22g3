@@ -109,7 +109,7 @@ exports.course_create_sample_get = (req, res) => {
 // Display class schedule for one student
 exports.enrollment_class_schedule_get = (req, res) => {
     console.log("TODO: get data from Student");
-    res.render("classschedule", {
+    res.render("class-schedule", {
         title: "Class Schedule | Animo.sys",
     });
 };
@@ -127,7 +127,7 @@ exports.enrollment_add_class_get = (req, res) => {
 
 // Drop a Class
 exports.enrollment_drop_class_get = (req, res) => {
-    res.render("dropclass", {
+    res.render("drop-class", {
         title: "Drop a Class | Animo.sys",
     });
 };
