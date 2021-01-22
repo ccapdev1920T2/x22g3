@@ -29,6 +29,10 @@ $black-color: #021c0b;
   border-radius: 5px;
 }
 
+@mixin transition($property, $duration) {
+  transition: $property, $duration;
+}
+
 .letter-spacing {
   letter-spacing: 0.155em;
 }
@@ -43,22 +47,36 @@ $black-color: #021c0b;
       .nav-link {
         @extend .bg-primary;
         @extend .text-light;
+        @include transition(background-color, 250ms);
       }
     }
     .nav-link {
       color: $black-color;
       @include border(transparent);
+      @include transition(background-color, 250ms);
 
       &:hover {
         @extend .bg-green-highlight;
         @extend .text-dark;
+
+        @include transition(background-color, 250ms);
       }
     }
   }
 }
 
-.list-group-item.active {
-  @extend .font-weight-bold;
+.list-group {
+  .list-group-item {
+    @include transition(background-color, 250ms);
+
+    &:hover {
+      @include transition(background-color, 250ms);
+    }
+
+    &.active {
+      @extend .font-weight-bold;
+    }
+  }
 }
 
 // ENROLLMENT STYLES
@@ -73,9 +91,11 @@ $black-color: #021c0b;
     div.enrollment-item {
       @extend .bg-white;
       @include border(bootstrap.$light);
+      @include transition(background-color, 250ms);
 
       &:hover {
         @include border(bootstrap.$gray-200);
+        @include transition(border, 250ms);
       }
     }
   }
@@ -113,5 +133,15 @@ $black-color: #021c0b;
     width: 64px;
     height: 64px;
     background-position: -79px -5px;
+  }
+}
+
+// FULL CALENDAR CUSTOM STYLES
+.fc {
+  .fc-toolbar {
+    @extend .flex-column, .flex-md-row;
+  }
+  .fc-v-event {
+    @extend .bg-primary, .border-primary;
   }
 }

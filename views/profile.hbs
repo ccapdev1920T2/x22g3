@@ -1,3 +1,13 @@
+{{#section "head"}}
+<!-- FULL CALENDAR -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js"></script>
+
+<!-- TABULATOR -->
+<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+{{/section}}
+
 <div class="container p-0">
   <div class="row">
     <div class="pb-4 col-12 col-md-3">
@@ -31,25 +41,12 @@
         <h2>Weekly Schedule</h2>
         <br>
 
-        <div class="schedule" aria-labelledby="schedule-heading"></div>
-        <br><br>
+        <div id="weekly-schedule"></div>
+        <br>
 
-        <div id="calendar"></div>
         <h2>Tabular Schedule</h2>
         <br>
-        <div class="table-container">
-          <table class='res-12' id='schedule-table'>
-            <tr>
-              <th>Course Code</th>
-              <th>Section</th>
-              <th>Days</th>
-              <th>Time</th>
-              <th>Room</th>
-              <th>Professor</th>
-              <th>Status</th>
-            </tr>
-          </table>
-        </div>
+        <div id="tabular-schedule"></div>
       </div>
 
 
@@ -57,7 +54,7 @@
       <div class="list-group-target" id="eaf">
         <h1>EAF</h1>
         <hr>
-        <button> Print EAF </button>
+        <button class="btn btn-primary"> Print EAF </button>
       </div>
 
 
@@ -90,12 +87,15 @@
 
 <!-- Logic for toggling tabs -->
 <script>
+  window.location.hash = '#personal-information';
+
   var listGroupItems = document.querySelector('.list-group').children;
 
   var containers = document.querySelectorAll('div.list-group-target')
 
   // listen to URL hash change
-  setActive();
+  //setActive();
+
   window.onhashchange = setActive;
 
   function setActive(e) {
@@ -109,6 +109,41 @@
       container.classList.toggle('d-none', !force)
     }
   }
+
+
+</script>
+
+<!-- Full calendar and tabulator sample -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('weekly-schedule');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: [
+        { title: 'the title', start: '2021-09-01', end: '2021-09-01' }
+      ]
+    });
+    calendar.render();
+  });
+
+  const sample = [
+    { id: 1, name: "Billy Bob", age: "12", gender: "male", height: 1, col: "red", dob: "", cheese: 1 },
+    { id: 2, name: "Mary May", age: "1", gender: "female", height: 2, col: "blue", dob: "14/05/1982", cheese: true },
+    { id: 3, name: "Christine Lobowski", age: "42", height: 0, col: "green", dob: "22/05/1982", cheese: "true" },
+    { id: 4, name: "Brendon Philips", age: "125", gender: "male", height: 1, col: "orange", dob: "01/08/1980" },
+    { id: 5, name: "Margret Marmajuke", age: "16", gender: "female", height: 5, col: "yellow", dob: "31/01/1999" },
+    { id: 6, name: "Billy Bob", age: "12", gender: "male", height: 1, col: "red", dob: "", cheese: 1 },
+    { id: 7, name: "Mary May", age: "1", gender: "female", height: 2, col: "blue", dob: "14/05/1982", cheese: true },
+    { id: 8, name: "Christine Lobowski", age: "42", height: 0, col: "green", dob: "22/05/1982", cheese: "true" },
+    { id: 9, name: "Brendon Philips", age: "125", gender: "male", height: 1, col: "orange", dob: "01/08/1980" },
+    { id: 10, name: "Margret Marmajuke", age: "16", gender: "female", height: 5, col: "yellow", dob: "31/01/1999" },
+  ]
+
+  var table = new Tabulator('#tabular-schedule', {
+    data: sample,
+    autoColumns: true,
+    layout: 'fitColumns'
+  })
 </script>
 {{!-- <div class="tab">
   <button class="tablinks res-16" onclick="openInfo(event, 'PersonalInfo')" id="default">Personal
