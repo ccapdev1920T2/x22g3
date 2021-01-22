@@ -37,7 +37,7 @@
 
     {{#> nav-group}}
     {{> nav-item href="/cart" text="Cart"}}
-    {{> nav-item href="/profile#personal-information" text="Profile"}}
+    {{> nav-item href="/profile" text="Profile"}}
     {{> nav-item href="/logout" text="Log out"}}
     {{/ nav-group}}
 
@@ -55,7 +55,6 @@
     var a = li.firstElementChild;
     aPathname = a.pathname.replace('/mod', '').replace('/', '');
 
-    console.log(pathname, aPathname)
     li.classList.toggle('active', pathname.includes(aPathname))
   })
 </script>
