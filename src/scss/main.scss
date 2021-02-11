@@ -3,6 +3,7 @@ $green-highlight-color: #fbfefc;
 $teal-muted-color: #285753;
 $red-err-color: #a34946;
 $black-color: #021c0b;
+$sans-serif: "DM Sans", sans-serif;
 
 @use '../../node_modules/bootstrap/scss/bootstrap' as bootstrap with (
   $body-color: $black-color,
@@ -10,7 +11,7 @@ $black-color: #021c0b;
   $green: $green-primary-color,
 
   $primary: $green-primary-color,
-  $font-family-base: "DM Sans",
+  $font-family-base: $sans-serif,
   $enable-responsive-font-sizes: true,
 
   $theme-colors: (
@@ -143,5 +144,33 @@ $black-color: #021c0b;
   }
   .fc-v-event {
     @extend .bg-primary, .border-primary;
+  }
+}
+
+// TABULATOR CUSTOM STYLES
+.tabulator {
+  .tabulator-footer {
+    .tabulator-paginator {
+      .tabulator-page {
+        &.active {
+          @extend .bg-primary, .border, .border-primary;
+
+          &:hover {
+            @extend .bg-green-highlight, .border, .border-light;
+          }
+        }
+
+        &:not(.disabled) {
+          @include transition(background-color, 250ms);
+          @include transition(color, 250ms);
+
+          &:hover {
+            @extend .text-primary;
+            @include transition(background-color, 250ms);
+            @include transition(color, 250ms);
+          }
+        }
+      }
+    }
   }
 }
