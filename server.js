@@ -1,6 +1,8 @@
 var port = 8080;
 var express = require('express');
 var app = express();
+const path = require('path');
+const favicon = require('serve-favicon')
 const hbs = require('express-handlebars').create({
   extname: 'hbs',
   defaultLayout: 'main',
@@ -42,6 +44,7 @@ var modRoute = require('./routes/mod');
 var loginRoute = require('./routes/login');
 var logoutRoute = require('./routes/logout');
 
+app.use(favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico')))
 app.use('/', indexRoute);
 app.use('/home', indexRoute);
 app.use('/cart', cartRoute);
