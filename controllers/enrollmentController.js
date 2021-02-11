@@ -119,7 +119,7 @@ exports.enrollment_add_class_get = (req, res) => {
     console.log(
         "TODO: get data from Student, EnrolledCourses, and Course (to view available courses)"
     );
-    res.render("addclass", {
+    res.render("add-class", {
         title: "Add a Class | Animo.sys",
         addedStyles: ["forms"],
     });
