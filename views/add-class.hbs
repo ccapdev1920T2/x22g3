@@ -1,0 +1,151 @@
+{{#section "head"}}
+<!-- TABULATOR -->
+<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+
+<!-- MATERIAL ICONS -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{{/section}}
+
+<h1>Add a Class</h1>
+<br>
+
+<p>Search for a course then click the "Add" button to add it to your enrollment cart. You can still remove your courses
+  at the enrollment cart page.</p>
+<input type="search" class="form-control" placeholder="Enter course code" title="Enter course code">
+<div class="input-group-append"></div>
+<br><br>
+
+<div id="course-offerings-table" class="table-bordered table-striped"></div>
+<br>
+
+<a class="btn btn-primary" href="/cart/enrollment">Proceed to Enrollment Cart</a>
+
+
+<script src="/javascript/pages/add-class.js"></script>
+{{!--
+<script>
+  var sample = { nbr: "123456", name: "GERIZAL", section: "X21", time: "MW 0730-0900", room: "GT200", prof: "", stat: "Open" };
+  var course = [
+    { name: "CSARCH1", section: "X22", days: ['M', 'W'], time: "0915-1045", room: "GT201", prof: "PERADILLA, M.", stat: "Open" },
+    { name: "GEETHIC", section: "X22", days: ['M', 'W'], time: "1245-1415", room: "GT202", prof: "ESTEVES, M.", stat: "Open" },
+    { name: "STMATH", section: "X22", days: ['T', 'H'], time: "0730-0900", room: "GT203", prof: "LAWAS, C.", stat: "Open" },
+    { name: "STALGCM", section: "X22", days: ['T', 'H'], time: "0915-1045", room: "GT204", prof: "AZCARRAGA, A.", stat: "Open" },
+    { name: "CCAPDEV", section: "X22", days: ['T', 'H'], time: "1100-1230", room: "GT205", prof: "ANTIOQUIA, A.", stat: "Closed" },
+    { name: "GESPORT", section: "X22", days: ['T'], time: "1300-1500", room: "GT206", prof: "CALABIO, V.", stat: "Open" }
+  ];
+  var ecourse = [
+    { name: "NATLANG", section: "X22", days: ['F'], time: "0915-1045", room: "GT206", prof: "", stat: "Open" }
+  ];
+
+  function addClass() {
+    if (validate()) {
+      alert("Class added to cart!");
+      console.log(x);
+      if (x)
+        x.remove();
+    }
+
+  }
+
+  function validate() {
+    if (document.getElementById("addclass").value == "GERIZAL") {
+      var row = myCourses.insertRow(-1);
+
+      for (const key in sample) {
+        if (sample.hasOwnProperty(key)) {
+          var value = sample[key];
+          var cell = row.insertCell(-1);
+          cell.innerHTML = value;
+        }
+      }
+
+
+      return true;
+    }
+  }
+
+
+  // table should be a table element
+  // type can either be 'add' or 'remove'
+  function addBtn(table, type) {
+    var rows = table.rows;
+    console.log(rows);
+    console.log(type);
+
+    if (rows.length > 1) {
+      for (i = 1; i < rows.length; i++) {
+        var lastCell = rows[i].insertCell(-1);
+        lastCell.classList.add('lastCell');
+        lastCell.innerHTML += `<a class='${type}' href='#'>${type}</a>`;
+      }
+    }
+  }
+
+  // transfers rowEl from its original table to toTableEl
+  function transferRow(row, toTableElement) {
+    var temp = row;
+    row.remove();
+
+    console.log(temp);
+    toTableElement.appendChild(temp);
+  }
+
+
+  var myCourses = document.querySelector('table#myCourses');
+  myCourses.style.border = 'none';
+
+  var courseOfferings = document.querySelector('table#courseOfferings');
+  courseOfferings.style.border = 'none';
+
+  for (i = 0; i < course.length; i++) {
+    var row = courseOfferings.insertRow(-1);
+    for (const key in course[i]) {
+      if (course[i].hasOwnProperty(key)) {
+        const element = course[i][key];
+        var cell = row.insertCell(-1);
+        cell.innerHTML = element;
+      }
+    }
+
+  }
+
+  for (i = 0; i < ecourse.length; i++) {
+    var row = courseOfferings.insertRow(-1);
+    for (const key in ecourse[i]) {
+      if (ecourse[i].hasOwnProperty(key)) {
+        const element = ecourse[i][key];
+        var cell = row.insertCell(-1);
+        cell.innerHTML = element;
+      }
+    }
+
+  }
+
+
+  function addBtnListener() {
+
+    var btns = document.querySelectorAll('tr a');
+    btns.forEach(btn => {
+      var table = (btn.innerHTML === 'add') ? myCourses : courseOfferings;
+
+      btn.onclick = function (e) {
+        e.preventDefault();
+        console.log(table);
+        row = this.parentElement.parentElement;
+        this.parentElement.remove();
+
+        console.log(row);
+        transferRow(row, table);
+      }
+    });
+  }
+  addBtn(myCourses, 'remove');
+  addBtn(courseOfferings, 'add');
+
+  addBtnListener();
+
+
+  responsiveFontSize('tr a', 12);
+  responsiveFontSize('.noRecords', 16);
+</script> --}}

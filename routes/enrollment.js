@@ -14,7 +14,7 @@ router.get(
     enrollment_controller.enrollment_class_schedule_get
 );
 
-router.get("/addclass", enrollment_controller.enrollment_add_class_get);
+router.get("/add-class", enrollment_controller.enrollment_add_class_get);
 
 router.get("/drop-class", enrollment_controller.enrollment_drop_class_get);
 
