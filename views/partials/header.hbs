@@ -48,13 +48,12 @@
 <script>
   // select window pathname
   var pathname = window.location.pathname.split('/');
-
+  // TODO: fix this, pass regex to match from server to client per route
   // check the 'active' nav item
   var navItems = document.querySelectorAll('#header li')
   navItems.forEach(li => {
     var a = li.firstElementChild;
     aPathname = a.pathname.replace('/mod', '').replace('/', '');
-
-    li.classList.toggle('active', pathname.includes(aPathname))
+    li.classList.toggle('active', window.location.pathname === a.pathname)
   })
 </script>
