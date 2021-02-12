@@ -141,10 +141,10 @@ exports.enrollment_dropclass_list_get = (req, res) => {
 };
 
 // Get Request a Class landing page
-exports.enrollment_request_class_get = (req, res) => {
-    res.render("requestclass", {
+exports.renderRequestClass = (req, res) => {
+    res.render("request-class", {
         title: "Request a Class | Animo.sys",
-        addedStyles: ["forms"],
+        // addedStyles: ["forms"],
     });
 };
 
@@ -153,9 +153,9 @@ exports.enrollment_request_class_post = (req, res) => {
     console.log(
         "TODO: create a new Request then update the Request collection"
     );
-    res.render("requestclass", {
+    res.render("request-class", {
         title: "Request a Class | Animo.sys",
-        addedStyles: ["sessions", "forms"],
+        // addedStyles: ["sessions", "forms"],
     });
 };
 

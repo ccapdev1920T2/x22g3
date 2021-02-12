@@ -23,7 +23,7 @@ router.get(
     enrollment_controller.enrollment_dropclass_list_get
 );
 
-router.get("/requestclass", enrollment_controller.enrollment_request_class_get);
+router.get("/request-class", enrollment_controller.renderRequestClass);
 
 router.get(
     "/courseofferings",
