@@ -1,70 +1,80 @@
+{{#section "head"}}
+<!-- TABULATOR -->
+<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+{{/section}}
+
 <h1>Course Offerings</h1>
 <br><br>
 
-<input type="text" class="res-16 searchbar" id="q" oninput="search()" placeholder="Enter course code"
-    title="Enter course code">
-<div class="table-container">
-    <table class='res-12' id="myTable">
-        <thead>
-            <tr class="header">
-                <th>Course</th>
-                <th>Section</th>
-                <th>Day/s</th>
-                <th>Time</th>
-                <th>Room</th>
-                <th>Enl Cap</th>
-                <th>Enrolled</th>
-                <th>Status</th>
-            </tr>
-        </thead>
+<input type="search" class="form-control" id="q" placeholder="Enter course code"
+  title="Enter course code">
 
-    </table>
+<br>
+
+<div class="table-bordered table-striped" id="course-offerings-table">
+  {{!-- <table> --}}
+    {{!-- <thead>
+      <tr class="header">
+        <th>Course</th>
+        <th>Section</th>
+        <th>Day/s</th>
+        <th>Time</th>
+        <th>Room</th>
+        <th>Enl Cap</th>
+        <th>Enrolled</th>
+        <th>Status</th>
+      </tr>
+    </thead> --}}
+
+  {{!-- </table> --}}
 </div>
 
-<script>
-    function search() {
-        var xhr = new XMLHttpRequest();
-        var query = document.getElementById('q').value.toUpperCase();
-        var url = `/enrollment/courseofferings/search?q=${query}`;
+<script src="/javascript/pages/course-offerings.js"></script>
+{{!-- <script>
+  function search() {
+    var xhr = new XMLHttpRequest();
+    var query = document.getElementById('q').value.toUpperCase();
+    var url = `/enrollment/courseofferings/search?q=${query}`;
 
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var response = xhr.response;
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var response = xhr.response;
 
-                // format data
-                response.forEach(doc => {
-                    doc.time = `${doc.time.start}-${doc.time.end}`;
-                });
+        // format data
+        response.forEach(doc => {
+          doc.time = `${doc.time.start}-${doc.time.end}`;
+        });
 
-                updateTable('#myTable', response, ['courseCode', 'section', 'days', 'time', 'room', 'enlCap', 'enrolled', 'status']);
-            }
-        };
+        updateTable('#myTable', response, ['courseCode', 'section', 'days', 'time', 'room', 'enlCap', 'enrolled', 'status']);
+      }
+    };
 
-        xhr.open('GET', url, true);
-        xhr.responseType = "json";
-        xhr.timeout = 1000 * 2;
-        xhr.send(query);
+    xhr.open('GET', url, true);
+    xhr.responseType = "json";
+    xhr.timeout = 1000 * 2;
+    xhr.send(query);
+  }
+
+  function updateTable(tableSelector, data, arrangement) {
+    var table = document.querySelector(tableSelector);
+
+    // clear tbody, if not null
+    if (document.querySelector(`${tableSelector} tbody`))
+      document.querySelector(`${tableSelector} tbody`).remove();
+
+    // create a new tbody
+    var tbody = document.createElement('tbody');
+
+    // append data in the following order:
+    const keys = arrangement;
+    for (let r of data) {
+      var row = tbody.insertRow(-1);
+      for (let key of keys) {
+        var cell = row.insertCell(-1);
+        cell.innerHTML = r[key];
+      }
     }
-
-    function updateTable(tableSelector, data, arrangement) {
-        var table = document.querySelector(tableSelector);
-
-        // clear tbody, if not null
-        if (document.querySelector(`${tableSelector} tbody`))
-            document.querySelector(`${tableSelector} tbody`).remove();
-
-        // create a new tbody
-        var tbody = document.createElement('tbody');
-
-        // append data in the following order:
-        const keys = arrangement;
-        for (let r of data) {
-            var row = tbody.insertRow(-1);
-            for (let key of keys) {
-                var cell = row.insertCell(-1);
-                cell.innerHTML = r[key];
-            }
-        }
-        table.appendChild(tbody);
-    }
-</script>
+    table.appendChild(tbody);
+  }
+</script> --}}
