@@ -1,0 +1,41 @@
+[
+  {
+    "idNum": "11839864",
+    "name": {
+      "first": "Rethaniel",
+      "middle": "Abanes",
+      "last": "Ramos"
+    },
+    "college": "CCS",
+    "course": "CSS",
+    "section": "X22",
+    "status": "Enrolled",
+    "graduating": false
+  },
+  {
+    "idNum": "11839406",
+    "name": {
+      "first": "Gabriel",
+      "middle": "Romero",
+      "last": "Dela Cruz"
+    },
+    "college": "CCS",
+    "course": "CSS",
+    "section": "X22",
+    "status": "Enrolled",
+    "graduating": false
+  },
+  {
+    "idNum": "11827629",
+    "name": {
+      "first": "Angeline",
+      "middle": "Mendoza",
+      "last": "Gubat"
+    },
+    "college": "CCS",
+    "course": "CSS",
+    "section": "X22",
+    "status": "Enrolled",
+    "graduating": false
+  }
+]
