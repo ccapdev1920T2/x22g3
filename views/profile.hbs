@@ -1,4 +1,7 @@
 {{#section "head"}}
+<!-- FONT AWESOME -->
+<link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
+
 <!-- FULL CALENDAR -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js"></script>
@@ -23,13 +26,14 @@
       <div class="list-group-target" id="personal-information">
         <h1>Personal Information</h1>
         <hr>
-        <div id="profile-pic">
-          <img src="/assets/perm_identity-24px.svg" alt="Profile Picture">
-        </div>
-        <div id="student-info">
-          <h2>Dela Gubat, Rethaniel A.</h2>
-          <p class='res-20'>11839864</p>
-          <p id='description'></p>
+
+        <div class="d-flex align-items-center">
+          <img width="128" height="128" src="/assets/perm_identity-24px.svg" alt="Profile Picture">
+          <div id="student-info">
+            <h2>Dela Gubat, Rethaniel A.</h2>
+            <p class=''>11839864</p>
+            <p id='description'></p>
+          </div>
         </div>
       </div>
 
@@ -64,18 +68,22 @@
         <hr>
         <h2>Clearance</h2>
         <br>
-        <div class="table-container">
-          <table class="res-12" id="balance">
+        <div class="overflow-auto">
+          <table class="table table-striped table-bordered" id="balance">
+            <thead>
             <tr>
               <th>Issue Date</th>
               <th>Amount</th>
               <th>Enrollment Hold</th>
             </tr>
+            </thead>
           </table>
         </div>
         <br>
+
         <h2>Scholarship</h2>
         <br>
+
         <h3 id='scholarship'></h3>
         <br>
         <div id="details"></div>
@@ -118,10 +126,14 @@
   document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('weekly-schedule');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
+      initialView: 'timeGridWeek',
       events: [
         { title: 'the title', start: '2021-09-01', end: '2021-09-01' }
-      ]
+      ],
+      stickyHeaderDates: false,
+      allDaySlot: false,
+      height: 'auto',
+      themeSystem: 'bootstrap'
     });
     calendar.render();
   });
@@ -142,7 +154,9 @@
   var table = new Tabulator('#tabular-schedule', {
     data: sample,
     autoColumns: true,
-    layout: 'fitColumns'
+    layout: 'fitColumns',
+    pagination: 'local',
+    paginationSize: 10
   })
 </script>
 {{!-- <div class="tab">
