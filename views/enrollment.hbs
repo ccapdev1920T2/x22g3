@@ -1,37 +1,44 @@
-<h1 class='res-36'>Enrollment</h1>
+{{#*inline "enrollment-item"}}
+<a class="" href="/{{route}}/{{subroute}}" title="{{title}}">
+  <div class="d-flex px-4 py-3 mb-4 enrollment-item">
+    <div class="d-none d-md-block" id="{{iconId}}"></div>
+    <div class="d-flex flex-column ml-md-4">
+      {{> @partial-block}}
+    </div>
+  </div>
+</a>
+{{/inline}}
+
+{{#*inline "enrollment-item-descriptor"}}
+<h3>{{heading}}</h3>
+<p>{{description}}</p>
+{{/inline}}
+
+<h1>What do you want to do?</h1>
 <br><br>
 
-<div id="todo-container">
-    <div class="todo-item">
-        <a href="/{{route}}/classschedule" title="Weekly Schedule">
-            <div id="schedule"></div>
-            <p>View Schedule</p>
-        </a>
-    </div>
+<div id="enrollment-container">
+  {{#> enrollment-item title="View Class Schedule" iconId="schedule" subroute="class-schedule"}}
+  {{> enrollment-item-descriptor heading="View Class Schedule" description="View or save your schedule for the
+  upcoming term"}}
+  {{/ enrollment-item}}
 
-    <div class="todo-item">
-        <a href="/{{route}}/addclass" title="Add a Class">
-            <div id="addclass"></div>
-            <p>Add Classes</p>
-        </a>
-    </div>
-    <div class="todo-item">
-        <a href="/{{route}}/dropclass" title="Drop a Class">
-            <div id="dropclass"></div>
-            <p>Drop Classes</p>
-        </a>
-    </div>
-    <div class="todo-item">
-        <a href="/{{route}}/requestclass" title="Request a Class">
-            <div id="requestclass"></div>
-            <p>Request A Class</p>
-        </a>
-    </div>
-    <div class="todo-item">
-        <a href="/{{route}}/courseofferings" title="Course Offerings">
-            <div id="courseofferings"></div>
-            <p>View Course Offerings</p>
-        </a>
-    </div>
+  {{#> enrollment-item title="Add Classes" iconId="addclass" subroute="add-class"}}
+  {{> enrollment-item-descriptor heading="Add Classes" description="View all courses and add them to your enrollment
+  cart"}}
+  {{/ enrollment-item}}
 
+  {{#> enrollment-item title="Drop Classes" iconId="dropclass" subroute="drop-class"}}
+  {{> enrollment-item-descriptor heading="Drop Classes" description="Drop classes from your currently enrolled
+  courses"}}
+  {{/ enrollment-item}}
+
+  {{#> enrollment-item title="Request A Class" iconId="requestclass" subroute="request-class"}}
+  {{> enrollment-item-descriptor heading="Request A Class" description="Request to open a new class"}}
+  {{/ enrollment-item}}
+
+  {{#> enrollment-item title="View Course Offerings" iconId="courseofferings" subroute="courseofferings"}}
+  {{> enrollment-item-descriptor heading="View Course Offerings" description="PLANNING TO REMOVE THIS (SEE ADD
+  CLASSES)"}}
+  {{/ enrollment-item}}
 </div>

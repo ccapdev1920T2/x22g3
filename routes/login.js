@@ -9,8 +9,8 @@ router.get('/', login_controller.login_student_landing_page_get);
 
 router.post('/', urlencodedParser, login_controller.login_student_landing_page_post);
 
-router.get('/mod', login_controller.login_mod_landing_page_get);
+router.get('/mod', login_controller.renderModeratorLogin);
 
-router.post('/mod', urlencodedParser, login_controller.login_mod_landing_page_post);
+router.post('/mod', urlencodedParser, login_controller.postModeratorLogin);
 
 module.exports = router;

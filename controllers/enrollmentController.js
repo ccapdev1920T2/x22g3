@@ -109,7 +109,7 @@ exports.course_create_sample_get = (req, res) => {
 // Display class schedule for one student
 exports.enrollment_class_schedule_get = (req, res) => {
     console.log("TODO: get data from Student");
-    res.render("classschedule", {
+    res.render("class-schedule", {
         title: "Class Schedule | Animo.sys",
     });
 };
@@ -119,7 +119,7 @@ exports.enrollment_add_class_get = (req, res) => {
     console.log(
         "TODO: get data from Student, EnrolledCourses, and Course (to view available courses)"
     );
-    res.render("addclass", {
+    res.render("add-class", {
         title: "Add a Class | Animo.sys",
         addedStyles: ["forms"],
     });
@@ -127,7 +127,7 @@ exports.enrollment_add_class_get = (req, res) => {
 
 // Drop a Class
 exports.enrollment_drop_class_get = (req, res) => {
-    res.render("dropclass", {
+    res.render("drop-class", {
         title: "Drop a Class | Animo.sys",
     });
 };
@@ -141,10 +141,10 @@ exports.enrollment_dropclass_list_get = (req, res) => {
 };
 
 // Get Request a Class landing page
-exports.enrollment_request_class_get = (req, res) => {
-    res.render("requestclass", {
+exports.renderRequestClass = (req, res) => {
+    res.render("request-class", {
         title: "Request a Class | Animo.sys",
-        addedStyles: ["forms"],
+        // addedStyles: ["forms"],
     });
 };
 
@@ -153,9 +153,9 @@ exports.enrollment_request_class_post = (req, res) => {
     console.log(
         "TODO: create a new Request then update the Request collection"
     );
-    res.render("requestclass", {
+    res.render("request-class", {
         title: "Request a Class | Animo.sys",
-        addedStyles: ["sessions", "forms"],
+        // addedStyles: ["sessions", "forms"],
     });
 };
 

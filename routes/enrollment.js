@@ -10,20 +10,20 @@ router.get("/", enrollment_controller.enrollment_landing_page_get);
 //router.get('/create', enrollment_controller.course_create_sample);
 
 router.get(
-    "/classschedule",
+    "/class-schedule",
     enrollment_controller.enrollment_class_schedule_get
 );
 
-router.get("/addclass", enrollment_controller.enrollment_add_class_get);
+router.get("/add-class", enrollment_controller.enrollment_add_class_get);
 
-router.get("/dropclass", enrollment_controller.enrollment_drop_class_get);
+router.get("/drop-class", enrollment_controller.enrollment_drop_class_get);
 
 router.get(
-    "/dropclass_list",
+    "/drop-class/checkout",
     enrollment_controller.enrollment_dropclass_list_get
 );
 
-router.get("/requestclass", enrollment_controller.enrollment_request_class_get);
+router.get("/request-class", enrollment_controller.renderRequestClass);
 
 router.get(
     "/courseofferings",

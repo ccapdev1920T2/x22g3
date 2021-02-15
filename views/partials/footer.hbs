@@ -1,3 +1,8 @@
-<footer class='res-12'>
-    <p>Animo.sys 2.0 © 2020 CCAPDEV X22 Team 3 | Dela Cruz, Gubat, Ramos</p>
+<footer class="bg-teal-muted flex-shrink-0 p-5 mt-5">
+    <p class="text-green-highlight">Animo.sys 2.0 © <span id="year"></span> CCAPDEV X22 Team 3 | Dela Cruz, Gubat, Ramos</p>
 </footer>
+
+<script>
+    var date = new Date().getFullYear();
+    document.getElementById('year').innerHTML = date;
+</script>

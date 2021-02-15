@@ -5,15 +5,20 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.3",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "mongoose": "^5.9.7",
-    "pdfkit": "^0.11.0"
+    "pdfkit": "^0.11.0",
+    "serve-favicon": "^2.5.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sass": "^1.32.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:css": "sass src/scss/main.scss public/css/main.css -s compressed"
   },
   "repository": {
     "type": "git",

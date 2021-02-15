@@ -1,88 +1,99 @@
+{{#section "head"}}
+<!-- TABULATOR -->
+<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+
+<!-- MATERIAL ICONS -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{{/section}}
+
 <h1>My Enrollment Cart</h1>
 <br>
 <p>The table below shows the breakdown of the subjects you are going to enroll in for the upcoming term. You
-    are allowed to remove subjects provided that your total number of units will not result in an underload.
-    Refer to your flowchart to know the total number of units you may take for the term.</p>
+  are allowed to remove subjects provided that your total number of units will not result in an underload.
+  Refer to your flowchart to know the total number of units you may take for the term.</p>
 <br>
-<div class="table-container">
-    <table class='res-12' id='list'>
-        <tr>
-            <th>Class Nbr</th>
-            <th>Course Name</th>
-            <th>Section</th>
-            <th>Day/Time</th>
-            <th>Room</th>
-            <th>Professor</th>
-            <th>Status</th>
-        </tr>
-    </table>
+<div id="enrollment-cart-table" class="table-striped table-bordered">
+  {{!-- <table class='res-12' id='list'>
+    <tr>
+      <th>Class Nbr</th>
+      <th>Course Name</th>
+      <th>Section</th>
+      <th>Day/Time</th>
+      <th>Room</th>
+      <th>Professor</th>
+      <th>Status</th>
+    </tr>
+  </table> --}}
 </div>
 
 <br><br>
 
 <p>Upon pressing the submit button, you will be asked to print your Enrollment Assessment Form (EAF). Kindly
-    bring 2
-    printed copies of your EAF during your enrollment time slot.</p>
+  bring 2
+  printed copies of your EAF during your enrollment time slot.</p>
 <br>
-<input type="button" id="submit" onclick="myFunctionAlert()" value="Submit">
+<button type="submit" class="btn btn-primary">Submit</button>
 
+<script src="/javascript/pages/cart-enrollment.js"></script>
 
+{{!--
 <script>
-    var course = [
-        { nbr: "111111", name: "CSARCH1", section: "X22", time: "MW 0915-1045", room: "GT203", prof: "PERADILLA, M.", stat: "Open" },
-        { nbr: "222222", name: "GEETHIC", section: "X22", time: "MW 1245-1415", room: "GT203", prof: "ESTEVES, M.", stat: "Open" },
-        { nbr: "333333", name: "STMATH", section: "X22", time: "TH 0730-0900", room: "GT206", prof: "LAWAS, C.", stat: "Open" },
-        { nbr: "444444", name: "STALGCM", section: "X22", time: "TH 0915-1045", room: "GT206", prof: "AZCARRAGA, A.", stat: "Open" },
-        { nbr: "555555", name: "CCAPDEV", section: "X22", time: "TH 1100-1230", room: "MRELBA", prof: "ANTIOQUIA, A.", stat: "Closed" },
-        { nbr: "666666", name: "GESPORT", section: "X22", time: "T 1300-1500", room: "CVDCRT", prof: "CALABIO, V.", stat: "Open" }
-    ];
-    var ecourse = { nbr: "777777", name: "NATLANG", section: "X22", time: "F 0915-1045", room: "GT206", prof: "", stat: "Open" };
+  var course = [
+    { nbr: "111111", name: "CSARCH1", section: "X22", time: "MW 0915-1045", room: "GT203", prof: "PERADILLA, M.", stat: "Open" },
+    { nbr: "222222", name: "GEETHIC", section: "X22", time: "MW 1245-1415", room: "GT203", prof: "ESTEVES, M.", stat: "Open" },
+    { nbr: "333333", name: "STMATH", section: "X22", time: "TH 0730-0900", room: "GT206", prof: "LAWAS, C.", stat: "Open" },
+    { nbr: "444444", name: "STALGCM", section: "X22", time: "TH 0915-1045", room: "GT206", prof: "AZCARRAGA, A.", stat: "Open" },
+    { nbr: "555555", name: "CCAPDEV", section: "X22", time: "TH 1100-1230", room: "MRELBA", prof: "ANTIOQUIA, A.", stat: "Closed" },
+    { nbr: "666666", name: "GESPORT", section: "X22", time: "T 1300-1500", room: "CVDCRT", prof: "CALABIO, V.", stat: "Open" }
+  ];
+  var ecourse = { nbr: "777777", name: "NATLANG", section: "X22", time: "F 0915-1045", room: "GT206", prof: "", stat: "Open" };
 
-    function myFunctionAlert() {
-        alert("Submitted!");
-    }
+  function myFunctionAlert() {
+    alert("Submitted!");
+  }
 
-    function myFunctionAlertPetition() {
-        alert("Petition submitted!");
-    }
+  function myFunctionAlertPetition() {
+    alert("Petition submitted!");
+  }
 
-    $(function () {
-        $('table').on('click', 'tr a', function (e) {
-            e.preventDefault();
-            $(this).parents('tr').remove();
-        });
+  $(function () {
+    $('table').on('click', 'tr a', function (e) {
+      e.preventDefault();
+      $(this).parents('tr').remove();
     });
+  });
 
-    var tableList = document.querySelector('table#list');
-    tableList.style.border = 'none';
+  var tableList = document.querySelector('table#list');
+  tableList.style.border = 'none';
 
-    for (let i = 0; i < course.length; i++) {
-        var row = tableList.insertRow(-1);
-        for (const key in course[i]) {
-            if (course[i].hasOwnProperty(key)) {
-                const element = course[i][key];
-                var cell = row.insertCell(-1);
-                cell.innerHTML = element;
-            }
-        }
-        // Add remove button at last cell 
-        var lastCell = row.insertCell(-1);
-        lastCell.classList.add('lastCell');
-        lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
+  for (let i = 0; i < course.length; i++) {
+    var row = tableList.insertRow(-1);
+    for (const key in course[i]) {
+      if (course[i].hasOwnProperty(key)) {
+        const element = course[i][key];
+        var cell = row.insertCell(-1);
+        cell.innerHTML = element;
+      }
     }
+    // Add remove button at last cell 
+    var lastCell = row.insertCell(-1);
+    lastCell.classList.add('lastCell');
+    lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
+  }
 
-    for (let i = 0; i < ecourse.length; i++) {
-        for (const key in ecourse[i]) {
-            var row = tableList.insertRow(-1);
-            if (ecourse[i].hasOwnProperty(key)) {
-                const element = ecourse[i][key];
-                var cell = row.insertCell(-1);
-                cell.innerHTML = element;
-            }
-        }
-        // Add remove button at last cell 
-        var lastCell = row.insertCell(-1);
-        lastCell.classList.add('lastCell');
-        lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
+  for (let i = 0; i < ecourse.length; i++) {
+    for (const key in ecourse[i]) {
+      var row = tableList.insertRow(-1);
+      if (ecourse[i].hasOwnProperty(key)) {
+        const element = ecourse[i][key];
+        var cell = row.insertCell(-1);
+        cell.innerHTML = element;
+      }
     }
-</script>
+    // Add remove button at last cell 
+    var lastCell = row.insertCell(-1);
+    lastCell.classList.add('lastCell');
+    lastCell.innerHTML += "<a class='removebtn' href='#'>Remove</a>";
+  }
+</script> --}}

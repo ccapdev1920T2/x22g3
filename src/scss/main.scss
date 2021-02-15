@@ -1,0 +1,176 @@
+$green-primary-color: #036325;
+$green-highlight-color: #fbfefc;
+$teal-muted-color: #285753;
+$red-err-color: #a34946;
+$black-color: #021c0b;
+$sans-serif: "DM Sans", sans-serif;
+
+@use '../../node_modules/bootstrap/scss/bootstrap' as bootstrap with (
+  $body-color: $black-color,
+  $red: $red-err-color,
+  $green: $green-primary-color,
+
+  $primary: $green-primary-color,
+  $font-family-base: $sans-serif,
+  $enable-responsive-font-sizes: true,
+
+  $theme-colors: (
+    "green-highlight": $green-highlight-color,
+    "teal-muted": $teal-muted-color,
+  )
+);
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+}
+
+@mixin border($color) {
+  border: 2px solid $color;
+  border-radius: 5px;
+}
+
+@mixin transition($property, $duration) {
+  transition: $property, $duration;
+}
+
+.letter-spacing {
+  letter-spacing: 0.155em;
+}
+
+.navbar {
+  letter-spacing: 0.155em;
+}
+
+.navbar-light {
+  .navbar-nav {
+    .nav-item.active {
+      .nav-link {
+        @extend .bg-primary;
+        @extend .text-light;
+        @include transition(background-color, 250ms);
+      }
+    }
+    .nav-link {
+      color: $black-color;
+      @include border(transparent);
+      @include transition(background-color, 250ms);
+
+      &:hover {
+        @extend .bg-green-highlight;
+        @extend .text-dark;
+
+        @include transition(background-color, 250ms);
+      }
+    }
+  }
+}
+
+.list-group {
+  .list-group-item {
+    @include transition(background-color, 250ms);
+
+    &:hover {
+      @include transition(background-color, 250ms);
+    }
+
+    &.active {
+      @extend .font-weight-bold;
+    }
+  }
+}
+
+// ENROLLMENT STYLES
+#enrollment-container {
+  a {
+    color: $black-color;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    div.enrollment-item {
+      @extend .bg-white;
+      @include border(bootstrap.$light);
+      @include transition(background-color, 250ms);
+
+      &:hover {
+        @include border(bootstrap.$gray-200);
+        @include transition(border, 250ms);
+      }
+    }
+  }
+
+  #schedule {
+    background-image: url("/assets/enrollment_spritesheet.png");
+    width: 64px;
+    height: 64px;
+    background-position: -153px -79px;
+  }
+
+  #addclass {
+    background-image: url("/assets/enrollment_spritesheet.png");
+    width: 64px;
+    height: 64px;
+    background-position: -5px -5px;
+  }
+
+  #dropclass {
+    background-image: url("/assets/enrollment_spritesheet.png");
+    width: 64px;
+    height: 64px;
+    background-position: -5px -79px;
+  }
+
+  #requestclass {
+    background-image: url("/assets/enrollment_spritesheet.png");
+    width: 64px;
+    height: 64px;
+    background-position: -153px -5px;
+  }
+
+  #courseofferings {
+    background-image: url("/assets/enrollment_spritesheet.png");
+    width: 64px;
+    height: 64px;
+    background-position: -79px -5px;
+  }
+}
+
+// FULL CALENDAR CUSTOM STYLES
+.fc {
+  .fc-toolbar {
+    @extend .flex-column, .flex-md-row;
+  }
+  .fc-v-event {
+    @extend .bg-primary, .border-primary;
+  }
+}
+
+// TABULATOR CUSTOM STYLES
+.tabulator {
+  .tabulator-footer {
+    .tabulator-paginator {
+      .tabulator-page {
+        &.active {
+          @extend .bg-primary, .border, .border-primary;
+
+          &:hover {
+            @extend .bg-green-highlight, .border, .border-light;
+          }
+        }
+
+        &:not(.disabled) {
+          @include transition(background-color, 250ms);
+          @include transition(color, 250ms);
+
+          &:hover {
+            @extend .text-primary;
+            @include transition(background-color, 250ms);
+            @include transition(color, 250ms);
+          }
+        }
+      }
+    }
+  }
+}
