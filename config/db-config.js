@@ -7,18 +7,15 @@ const options = {
   useNewUrlParser: true,
 };
 
-// const connection = await mongoose.createConnection(url, options);
-
+/**
+ * Connects to the database
+ */
 module.exports = async () => {
-  // let connection;
-
   try {
     await mongoose.connect(url, options);
-    console.log(`connected at ${url}`);
+    console.log(`Connected at ${url}`);
   } catch (error) {
     console.log(error);
-    process.exit(1)
+    process.exit(1);
   }
-
-  // return connection;
 };
