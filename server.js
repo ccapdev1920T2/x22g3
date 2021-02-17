@@ -15,9 +15,21 @@ const hbs = require('express-handlebars').create({
   },
 });
 const connectDb = require('./config/db-config');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
+const passport = require('passport');
 
 connectDb();
 
+app.use(
+  session({
+    secret: 'FeelsSadCat',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  }),
+);
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
@@ -27,6 +39,12 @@ app.use('/data', express.static('data'));
 
 // use body-parser
 app.use(express.urlencoded({ extended: true }));
+
+// Passport
+require('./config/passport-config')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Routes
 var indexRoute = require('./routes/index');
 var cartRoute = require('./routes/cart');
