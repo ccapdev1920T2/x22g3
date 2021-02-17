@@ -33,6 +33,9 @@ app.set('view engine', 'hbs');
 // serve static files
 app.use(express.static('public'));
 app.use('/data', express.static('data'))
+
+// use body-parser
+app.use(express.urlencoded({extended: true}))
 // Routes
 var indexRoute = require('./routes/index');
 var cartRoute = require('./routes/cart');
