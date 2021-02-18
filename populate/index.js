@@ -1,2 +1,5 @@
-console.log('Starting population process...');
-require('./populate-accounts')()
+(async () => {
+  console.log('Starting population process...');
+  await require('./populate-accounts')();
+  await require('./populate-preenlistment')();
+})();
