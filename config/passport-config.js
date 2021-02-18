@@ -37,7 +37,7 @@ module.exports = passport => {
 
   passport.deserializeUser(async (key, done) => {
     try {
-      const account = await Account.findById(key.id);
+      const account = await Account.findById(key.id, '-password');
       done(null, account);
     } catch (error) {
       done(error);

@@ -5,10 +5,10 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var mod_controller = require('../controllers/modController');
-const { isAuth } = require('../helpers/auth-helper');
+const { isAuth, isModerator } = require('../helpers/auth-helper');
 
 // use authentication for all /mod routes
-router.use(isAuth);
+router.use(isAuth, isModerator);
 
 router.get('/', mod_controller.renderModeratorHomepage);
 
