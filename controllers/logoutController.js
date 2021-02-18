@@ -1,8 +1,10 @@
-exports.logout_landing_page_get = (req, res) => {
-    res.redirect('/login')
-    // res.render('logout', {
-    //     layout: false,
-    //     // addedStyles: ['sessions', 'forms'],
-    //     title: 'Logout | Animo.sys',
-    // });
+/**
+ * Logs out the current user.
+ * Deletes the req.user property and clears the current session.
+ * @param  req request
+ * @param  res response
+ */
+exports.logoutUser = (req, res) => {
+  req.logout();
+  res.redirect('/login');
 };
