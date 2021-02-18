@@ -7,7 +7,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var mod_controller = require('../controllers/modController');
 
-router.get('/', mod_controller.moderator_students_list);
+router.get('/', mod_controller.renderModeratorHomepage);
 
 // TODO: POST request to add a new student, will modify to redirect
 router.post('/', urlencodedParser, mod_controller.moderator_create_student_post);
