@@ -23,7 +23,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build:css": "sass src/scss/main.scss public/css/main.css -s compressed"
+    "build:css": "sass src/scss/main.scss public/css/main.css -s compressed",
+    "build": "npm run build:css",
+    "populate": "node populate"
   },
   "repository": {
     "type": "git",

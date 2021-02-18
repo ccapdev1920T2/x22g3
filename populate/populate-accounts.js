@@ -6,14 +6,18 @@ const Account = require('../models/Account');
 const connect = require('../config/db-config');
 const { salt } = require('../config/bcrypt-config');
 
+/**
+ * Populates the accounts collection in the database.
+ * This is called in ./index.js
+ */
 module.exports = async () => {
   try {
     // read accounts.json file contents
-    console.log('Reading file...');
+    console.log('Reading accounts.json...');
     const buffer = fs.readFileSync(
       path.resolve(__dirname, '../data/accounts.json'),
     );
-    console.log('Successfully read file contents');
+    console.log('Successfully read file contents.');
 
     console.log('Converting buffer to object...');
     const accounts = JSON.parse(buffer);
@@ -23,7 +27,7 @@ module.exports = async () => {
     console.log('Connecting to database...');
     await connect();
 
-    // loop through each account from json file
+    // loop through each account
     for (let i = 0; i < accounts.length; i++) {
       const account = accounts[i];
 
