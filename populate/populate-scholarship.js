@@ -1,44 +1,44 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const PreEnlistment = require('../models/preenlist_course');
+const Scholarships = require('../models/scholarship');
 const connect = require('../config/db-config');
 
 /**
- * Populates the pre-enlistment courses collection in the database.
+ * Populates the scholarship collection in the database.
  * This is called in ./index.js
  */
 module.exports = async () => {
   try {
-    // read preenlistment-courses.json file contents
+    // read scholarships.json file contents
     console.log('Reading accounts.json...');
     const buffer = fs.readFileSync(
-      path.resolve(__dirname, '../data/preenlistment-courses.json'),
+      path.resolve(__dirname, '../data/scholarships.json'),
     );
     console.log('Successfully read file contents.');
 
     console.log('Converting buffer to object...');
-    const courses = JSON.parse(buffer);
+    const scholarships = JSON.parse(buffer);
     console.log('Successfully converted.');
 
     // connect to db
     console.log('Connecting to database...');
     await connect();
 
-    // loop through each course
-    for (let i = 0; i < courses.length; i++) {
-      const course = courses[i];
+    // loop through each scholarship
+    for (let i = 0; i < scholarships.length; i++) {
+      const scholarship = scholarships[i];
 
-      const savedCourse = await PreEnlistment.findOne({
-        courseCode: course.courseCode
+      const savedScholarship = await Scholarships.findOne({
+        name: scholarship.courseCode
       });
 
-      if (savedCourse) {
-        console.log(`Skipping course ${course.courseCode}`);
+      if (savedScholarship) {
+        console.log(`Skipping scholarship ${scholarship.name}`);
       } else {
-        console.log('Creating course...');
-        await PreEnlistment.create(course);
-        console.log('Course created.');
+        console.log('Creating scholarship...');
+        await Scholarships.create(scholarship);
+        console.log('Scholarship created.');
       }
     }
 
