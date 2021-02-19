@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const { renderStudentHomepage } = require('../controllers/indexController');
-const { isAuth } = require('../helpers/auth-helper');
+const { isAuth, isStudent } = require('../helpers/auth-helper');
 
-router.get('/', isAuth, renderStudentHomepage);
+router.get('/', isAuth, isStudent, renderStudentHomepage);
 
 module.exports = router;
