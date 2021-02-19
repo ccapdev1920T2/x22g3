@@ -7,10 +7,10 @@ var login_controller = require('../controllers/loginController');
 
 router.get('/', login_controller.login_student_landing_page_get);
 
-router.post('/', urlencodedParser, login_controller.login_student_landing_page_post);
+router.post('/', login_controller.login_student_landing_page_post);
 
 router.get('/mod', login_controller.renderModeratorLogin);
 
-router.post('/mod', urlencodedParser, login_controller.postModeratorLogin);
+router.post('/mod', login_controller.postModeratorLogin);
 
 module.exports = router;

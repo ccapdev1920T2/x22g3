@@ -1,8 +1,8 @@
-var port = 8080;
+var port = process.env.PORT || 8080;
 var express = require('express');
 var app = express();
 const path = require('path');
-const favicon = require('serve-favicon')
+const favicon = require('serve-favicon');
 const hbs = require('express-handlebars').create({
   extname: 'hbs',
   defaultLayout: 'main',
@@ -14,25 +14,38 @@ const hbs = require('express-handlebars').create({
     },
   },
 });
-
+const connectDb = require('./config/db-config');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-const url = 'mongodb://localhost:27017/animo-sys';
-const mongooseOptions = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-};
+const passport = require('passport');
 
-mongoose.connect(url, mongooseOptions, err => {
-  if (err) throw err;
-  console.log('connected at ' + url);
-});
+connectDb();
 
+app.use(
+  session({
+    secret: 'FeelsSadCat',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  }),
+);
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
 // serve static files
 app.use(express.static('public'));
-app.use('/data', express.static('data'))
+app.use('/data', express.static('data'));
+
+// parse both urlencoded and application/json content types
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Passport
+require('./config/passport-config')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Routes
 var indexRoute = require('./routes/index');
 var cartRoute = require('./routes/cart');
@@ -44,7 +57,7 @@ var modRoute = require('./routes/mod');
 var loginRoute = require('./routes/login');
 var logoutRoute = require('./routes/logout');
 
-app.use(favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico')));
 app.use('/', indexRoute);
 app.use('/home', indexRoute);
 app.use('/cart', cartRoute);
