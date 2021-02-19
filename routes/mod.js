@@ -7,7 +7,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var mod_controller = require('../controllers/modController');
 const { isAuth, isModerator } = require('../helpers/auth-helper');
 
-// use authentication for all /mod routes
+// use authentication and authorization for all /mod routes
 router.use(isAuth, isModerator);
 
 router.get('/', mod_controller.renderModeratorHomepage);
