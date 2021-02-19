@@ -37,8 +37,9 @@ app.set('view engine', 'hbs');
 app.use(express.static('public'));
 app.use('/data', express.static('data'));
 
-// use body-parser
+// parse both urlencoded and application/json content types
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Passport
 require('./config/passport-config')(passport);
