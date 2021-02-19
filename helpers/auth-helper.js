@@ -6,7 +6,7 @@ const Account = require('../models/Account');
  * otherwise redirects them to the login page.
  * Use this on routes that need authentication,
  * but doesn't necessarily need to know the user type.
- * 
+ *
  * @param  req request
  * @param  res response
  * @param  next callback for next middleware
