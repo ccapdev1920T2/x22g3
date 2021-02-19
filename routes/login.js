@@ -5,9 +5,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var login_controller = require('../controllers/loginController');
 
-router.get('/', login_controller.login_student_landing_page_get);
+router.get('/', login_controller.renderStudentLogin);
 
-router.post('/', login_controller.login_student_landing_page_post);
+router.post('/', login_controller.postStudentLogin);
 
 router.get('/mod', login_controller.renderModeratorLogin);
 
