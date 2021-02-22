@@ -1,11 +1,39 @@
 [
-    {"college": "Brother Andrew Gonzales College of Education"},
-    {"college": "College of Computer Studies"}, 
-    {"college": "College of Law"}, 
-    {"college": "College of Liberal Arts"}, 
-    {"college": "College of Science"}, 
-    {"college": "Gokongwei College of Engineering"}, 
-    {"college": "Ramon V. Del Rosario College of Business"}, 
-    {"college": "School of Economics"}
-    
+  {
+    "name": "Brother Andrew Gonzales College of Education",
+    "code": "BAGCED",
+    "degrees": [
+      {
+        "name": "Bachelor of Science, Major in Early Childhood Education",
+        "code": "BEED-ECED"
+      },
+      {
+        "name": "Bachelor of Secondary Education, major in English",
+        "code": "BSED-ENGL"
+      },
+      {
+        "name": "Bachelor of Secondary Education major in Science with specialization in Biology",
+        "code": "BSED-BIO"
+      },
+      {
+        "name": "Bachelor of Secondary Education major in Science with specialization in Chemistry",
+        "code": "BSED-CHY"
+      },
+      {
+        "name": "Bachelor of Secondary Education, major in Mathematics",
+        "code": "BSED-MTH"
+      },
+      {
+        "name": "Bachelor of Secondary Education Major in Physics",
+        "code": "BSED-PHY"
+      }
+    ]
+  },
+  { "name": "College of Computer Studies" },
+  { "name": "College of Law" },
+  { "name": "College of Liberal Arts" },
+  { "name": "College of Science" },
+  { "name": "Gokongwei College of Engineering" },
+  { "name": "Ramon V. Del Rosario College of Business" },
+  { "name": "School of Economics" }
 ]

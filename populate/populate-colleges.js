@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const Colleges = require('../models/college');
+const Colleges = require('../models/College');
 const connect = require('../config/db-config');
 
 /**
@@ -11,7 +11,7 @@ const connect = require('../config/db-config');
 module.exports = async () => {
   try {
     // read colleges.json file contents
-    console.log('Reading accounts.json...');
+    console.log('Reading colleges.json...');
     const buffer = fs.readFileSync(
       path.resolve(__dirname, '../data/colleges.json'),
     );
@@ -30,7 +30,8 @@ module.exports = async () => {
       const college = colleges[i];
 
       const savedCollege = await Colleges.findOne({
-        name: college.courseCode
+        name: college.name,
+        code: college.code,
       });
 
       if (savedCollege) {
