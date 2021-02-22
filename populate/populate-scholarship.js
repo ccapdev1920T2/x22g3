@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const Scholarships = require('../models/scholarship');
+const Scholarships = require('../models/Scholarship');
 const connect = require('../config/db-config');
 
 /**
