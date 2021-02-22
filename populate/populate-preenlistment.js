@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const PreEnlistment = require('../models/preenlist_course');
+const PreEnlistment = require('../models/PreenlistmentCourse');
 const connect = require('../config/db-config');
 
 /**
@@ -11,7 +11,7 @@ const connect = require('../config/db-config');
 module.exports = async () => {
   try {
     // read preenlistment-courses.json file contents
-    console.log('Reading accounts.json...');
+    console.log('Reading preenlistment-courses.json...');
     const buffer = fs.readFileSync(
       path.resolve(__dirname, '../data/preenlistment-courses.json'),
     );
