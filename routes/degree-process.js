@@ -1,8 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var { renderDegreeProcess } = require('../controllers/degreeProcessController');
+const { renderDegreeProcess } = require('../controllers/degreeProcessController');
+const { isAuth, isStudent } = require('../helpers/auth-helper');
 
-router.get('/', renderDegreeProcess);
+router.get('/', isAuth, isStudent, renderDegreeProcess);
 
 module.exports = router;
