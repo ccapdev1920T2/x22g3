@@ -29,11 +29,405 @@
       }
     ]
   },
-  { "name": "College of Computer Studies" },
-  { "name": "College of Law" },
-  { "name": "College of Liberal Arts" },
-  { "name": "College of Science" },
-  { "name": "Gokongwei College of Engineering" },
-  { "name": "Ramon V. Del Rosario College of Business" },
-  { "name": "School of Economics" }
+  { "name": "College of Computer Studies", 
+    "code": "CCS",
+    "degrees": [
+      {
+        "name": "Bachelor of Science in Computer Science Major in Software Technology",
+        "code": "BSCS-ST"
+      },
+      {
+        "name": "Major in Software Technology Major in Network and Information Security",
+        "code": "BSCS-NIS"
+      },
+      {
+        "name": "Bachelor of Science in Computer Science Major in Computer Systems Engineering",
+        "code": "BS-CSE"
+      },
+      {
+        "name": "Bachelor of Science in Information Systems",
+        "code": "BS-ICT"
+      },
+      {
+        "name": "Bachelor of Science in Information Technology",
+        "code": "BS-IT"
+      },
+      {
+        "name": "Bachelor of Science in Interactive Entertainment Major in Game Art and Design",
+        "code": "BSIET-AD"
+      },
+      {
+        "name": "Bachelor of Science in Interactive Entertainment Major in Game Development",
+        "code": "BSIET-GD"
+      },
+      {
+        "name": "Bachelor of Science (Honors) in Computer Science and Master of Science in Computer Science",
+        "code": "BSCS-ST-MSCS"
+      }
+    ]
+  },
+  { "name": "College of Liberal Arts", 
+    "code": "CLA",
+    "degrees": [
+      {
+        "name": "Bachelor of Arts in Behavioral Sciences, Major in Organizational and Social Systems Development",
+        "code": "ABBHS-OSSD"
+      },
+      {
+        "name": "Bachelor of Arts in Development Studies",
+        "code": "AB-DVS"
+      },
+      {
+        "name": "Bachelor of Arts in History",
+        "code": "AB-HIS"
+      },
+      {
+        "name": "Bachelor of Arts in Southeast Asian Studies",
+        "code": "AB-SEA"
+      },
+      {
+        "name": "AB in International Studies, Major in American Studies",
+        "code": "ABIS-AMS"
+      },
+      {
+        "name": "AB in International Studies, Major in European Studies",
+        "code": "ABIS-EUS"
+      },
+      {
+        "name": "AB in International Studies, Major in Japanese Studies",
+        "code": "ABIS-JPS"
+      },
+      {
+        "name": "AB in International Studies major in Chinese Studies",
+        "code": "ABIS-CNS"
+      },
+      {
+        "name": "Bachelor of Arts in Literature Major in Creative Writing",
+        "code": "ABLit-CW"
+      },
+      {
+        "name": "Bachelor of Arts in Philippine Studies, Major in Filipino in Mass Media (AB-PHS)",
+        "code": "AB-PHS"
+      },
+      {
+        "name": "Bachelor of Arts in Political Science",
+        "code": "AB-PLS"
+      },
+      {
+        "name": "Bachelor of Arts in Communication Arts",
+        "code": "AB-CA"
+      },
+      {
+        "name": "Bachelor of Arts in Organizational Communication",
+        "code": "AB-OC"
+      },
+      {
+        "name": "AB, Major in Philosophy",
+        "code": "AB-PHL"
+      },
+      {
+        "name": "Bachelor of Arts in Psychology",
+        "code": "AB-PSY"
+      },
+      {
+        "name": "Bachelor of Science in Psychology",
+        "code": "BSPSY"
+      },
+      {
+        "name": "AB Sociology",
+        "code": "AB-SOC"
+      },
+      {
+        "name": "Bachelor of Arts (Honors) and Master of Arts in Behavioral Sciences with Specialization in Organizational and Social Systems Development (Ladderized Program)",
+        "code": "MBHSL-OSSD"
+      }
+    ]},
+  { "name": "College of Science", 
+    "code": "COS",
+    "degrees": [
+      {
+        "name": "Bachelor of Science (BS) in Biochemistry",
+        "code": "BSCS-ST"
+      },
+      {
+        "name": "BS in Biology major in Medical Biology ",
+        "code": "BSCS-NIS"
+      },
+      {
+        "name": "BS in Biology major in Molecular Biology and Biotechnology",
+        "code": "BS-CSE"
+      },
+      {
+        "name": "BS in Biology major in Systematics and Ecology",
+        "code": "BS-ICT"
+      },
+      {
+        "name": "BS in Chemistry",
+        "code": "BS-IT"
+      },
+      {
+        "name": "BS in Chemistry major in Food Science",
+        "code": "BSIET-AD"
+      },
+      {
+        "name": "BS in Chemistry minor in Business Studies",
+        "code": "BSIET-GD"
+      },
+      {
+        "name": "BS in Human Biology",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Mathematics with specialization in Business Applications",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Mathematics with specialization in Computer Applications",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Statistics Major in Actuarial Science",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Physics Minor in Economics",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Physics Minor in Finance",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Physics with specialization in Materials Science",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Physics with specialization in Medical Instrumentation",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Premed Physics",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science in Animal Biology",
+        "code": "BSCS-ST-MSCS"
+      }
+    ]},
+  { "name": "Gokongwei College of Engineering", 
+    "code": "GCOE",
+    "degrees": [
+      {
+        "name": "Bachelor of Science in Chemical Engineering",
+        "code": "BSCS-ST"
+      },
+      {
+        "name": "BS in Civil Engineering w/ Specializations in Structural Engineering; Construction Technology and Management; Hydraulics and Water Resources Engineering; Transportation Engineering",
+        "code": "BSCS-NIS"
+      },
+      {
+        "name": "BS in Computer Engineering",
+        "code": "BS-CSE"
+      },
+      {
+        "name": "BS in Electronics Engineering",
+        "code": "BS-ICT"
+      },
+      {
+        "name": "BS in Industrial Engineering",
+        "code": "BS-IT"
+      },
+      {
+        "name": "Bachelor of Science in Industrial Engineering with specialization in Information Technology",
+        "code": "BSIET-AD"
+      },
+      {
+        "name": "Bachelor of Science in Industrial Engineering with specialization in Service Management",
+        "code": "BSIET-GD"
+      },
+      {
+        "name": "BS/MS Honors Program for Industrial Engineering (BS/MS IE)",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science in Industrial Engineering (Honors) and Master of Science in Industrial Engineering",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Manufacturing Engineering and Management with specialization in Mechatronics and Robotics Engineering",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science in Mechanical Engineering with Specialization in Mechatronics Engineering",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science  (Honors) and Masters of Science in Mechanical Engineering",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science (Honors) and Masters of Science in Chemical Engineering",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science (Honors) and Masters of Science in Civil Engineering   with specializations in: Structural Engineering Construction Technology and Management Hydraulics and Water Resources Engineering Transportation Engineering",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science (Honors) and Masters of Science in Computer Engineering",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science (Honors) and Masters of Science in Electronics Engineering",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science (Honors) and Masters of Science in Manufacturing Engineering and Management",
+        "code": "BSCS-ST-MSCS"
+      }
+    ]},
+  { "name": "Ramon V. Del Rosario College of Business",
+    "code": "COB",
+    "degrees": [
+      {
+        "name": "Bachelor of Science in Accountancy",
+        "code": "BSCS-ST"
+      },
+      {
+        "name": "Bachelor of Science in Advertising Management",
+        "code": "BSCS-NIS"
+      },
+      {
+        "name": "Bachelor of Science in Applied Corporate Management",
+        "code": "BS-CSE"
+      },
+      {
+        "name": "Bachelor of Science in Business Management",
+        "code": "BS-ICT"
+      },
+      {
+        "name": "Bachelor of Science in Entrepreneurship",
+        "code": "BS-IT"
+      },
+      {
+        "name": "Bachelor of Science in Interdisciplinary Business Studies",
+        "code": "BSIET-AD"
+      },
+      {
+        "name": "Bachelor of Science in Legal Management",
+        "code": "BSIET-GD"
+      },
+      {
+        "name": "Bachelor of Science in Management of Financial Institutions",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Science in Marketing Management",
+        "code": "BSCS-ST-MSCS"
+      }
+    ]},
+  { "name": "School of Economics",
+    "code": "SOE",
+    "degrees": [
+      {
+        "name": "Bachelor of Science in Applied Economics (Honors) and Master of Science in Economics",
+        "code": "BSCS-ST"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics",
+        "code": "BSCS-NIS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Accountancy",
+        "code": "BS-CSE"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Advertising Management",
+        "code": "BS-ICT"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Applied Corporate Management",
+        "code": "BS-IT"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Business Management",
+        "code": "BSIET-AD"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Legal Management",
+        "code": "BSIET-GD"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Management of Financial Institutions",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Marketing Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Accountancy",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Advertising Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Applied Corporate Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Business Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Legal Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Management of Financial Institutions",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Marketing Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "Bachelor of Arts (AB) Major in Economics",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "AB Major in Economics and BS in Accountancy",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "AB Major in Economics and BS in Advertising Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "AB Major in Economics and BS in Applied Corporate Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "AB Major in Economics and BS in Business Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "AB Major in Economics and BS in Legal Management",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "AB Major in Economics and BS in Management of Financial Institutions",
+        "code": "BSCS-ST-MSCS"
+      },
+      {
+        "name": "AB Major in Economics and BS in Marketing Management",
+        "code": "BSCS-ST-MSCS"
+      }
+    ]}
 ]
