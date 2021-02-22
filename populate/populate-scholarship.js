@@ -30,7 +30,7 @@ module.exports = async () => {
       const scholarship = scholarships[i];
 
       const savedScholarship = await Scholarships.findOne({
-        name: scholarship.courseCode
+        name: scholarship.name,
       });
 
       if (savedScholarship) {

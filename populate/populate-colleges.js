@@ -30,7 +30,7 @@ module.exports = async () => {
       const college = colleges[i];
 
       const savedCollege = await Colleges.findOne({
-        name: scholarship.courseCode
+        name: college.courseCode
       });
 
       if (savedCollege) {
