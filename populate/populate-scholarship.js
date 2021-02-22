@@ -11,7 +11,7 @@ const connect = require('../config/db-config');
 module.exports = async () => {
   try {
     // read scholarships.json file contents
-    console.log('Reading accounts.json...');
+    console.log('Reading scholarships.json...');
     const buffer = fs.readFileSync(
       path.resolve(__dirname, '../data/scholarships.json'),
     );
