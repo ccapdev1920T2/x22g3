@@ -1,18 +1,28 @@
 var loginStudentForm = document.getElementById('login-student-form');
 var loginStudentSubmit = document.getElementById('login-student-submit');
+var loginStudentSpinner = document.getElementById('login-student-spinner');
+var loginStudentText = document.getElementById('login-student-text');
 var loginStudentErrorContainer = document.getElementById(
   'login-student-error-container',
 );
 
+var isLoading = false;
+
 loginStudentForm.onsubmit = function (e) {
   e.preventDefault();
 
-  loginStudentSubmit.disabled = true;
+  isLoading = true;
+  handleButtonSpinner(
+    isLoading,
+    loginStudentSubmit,
+    loginStudentSpinner,
+    loginStudentText,
+  );
 
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
 
-  // send AJAX request to POST /login/mod
+  // send AJAX request to POST /login
   axios
     .post(
       `/login`,
@@ -22,6 +32,7 @@ loginStudentForm.onsubmit = function (e) {
       },
       {
         validateStatus: function (status) {
+          // resolve the promise when this condition is true
           return (status >= 200 && status < 300) || status == 401;
         },
       },
@@ -31,11 +42,25 @@ loginStudentForm.onsubmit = function (e) {
         window.location.pathname = `/`;
       } else {
         loginStudentErrorContainer.innerHTML = response.data;
-        loginStudentSubmit.disabled = false;
+
+        isLoading = false;
+        handleButtonSpinner(
+          isLoading,
+          loginStudentSubmit,
+          loginStudentSpinner,
+          loginStudentText,
+        );
       }
     })
     .catch(function (err) {
       console.log(err);
-      loginStudentSubmit.disabled = false;
+
+      isLoading = false;
+      handleButtonSpinner(
+        isLoading,
+        loginStudentSubmit,
+        loginStudentSpinner,
+        loginStudentText,
+      );
     });
 };
