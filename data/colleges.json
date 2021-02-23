@@ -147,31 +147,31 @@
     "degrees": [
       {
         "name": "Bachelor of Science (BS) in Biochemistry",
-        "code": ""
+        "code": "BS-BCHEM"
       },
       {
         "name": "BS in Biology major in Medical Biology ",
-        "code": ""
+        "code": "BIO-MED"
       },
       {
         "name": "BS in Biology major in Molecular Biology and Biotechnology",
-        "code": ""
+        "code": "BIO-MBB"
       },
       {
         "name": "BS in Biology major in Systematics and Ecology",
-        "code": ""
+        "code": "BIO-SEC"
       },
       {
         "name": "BS in Chemistry",
-        "code": ""
+        "code": "BS-CHY"
       },
       {
         "name": "BS in Chemistry major in Food Science",
-        "code": ""
+        "code": "BS-CHYFS"
       },
       {
         "name": "BS in Chemistry minor in Business Studies",
-        "code": ""
+        "code": "BS-CHY"
       },
       {
         "name": "BS in Human Biology",
@@ -191,27 +191,35 @@
       },
       {
         "name": "BS in Physics Minor in Economics",
-        "code": ""
+        "code": "PHY-ECO"
       },
       {
         "name": "BS in Physics Minor in Finance",
-        "code": ""
+        "code": "PHY-FIN"
       },
       {
         "name": "BS in Physics with specialization in Materials Science",
-        "code": ""
+        "code": "PHY-MAT"
       },
       {
         "name": "BS in Physics with specialization in Medical Instrumentation",
-        "code": ""
+        "code": "PHY-MED"
       },
       {
         "name": "BS in Premed Physics",
         "code": "BPMPH"
       },
       {
-        "name": "Bachelor of Science in Animal Biology",
-        "code": ""
+        "name": "BS with Specialization in Business Applications",
+        "code": "MTH-BAP"
+      },
+      {
+        "name": "BS with Specialization in Computer Applications",
+        "code": "MTH-CAP"
+      },
+      {
+        "name": "BS in Statistics Major in Actural Science",
+        "code": "BS-STAT"
       }
     ]},
   { "name": "Gokongwei College of Engineering", 
@@ -219,7 +227,7 @@
     "degrees": [
       {
         "name": "Bachelor of Science in Chemical Engineering",
-        "code": ""
+        "code": "BS-CHE"
       },
       {
         "name": "BS in Civil Engineering w/ Specializations in Structural Engineering",
@@ -243,27 +251,27 @@
       },
       {
         "name": "BS in Computer Engineering",
-        "code": "BSCPE"
+        "code": "BS-CPE"
       },
       {
         "name": "BS in Electronics Engineering",
-        "code": "BSECE"
+        "code": "BS-ECE"
       },
       {
         "name": "BS in Industrial Engineering",
-        "code": ""
+        "code": "BS-IE"
       },
       {
         "name": "Bachelor of Science in Industrial Engineering with specialization in Information Technology",
-        "code": ""
+        "code": "BS IME-IT"
       },
       {
         "name": "Bachelor of Science in Industrial Engineering with specialization in Service Management",
-        "code": ""
+        "code": "BS IME-SM"
       },
       {
         "name": "BS/MS Honors Program for Industrial Engineering (BS/MS IE)",
-        "code": ""
+        "code": "BS/MS IE"
       },
       {
         "name": "Bachelor of Science in Industrial Engineering (Honors) and Master of Science in Industrial Engineering",
