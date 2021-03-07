@@ -8,5 +8,10 @@
     "username": "11839864",
     "password": "passwords",
     "type": "student"
+  },
+  {
+    "username": "test1",
+    "password": "test1",
+    "type": "moderator"
   }
 ]
