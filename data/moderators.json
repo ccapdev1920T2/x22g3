@@ -1,0 +1,11 @@
+[
+  {
+    "account": "johndoe",
+    "name": {
+      "first": "John",
+      "middle": "Roe",
+      "last": "Doe"
+    },
+    "email": "john.doe@dlsu.edu.ph"
+  }
+]

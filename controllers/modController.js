@@ -1,5 +1,5 @@
 // REQUIRE MODELS AS NEEDED
-var Moderator = require("../models/moderator");
+var Moderator = require("../models/Moderator");
 var Student = require("../models/Student");
 
 // Respond to /mod GET request

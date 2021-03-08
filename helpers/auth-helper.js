@@ -28,7 +28,7 @@ exports.isAuth = (req, res, next) => {
  * @param  next callback for next middleware
  */
 exports.isModerator = (req, res, next) => {
-  if (req.user.type === Account.getModeratorType()) return next();
+  if (req.user.account.type === Account.getModeratorType()) return next();
 
   res.redirect("/login");
 };

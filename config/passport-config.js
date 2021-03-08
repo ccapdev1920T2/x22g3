@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 const Account = require("../models/Account");
 const Student = require("../models/Student");
+const Moderator = require("../models/Moderator");
 
 module.exports = (passport) => {
   passport.use(
@@ -60,8 +61,12 @@ module.exports = (passport) => {
 
   passport.deserializeUser(async (key, done) => {
     try {
-      // TODO: refactor later when Moderator model is ok
-      const user = await Student.findOne({ account: key.id })
+      let Model;
+
+      if (key.type === Account.getStudentType()) Model = Student;
+      else Model = Moderator;
+
+      const user = await Model.findOne({ account: key.id })
         .populate("account", "-password")
         .exec();
 
