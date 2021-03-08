@@ -40,6 +40,14 @@ module.exports = async () => {
         console.log(`Skipping student with ID number ${student.idNum}`);
       } else {
         console.log("Creating student...");
+
+        const savedAccount = await Account.findOne({
+          username: student.account,
+        });
+        if (!savedAccount) throw new Error("account not found");
+
+        student.account = savedAccount._id;
+
         await Student.create(student);
         console.log("Student created.");
       }

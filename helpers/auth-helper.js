@@ -1,4 +1,4 @@
-const Account = require('../models/Account');
+const Account = require("../models/Account");
 
 /**
  * Checks if the user is logged in.
@@ -14,7 +14,7 @@ const Account = require('../models/Account');
 exports.isAuth = (req, res, next) => {
   if (req.isAuthenticated()) return next();
 
-  res.redirect('/login');
+  res.redirect("/login");
 };
 
 /**
@@ -30,7 +30,7 @@ exports.isAuth = (req, res, next) => {
 exports.isModerator = (req, res, next) => {
   if (req.user.type === Account.getModeratorType()) return next();
 
-  res.redirect('/login');
+  res.redirect("/login");
 };
 
 /**
@@ -44,7 +44,7 @@ exports.isModerator = (req, res, next) => {
  * @param  next callback for next middleware
  */
 exports.isStudent = (req, res, next) => {
-  if (req.user.type === Account.getStudentType()) return next();
+  if (req.user.account.type === Account.getStudentType()) return next();
 
-  res.redirect('/login');
+  res.redirect("/login");
 };

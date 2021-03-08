@@ -1,3 +1,3 @@
-exports.renderStudentHomepage = (req, res) => {
-    res.render("index", { title: "Home | Animo.sys" });
+exports.renderStudentHomepage = async (req, res) => {
+  res.render("index", { title: "Home | Animo.sys" });
 };

@@ -1,14 +1,15 @@
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcrypt");
 
-const Account = require('../models/Account');
+const Account = require("../models/Account");
+const Student = require("../models/Student");
 
-module.exports = passport => {
+module.exports = (passport) => {
   passport.use(
-    'local-student',
+    "local-student",
     new LocalStrategy(async (username, password, done) => {
       try {
-        const info = { message: 'Invalid credentials' };
+        const info = { message: "Invalid credentials" };
         const account = await Account.findOne({ username });
         if (!account) {
           return done(null, false, info);
@@ -23,14 +24,14 @@ module.exports = passport => {
       } catch (error) {
         return done(error);
       }
-    }),
+    })
   );
 
   passport.use(
-    'local-moderator',
+    "local-moderator",
     new LocalStrategy(async (username, password, done) => {
       try {
-        const info = { message: 'Invalid credentials' };
+        const info = { message: "Invalid credentials" };
         const account = await Account.findOne({ username });
         if (!account) {
           return done(null, false, info);
@@ -46,7 +47,7 @@ module.exports = passport => {
       } catch (error) {
         return done(error);
       }
-    }),
+    })
   );
 
   passport.serializeUser((user, done) => {
@@ -59,8 +60,13 @@ module.exports = passport => {
 
   passport.deserializeUser(async (key, done) => {
     try {
-      const account = await Account.findById(key.id, '-password');
-      done(null, account);
+      // TODO: refactor later when Moderator model is ok
+      const user = await Student.findOne({ account: key.id })
+        .populate("account", "-password")
+        .exec();
+
+      console.log(user);
+      done(null, user);
     } catch (error) {
       done(error);
     }

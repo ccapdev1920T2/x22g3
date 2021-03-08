@@ -1,12 +1,12 @@
-const Student = require('../models/student');
-const Course = require('../models/course');
-const Request = require('../models/request');
+const Student = require("../models/Student");
+const Course = require("../models/course");
+const Request = require("../models/request");
 
 // Landing page for /enrollment route
 exports.renderEnrollmentPage = (req, res) => {
-  res.render('enrollment', {
-    route: 'enrollment',
-    title: 'Enrollment | Animo.sys',
+  res.render("enrollment", {
+    route: "enrollment",
+    title: "Enrollment | Animo.sys",
   });
 };
 
@@ -16,79 +16,79 @@ exports.course_create_sample_get = (req, res) => {
   var courses = [
     {
       _id: new mongoose.Types.ObjectId(),
-      courseCode: 'CSARCH1',
-      section: 'X22',
-      days: ['M', 'W'],
-      time: { start: '0915', end: '1045' },
-      faculty: 'PERADILLA, M.',
-      room: 'GT201',
+      courseCode: "CSARCH1",
+      section: "X22",
+      days: ["M", "W"],
+      time: { start: "0915", end: "1045" },
+      faculty: "PERADILLA, M.",
+      room: "GT201",
       enlCap: 15,
       enrolled: 10,
     },
     {
       _id: new mongoose.Types.ObjectId(),
-      courseCode: 'GEETHIC',
-      section: 'X22',
-      days: ['M', 'W'],
-      time: { start: '1245', end: '1415' },
-      faculty: 'PERADILLA, M.',
-      room: 'GT203',
+      courseCode: "GEETHIC",
+      section: "X22",
+      days: ["M", "W"],
+      time: { start: "1245", end: "1415" },
+      faculty: "PERADILLA, M.",
+      room: "GT203",
       enlCap: 31,
       enrolled: 31,
     },
     {
       _id: new mongoose.Types.ObjectId(),
-      courseCode: 'STMATH',
-      section: 'X22',
-      days: ['T', 'H'],
-      time: { start: '0730', end: '0900' },
-      faculty: 'PERADILLA, M.',
-      room: 'GT203',
+      courseCode: "STMATH",
+      section: "X22",
+      days: ["T", "H"],
+      time: { start: "0730", end: "0900" },
+      faculty: "PERADILLA, M.",
+      room: "GT203",
       enlCap: 25,
       enrolled: 25,
     },
     {
       _id: new mongoose.Types.ObjectId(),
-      courseCode: 'STALGCM',
-      section: 'X22',
-      days: ['T', 'H'],
-      time: { start: '0915', end: '1045' },
-      faculty: 'PERADILLA, M.',
-      room: 'GT206',
+      courseCode: "STALGCM",
+      section: "X22",
+      days: ["T", "H"],
+      time: { start: "0915", end: "1045" },
+      faculty: "PERADILLA, M.",
+      room: "GT206",
       enlCap: 15,
       enrolled: 12,
     },
     {
       _id: new mongoose.Types.ObjectId(),
-      courseCode: 'CCAPDEV',
-      section: 'X22',
-      days: ['T', 'H'],
-      time: { start: '1100', end: '1230' },
-      faculty: 'PERADILLA, M.',
-      room: 'MRELBA',
+      courseCode: "CCAPDEV",
+      section: "X22",
+      days: ["T", "H"],
+      time: { start: "1100", end: "1230" },
+      faculty: "PERADILLA, M.",
+      room: "MRELBA",
       enlCap: 17,
       enrolled: 15,
     },
     {
       _id: new mongoose.Types.ObjectId(),
-      courseCode: 'GESPORT',
-      section: 'X22',
-      days: ['T'],
-      time: { start: '1300', end: '1500' },
-      faculty: 'PERADILLA, M.',
-      room: 'CVDCRT',
+      courseCode: "GESPORT",
+      section: "X22",
+      days: ["T"],
+      time: { start: "1300", end: "1500" },
+      faculty: "PERADILLA, M.",
+      room: "CVDCRT",
       enlCap: 40,
       enrolled: 38,
     },
     {
       _id: new mongoose.Types.ObjectId(),
-      courseCode: 'NATLANG',
+      courseCode: "NATLANG",
       isElective: true,
-      section: 'X22',
-      days: ['F'],
-      time: { start: '1615', end: '1745' },
-      faculty: '',
-      room: '',
+      section: "X22",
+      days: ["F"],
+      time: { start: "1615", end: "1745" },
+      faculty: "",
+      room: "",
       enlCap: 20,
       enrolled: 16,
     },
@@ -106,60 +106,60 @@ exports.course_create_sample_get = (req, res) => {
 };
 
 exports.renderClassSchedulePage = (req, res) => {
-  console.log('TODO: get data from Student');
-  res.render('class-schedule', {
-    title: 'Class Schedule | Animo.sys',
+  console.log("TODO: get data from Student");
+  res.render("class-schedule", {
+    title: "Class Schedule | Animo.sys",
   });
 };
 
 exports.renderAddClassPage = (req, res) => {
   console.log(
-    'TODO: get data from Student, EnrolledCourses, and Course (to view available courses)',
+    "TODO: get data from Student, EnrolledCourses, and Course (to view available courses)"
   );
-  res.render('add-class', {
-    title: 'Add a Class | Animo.sys',
+  res.render("add-class", {
+    title: "Add a Class | Animo.sys",
   });
 };
 
 // Drop a Class
 exports.renderDropClassPage = (req, res) => {
-  res.render('drop-class', {
-    title: 'Drop a Class | Animo.sys',
+  res.render("drop-class", {
+    title: "Drop a Class | Animo.sys",
   });
 };
 
 // Display list of dropped classes
 exports.renderDropClassListPage = (req, res) => {
-  res.render('dropclass_list', {
-    title: 'List of Dropped Classes | Animo.sys',
+  res.render("dropclass_list", {
+    title: "List of Dropped Classes | Animo.sys",
   });
 };
 
 // Get Request a Class landing page
 exports.renderRequestClassPage = (req, res) => {
-  res.render('request-class', {
-    title: 'Request a Class | Animo.sys',
+  res.render("request-class", {
+    title: "Request a Class | Animo.sys",
   });
 };
 
 // Post form data from /enrollment/requestclass
 exports.enrollment_request_class_post = (req, res) => {
-  console.log('TODO: create a new Request then update the Request collection');
-  res.render('request-class', {
-    title: 'Request a Class | Animo.sys',
+  console.log("TODO: create a new Request then update the Request collection");
+  res.render("request-class", {
+    title: "Request a Class | Animo.sys",
   });
 };
 
 // display course offerings page
 exports.renderCourseOfferingsPage = (req, res) => {
-  res.render('courseofferings', {
-    title: 'Course Offerings | Animo.sys',
+  res.render("courseofferings", {
+    title: "Course Offerings | Animo.sys",
   });
 };
 
 // TODO: move this to folder controllers/api
 exports.enrollment_course_offerings_search_get = (req, res) => {
-  console.log('TODO: get data from Course');
+  console.log("TODO: get data from Course");
 
   var q = req.query.q;
   var regex = new RegExp(q);
@@ -168,11 +168,11 @@ exports.enrollment_course_offerings_search_get = (req, res) => {
 
   var data = [];
 
-  Course.find({ courseCode: regex }, '-_id -__v')
+  Course.find({ courseCode: regex }, "-_id -__v")
     .exec()
-    .then(courses => {
+    .then((courses) => {
       data = courses;
       res.send(data);
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
