@@ -1,25 +1,50 @@
-const passport = require('passport');
+const Account = require("../models/Account");
 
 /**
- * Checks if the credentials provided by the user is valid or not.
- * Redirects user to the login page if credentials are invalid,
- * otherwise redirects to the home page.
- * Use this on routes that need authentication.
+ * Checks if the user is logged in.
+ * Calls the next middleware if they are logged in,
+ * otherwise redirects them to the login page.
+ * Use this on routes that need authentication,
+ * but doesn't necessarily need to know the user type.
  *
- * @param  req express Request object
- * @param  res express Response object
- * @param  next function to call the next middleware
+ * @param  req request
+ * @param  res response
+ * @param  next callback for next middleware
  */
 exports.isAuth = (req, res, next) => {
-  passport.authenticate('local', (authErr, account, info) => {
-    if (authErr) return next(authErr);
+  if (req.isAuthenticated()) return next();
 
-    if (!account) return res.send(info);
+  res.redirect("/login");
+};
 
-    req.login(account, loginErr => {
-      if (loginErr) return next(loginErr);
+/**
+ * Checks if the logged-in user is a moderator.
+ * Calls the next middleware if they are a moderator,
+ * otherwise redirects them to the login page.
+ * Use this after `isAuth()`.
+ *
+ * @param  req request
+ * @param  res response
+ * @param  next callback for next middleware
+ */
+exports.isModerator = (req, res, next) => {
+  if (req.user.account.type === Account.getModeratorType()) return next();
 
-      return res.redirect('/mod');
-    });
-  })(req, res, next);
+  res.redirect("/login");
+};
+
+/**
+ * Checks if the logged-in user is a student.
+ * Calls the next middleware if they are a student,
+ * otherwise redirects them to the login page.
+ * Use this after `isAuth()`.
+ *
+ * @param  req request
+ * @param  res response
+ * @param  next callback for next middleware
+ */
+exports.isStudent = (req, res, next) => {
+  if (req.user.account.type === Account.getStudentType()) return next();
+
+  res.redirect("/login");
 };

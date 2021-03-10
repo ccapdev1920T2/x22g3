@@ -1,38 +1,59 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
 
-var enrollment_controller = require("../controllers/enrollmentController");
+var enrollmentController = require('../controllers/enrollmentController');
+const { isAuth, isStudent } = require('../helpers/auth-helper');
 
 // /enrollment landing page
-router.get("/", enrollment_controller.enrollment_landing_page_get);
-
-// TEST CREATE COURSES
-//router.get('/create', enrollment_controller.course_create_sample);
+router.get('/', isAuth, isStudent, enrollmentController.renderEnrollmentPage);
 
 router.get(
-    "/class-schedule",
-    enrollment_controller.enrollment_class_schedule_get
-);
-
-router.get("/add-class", enrollment_controller.enrollment_add_class_get);
-
-router.get("/drop-class", enrollment_controller.enrollment_drop_class_get);
-
-router.get(
-    "/drop-class/checkout",
-    enrollment_controller.enrollment_dropclass_list_get
-);
-
-router.get("/request-class", enrollment_controller.renderRequestClass);
-
-router.get(
-    "/courseofferings",
-    enrollment_controller.enrollment_course_offerings_list_get
+  '/class-schedule',
+  isAuth,
+  isStudent,
+  enrollmentController.renderClassSchedulePage,
 );
 
 router.get(
-    "/courseofferings/search",
-    enrollment_controller.enrollment_course_offerings_search_get
+  '/add-class',
+  isAuth,
+  isStudent,
+  enrollmentController.renderAddClassPage,
+);
+
+router.get(
+  '/drop-class',
+  isAuth,
+  isStudent,
+  enrollmentController.renderDropClassPage,
+);
+
+router.get(
+  '/drop-class/checkout',
+  isAuth,
+  isStudent,
+  enrollmentController.renderDropClassListPage,
+);
+
+router.get(
+  '/request-class',
+  isAuth,
+  isStudent,
+  enrollmentController.renderRequestClassPage,
+);
+
+router.get(
+  '/courseofferings',
+  isAuth,
+  isStudent,
+  enrollmentController.renderCourseOfferingsPage,
+);
+
+router.get(
+  '/courseofferings/search',
+  isAuth,
+  isStudent,
+  enrollmentController.enrollment_course_offerings_search_get,
 );
 
 module.exports = router;

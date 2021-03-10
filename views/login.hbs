@@ -14,6 +14,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"
     defer></script>
+
+  <!-- AXIOS -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -25,17 +28,23 @@
       <div class="col-12 col-md-5 bg-light p-3 p-md-5 bg-green-highlight">
         <h1 class="text-center text-md-left">Log in to Animo.sys</h1>
         <br>
-        <form action="">
+        <div id="login-student-error-container"></div>
+        <form method="POST" id="login-student-form">
           <div class="form-group">
-            <label for="idNum">ID Number</label>
-            <input type="text" class="form-control" id="idNum">
+            <label for="username">ID Number</label>
+            <input type="text" class="form-control" id="username" name="username">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" name="password">
           </div>
 
-          <button type="submit" class="btn btn-primary text-right">Log in</button>
+          <button type="submit" id="login-student-submit" class="btn btn-primary text-right">
+            <div id="login-student-spinner" class="spinner-border spinner-border-sm d-none" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <span id="login-student-text">Log in</span>
+          </button>
         </form>
         <br>
         <p class='small'><a href="/login/mod">Moderator? Click here</a></p>
@@ -45,29 +54,7 @@
 
 </body>
 
-</html>
+<script src="/javascript/helpers/ui-helper.js"></script>
+<script src="/javascript/pages/login.js"></script>
 
-{{!-- <div class="form-container">
-  <h2 id="session-form-header">Log in</h2>
-  <br><br>
-  <form method="POST" action="/login">
-    <div class="flex-container">
-      <div class="input-container">
-        <label class='res-8' for="idNumber">ID NUMBER</label><br>
-        <input class='res-12' type="idNumber" id="idNumber" name="idNumber" value="{{data.idNumber}}"><br>
-      </div>
-      <div class="input-container">
-        <label class='res-8' for="password">PASSWORD</label><br>
-        <input class='res-12' type="password" id="password" name="password" value="{{data.password}}"><br>
-      </div>
-    </div>
-    <br>
-    <p class="err" id="errMsg">{{errMsg}}</p>
-    <br><br>
-    <div class="center-button">
-      <input type="submit" class='res-8' id="submit" value="LOG IN" onclick="return validateStudentLogin()">
-    </div>
-  </form>
-  <br><br>
-  <p class='res-8' id="login-mod"><a href="/login/mod">(Moderator? Click here)</a></p>
-</div> --}}
+</html>

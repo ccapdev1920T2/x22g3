@@ -3,17 +3,9 @@ var express = require('express');
 var app = express();
 const path = require('path');
 const favicon = require('serve-favicon');
-const hbs = require('express-handlebars').create({
-  extname: 'hbs',
-  defaultLayout: 'main',
-  helpers: {
-    section(name, options) {
-      if (!this._sections) this._sections = {};
-      this._sections[name] = options.fn(this);
-      return null;
-    },
-  },
-});
+
+require('./config/hbs-config')(app);
+
 const connectDb = require('./config/db-config');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -30,15 +22,14 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   }),
 );
-app.engine('hbs', hbs.engine);
-app.set('view engine', 'hbs');
 
 // serve static files
 app.use(express.static('public'));
 app.use('/data', express.static('data'));
 
-// use body-parser
+// parse both urlencoded and application/json content types
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Passport
 require('./config/passport-config')(passport);

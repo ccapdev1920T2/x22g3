@@ -1,0 +1,16 @@
+[
+  {
+    "account": "11823456",
+    "idNum": "11823456",
+    "name": {
+      "first": "Juan",
+      "middle": "Santos",
+      "last": "Dela Cruz"
+    },
+    "email": "juan_dela_cruz@dlsu.edu.ph",
+    "section": "X22",
+    "college": "CCS",
+    "degree": "CSS",
+    "year": 3
+  }
+]
