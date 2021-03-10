@@ -275,7 +275,7 @@
       },
       {
         "name": "Bachelor of Science in Industrial Engineering (Honors) and Master of Science in Industrial Engineering",
-        "code": ""
+        "code": "BSIE-MSIE"
       },
       {
         "name": "BS in Manufacturing Engineering and Management with specialization in Mechatronics and Robotics Engineering",
@@ -283,31 +283,27 @@
       },
       {
         "name": "Bachelor of Science in Mechanical Engineering with Specialization in Mechatronics Engineering",
-        "code": ""
+        "code": "BSME-ME"
       },
       {
         "name": "Bachelor of Science  (Honors) and Masters of Science in Mechanical Engineering",
-        "code": ""
+        "code": "BS-MS ME"
       },
       {
         "name": "Bachelor of Science (Honors) and Masters of Science in Chemical Engineering",
         "code": "BS-MS CHE"
       },
       {
-        "name": "Bachelor of Science (Honors) and Masters of Science in Civil Engineering with specializations in: Structural Engineering Construction Technology and Management Hydraulics and Water Resources Engineering Transportation Engineering",
-        "code": ""
-      },
-      {
         "name": "Bachelor of Science (Honors) and Masters of Science in Computer Engineering",
-        "code": ""
+        "code": "BS-MS CPE"
       },
       {
         "name": "Bachelor of Science (Honors) and Masters of Science in Electronics Engineering",
-        "code": ""
+        "code": "BS-MS-ECE"
       },
       {
         "name": "Bachelor of Science (Honors) and Masters of Science in Manufacturing Engineering and Management",
-        "code": ""
+        "code": "BS-MS-MEM"
       }
     ]},
   { "name": "Ramon V. Del Rosario College of Business",
