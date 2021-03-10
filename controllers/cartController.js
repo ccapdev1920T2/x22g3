@@ -1,6 +1,4 @@
-var PreenlistedCourses = require("../models/preenlisted_courses");
-var PreenlistCourse = require("../models/preenlist_course");
-var EnrolledCourses = require("../models/preenlisted_courses");
+require('../models/PreenlistmentCourse');
 
 exports.cart_landing_page_get = (req, res) => {
     res.render("cart", {
