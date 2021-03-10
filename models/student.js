@@ -14,6 +14,7 @@ const studentSchema = mongoose.Schema({
   year: { type: Number, required: true },
   college: { type: String, required: true },
   degree: { type: String, required: true },
+  hasAccess: { type: Boolean, default: true },
 });
 
 module.exports = mongoose.model("Student", studentSchema);
