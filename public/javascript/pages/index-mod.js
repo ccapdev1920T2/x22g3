@@ -1,16 +1,28 @@
 var addStudentForm = document.getElementById("add-student-form");
-var addStudentFormElements = addStudentForm.elements;
+var addStudentFormElements = Array.from(addStudentForm.elements);
+var addStudentSubmit = document.getElementById("add-student-submit");
+var addStudentSpinner = document.getElementById("add-student-spinner");
+var addStudentText = document.getElementById("add-student-text");
+
+// remove non-input elements
+addStudentFormElements = addStudentFormElements.filter(function (el) {
+  return Boolean(el.name);
+});
 
 addStudentForm.onsubmit = function (e) {
+  handleButtonSpinner(
+    true,
+    addStudentSubmit,
+    addStudentSpinner,
+    addStudentText
+  );
   e.preventDefault();
 
   var body = {};
 
-  // assumes that the submit button is the last element in the form
-  // adjust the loop condition accordingly if otherwise
-  for (var i = 0; i < addStudentFormElements.length; i++) {
-    var name = addStudentFormElements.item(i).name;
-    body[name] = addStudentFormElements.item(i).value;
+  for (let i = 0; i < addStudentFormElements.length; i++) {
+    var name = addStudentFormElements[i].name;
+    body[name] = addStudentFormElements[i].value;
   }
 
   axios
@@ -22,8 +34,48 @@ addStudentForm.onsubmit = function (e) {
     })
     .then((response) => {
       console.log(response);
+
+      if (response.status == 400) {
+        var errors = response.data.errors;
+
+        for (let i = 0; i < addStudentFormElements.length; i++) {
+          var element = addStudentFormElements[i];
+          var errorTextContainer = document.getElementById(
+            `${element.id}-error`
+          );
+          var errorObject = errors.find(function (error) {
+            return error.param === element.name;
+          });
+
+          if (errorObject) {
+            errorTextContainer.innerHTML = errorObject.msg;
+            element.classList.add("is-invalid");
+            element.classList.remove("is-valid");
+          } else {
+            errorTextContainer.innerHTML = "";
+            element.classList.add("is-valid");
+            element.classList.remove("is-invalid");
+          }
+        }
+      }
+
+      handleButtonSpinner(
+        false,
+        addStudentSubmit,
+        addStudentSpinner,
+        addStudentText
+      );
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+
+      handleButtonSpinner(
+        false,
+        addStudentSubmit,
+        addStudentSpinner,
+        addStudentText
+      );
+    });
 };
 
 var removeIcon = function (cell, formatterParams, onRendered) {
