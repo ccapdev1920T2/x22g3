@@ -60,7 +60,7 @@ app.use("/login", loginRoute);
 app.use("/logout", logoutRoute);
 
 // API ROUTES
-app.use("/api/students", require("./routes/api/student-api"));
+app.use("/api/students", require("./routes/api/studentApi"));
 
 app.listen(port, () => {
   console.log(`App listening at port ${port}`);
