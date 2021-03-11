@@ -1,13 +1,15 @@
+var addStudentButton = document.getElementById("add-student-modal-btn");
 var addStudentForm = document.getElementById("add-student-form");
-var addStudentFormElements = Array.from(addStudentForm.elements);
 var addStudentSubmit = document.getElementById("add-student-submit");
 var addStudentSpinner = document.getElementById("add-student-spinner");
 var addStudentText = document.getElementById("add-student-text");
 
-// remove non-input elements
-addStudentFormElements = addStudentFormElements.filter(function (el) {
-  return Boolean(el.name);
-});
+var addStudentFormElements = getFormElements(addStudentForm);
+
+addStudentButton.onclick = function (e) {
+  resetFormValidationStyles(addStudentForm);
+  resetFormInputs(addStudentForm);
+};
 
 addStudentForm.onsubmit = function (e) {
   handleButtonSpinner(
@@ -18,12 +20,7 @@ addStudentForm.onsubmit = function (e) {
   );
   e.preventDefault();
 
-  var body = {};
-
-  for (let i = 0; i < addStudentFormElements.length; i++) {
-    var name = addStudentFormElements[i].name;
-    body[name] = addStudentFormElements[i].value;
-  }
+  var body = createRequestBody(addStudentForm);
 
   axios
     .post("/api/students/new", body, {
