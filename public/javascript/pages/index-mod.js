@@ -6,6 +6,31 @@ var addStudentText = document.getElementById("add-student-text");
 
 var addStudentFormElements = getFormElements(addStudentForm);
 
+axios.get("/api/colleges").then(function (response) {
+  var collegeSelect = addStudentFormElements.find(function (el) {
+    return el.id === "college";
+  });
+
+  var data = response.data;
+
+  collegeSelect.innerHTML = "";
+  var span = document.createElement("option");
+  span.value = "";
+  span.innerText = "Select a college...";
+  span.disabled = true;
+  collegeSelect.appendChild(span);
+
+  for (let i = 0; i < data.length; i++) {
+    const element = data[i];
+    span = document.createElement("option");
+    span.value = element.code;
+    span.innerText = `${element.name} (${element.code})`;
+    collegeSelect.appendChild(span);
+  }
+
+  console.log(collegeSelect);
+});
+
 addStudentButton.onclick = function (e) {
   resetFormValidationStyles(addStudentForm);
   resetFormInputs(addStudentForm);

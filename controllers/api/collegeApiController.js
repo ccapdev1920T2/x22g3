@@ -14,7 +14,7 @@ exports.getAllColleges = async (req, res) => {
   }
 };
 
-exports.getOneCollegeById = async (req, res) => {
+exports.getCollegeById = async (req, res) => {
   const { collegeId } = req.params;
   const { projection = "" } = req.query;
 

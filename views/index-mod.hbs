@@ -44,6 +44,15 @@
       </div>
       <div class="form-row">
         <div class="form-group col-12">
+          <label for="college">College<span class="text-danger">*</span></label>
+          <select name="college" id="college" class="custom-select">
+            <option value="">Loading...</option>
+          </select>
+          <div id="college-error" class="invalid-feedback"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-12">
           <label for="program">Program<span class="text-danger">*</span></label>
           <input type="text" class="form-control" name="program" id="program">
           <div id="program-error" class="invalid-feedback"></div>
