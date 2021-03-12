@@ -1,10 +1,14 @@
 const College = require("../../models/College");
 
 exports.getAllColleges = async (req, res) => {
-  const { projection = "" } = req.query;
+  const { projection = "", code = "" } = req.query;
+
+  const query = {};
+
+  if (code) query.code = code;
 
   try {
-    const colleges = await College.find({}, projection);
+    const colleges = await College.find(query, projection);
 
     return res.status(200).json(colleges);
   } catch (error) {

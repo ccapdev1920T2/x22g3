@@ -6,11 +6,11 @@ var addStudentText = document.getElementById("add-student-text");
 
 var addStudentFormElements = getFormElements(addStudentForm);
 
-axios.get("/api/colleges").then(function (response) {
-  var collegeSelect = addStudentFormElements.find(function (el) {
-    return el.id === "college";
-  });
+var collegeSelect = addStudentFormElements.find(function (el) {
+  return el.id === "college";
+});
 
+axios.get("/api/colleges").then(function (response) {
   var data = response.data;
 
   collegeSelect.innerHTML = "";
@@ -27,9 +27,34 @@ axios.get("/api/colleges").then(function (response) {
     span.innerText = `${element.name} (${element.code})`;
     collegeSelect.appendChild(span);
   }
-
-  console.log(collegeSelect);
 });
+
+var programSelect = addStudentFormElements.find(function (el) {
+  return el.id === "program";
+});
+
+collegeSelect.onchange = function (e) {
+  axios
+    .get(`/api/colleges?code=${collegeSelect.value}`)
+    .then(function (response) {
+      var data = response.data[0].degrees;
+
+      programSelect.innerHTML = "";
+      var span = document.createElement("option");
+      span.value = "";
+      span.innerText = "Select a program...";
+      span.disabled = true;
+      programSelect.appendChild(span);
+
+      for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+        span = document.createElement("option");
+        span.value = element.code;
+        span.innerText = `${element.name} (${element.code})`;
+        programSelect.appendChild(span);
+      }
+    });
+};
 
 addStudentButton.onclick = function (e) {
   resetFormValidationStyles(addStudentForm);
@@ -55,8 +80,6 @@ addStudentForm.onsubmit = function (e) {
       },
     })
     .then((response) => {
-      console.log(response);
-
       if (response.status == 400) {
         var errors = response.data.errors;
 
