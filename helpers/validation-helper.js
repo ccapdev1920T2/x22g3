@@ -23,7 +23,7 @@ exports.addStudentValidator = [
     .isEmail()
     .withMessage("Invalid email address syntax")
     .bail()
-    .matches(/^[a-zA-Z_]+@dlsu\.edu\.ph$/)
+    .matches(/^[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)+@dlsu\.edu\.ph$/)
     .withMessage("Please input a valid DLSU email address"),
   check("program").trim().notEmpty().withMessage("Program required"),
   check("idNum")
