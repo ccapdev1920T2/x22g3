@@ -23,7 +23,7 @@ addStudentForm.onsubmit = function (e) {
   var body = createRequestBody(addStudentForm);
 
   axios
-    .post("/api/students/new", body, {
+    .post("/api/students", body, {
       validateStatus: function (status) {
         // resolve the promise when this condition is true
         return (status >= 200 && status < 300) || status == 400;

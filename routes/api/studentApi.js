@@ -5,7 +5,7 @@ const {
 } = require("../../helpers/validation-helper");
 const router = express.Router();
 
-router.post("/new", validate(addStudentValidator), (req, res) => {
+router.post("/", validate(addStudentValidator), (req, res) => {
   res.send(req.originalUrl);
 });
 module.exports = router;
