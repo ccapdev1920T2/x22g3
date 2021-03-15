@@ -50,9 +50,12 @@ exports.addStudentValidator = [
     .notEmpty()
     .isInt({ min: 1 })
     .withMessage("Year must be at least 1"),
-  check("section", "Section required")
+  check("section", "Invalid section")
     .trim()
     .notEmpty()
+    .withMessage("Section required")
     .isLength({ min: 3 })
-    .withMessage("Invalid section"),
+    .isAlphanumeric()
+    .isUppercase()
+    .matches(/[0-9]$/),
 ];
