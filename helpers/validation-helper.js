@@ -15,9 +15,9 @@ exports.validate = (validations) => {
 };
 
 exports.addStudentValidator = [
-  check("first").trim().notEmpty().withMessage("First name required"),
-  check("middle").trim().notEmpty().withMessage("Middle name required"),
-  check("last").trim().notEmpty().withMessage("Last name required"),
+  check("first", "First name required").trim().notEmpty(),
+  check("middle", "Middle name required").trim().notEmpty(),
+  check("last", "Last name required").trim().notEmpty(),
   check("email")
     .trim()
     .isEmail()
@@ -25,13 +25,13 @@ exports.addStudentValidator = [
     .bail()
     .matches(/^[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)+@dlsu\.edu\.ph$/)
     .withMessage("Please input a valid DLSU email address"),
-  check("college").trim().notEmpty().withMessage("College required"),
-  check("program").trim().notEmpty().withMessage("Program required"),
-  check("idNum")
+  check("college", "College required").trim().notEmpty(),
+  check("program", "Program required").trim().notEmpty(),
+  check("idNum", "Invalid DLSU ID Number")
     .trim()
-    .isNumeric()
+    .notEmpty()
     .withMessage("ID Number required")
-    .isLength({ min: 8, max: 8 })
-    .withMessage("Invalid DLSU ID Number"),
-  check("section").trim().notEmpty().withMessage("Section required"),
+    .isInt()
+    .isLength({ min: 8, max: 8 }),
+  check("section", "Section required").trim().notEmpty(),
 ];
