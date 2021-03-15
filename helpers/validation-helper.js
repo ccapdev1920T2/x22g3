@@ -45,6 +45,11 @@ exports.addStudentValidator = [
     .withMessage("ID Number required")
     .isInt()
     .isLength({ min: 8, max: 8 }),
+  check("year", "Year required")
+    .trim()
+    .notEmpty()
+    .isInt({ min: 1 })
+    .withMessage("Year must be at least 1"),
   check("section", "Section required")
     .trim()
     .notEmpty()
