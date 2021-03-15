@@ -15,9 +15,21 @@ exports.validate = (validations) => {
 };
 
 exports.addStudentValidator = [
-  check("first", "First name required").trim().notEmpty(),
-  check("middle", "Middle name required").trim().notEmpty(),
-  check("last", "Last name required").trim().notEmpty(),
+  check("first", "First name required")
+    .trim()
+    .notEmpty()
+    .isAlpha()
+    .withMessage("Invalid first name"),
+  check("middle", "Middle name required")
+    .trim()
+    .notEmpty()
+    .isAlpha()
+    .withMessage("Invalid middle name"),
+  check("last", "Last name required")
+    .trim()
+    .notEmpty()
+    .isAlphanumeric()
+    .withMessage("Invalid last name"),
   check("email")
     .trim()
     .isEmail()
@@ -33,5 +45,9 @@ exports.addStudentValidator = [
     .withMessage("ID Number required")
     .isInt()
     .isLength({ min: 8, max: 8 }),
-  check("section", "Section required").trim().notEmpty(),
+  check("section", "Section required")
+    .trim()
+    .notEmpty()
+    .isLength({ min: 3 })
+    .withMessage("Invalid section"),
 ];
