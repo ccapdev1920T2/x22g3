@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const studentSchema = mongoose.Schema({
-  account: { type: mongoose.Types.ObjectId, ref: "Account", required: true },
+  account: { type: mongoose.Types.ObjectId, ref: "Account" },
   name: {
     first: { type: String, required: true },
     middle: { type: String, required: true },

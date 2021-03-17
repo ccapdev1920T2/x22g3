@@ -1,4 +1,5 @@
 const { check, validationResult } = require("express-validator");
+const Student = require("../models/Student");
 
 exports.validate = (validations) => {
   return async (req, res, next) => {
@@ -36,7 +37,17 @@ exports.addStudentValidator = [
     .withMessage("Invalid email address syntax")
     .bail()
     .matches(/^[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)+@dlsu\.edu\.ph$/)
-    .withMessage("Please input a valid DLSU email address"),
+    .withMessage("Please input a valid DLSU email address")
+    .custom(async (value) => {
+      try {
+        const student = await Student.findOne({ email: value });
+
+        if (student) return Promise.reject("Email already exists");
+      } catch (error) {
+        console.log(error);
+        return Promise.reject(error);
+      }
+    }),
   check("college", "College required").trim().notEmpty(),
   check("degree", "Degree required").trim().notEmpty(),
   check("idNum", "Invalid DLSU ID Number")
@@ -44,7 +55,17 @@ exports.addStudentValidator = [
     .notEmpty()
     .withMessage("ID Number required")
     .isInt()
-    .isLength({ min: 8, max: 8 }),
+    .isLength({ min: 8, max: 8 })
+    .custom(async (value) => {
+      try {
+        const student = await Student.findOne({ idNum: value });
+
+        if (student) return Promise.reject("ID Number already exists");
+      } catch (error) {
+        console.log(error);
+        return Promise.reject(error);
+      }
+    }),
   check("year", "Year required")
     .trim()
     .notEmpty()
