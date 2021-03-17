@@ -1,3 +1,4 @@
+const { sendCreatePasswordMail } = require("../../helpers/mailing-helper");
 const Student = require("../../models/Student");
 
 exports.postStudent = async (req, res) => {
@@ -8,6 +9,9 @@ exports.postStudent = async (req, res) => {
     const saved = await Student.create(student);
 
     console.log(saved);
+
+    await sendCreatePasswordMail(saved);
+
     res.send(saved);
   } catch (error) {
     console.log(error);
