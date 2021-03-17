@@ -3,7 +3,7 @@ var addStudentForm = document.getElementById("add-student-form");
 var addStudentSubmit = document.getElementById("add-student-submit");
 var addStudentSpinner = document.getElementById("add-student-spinner");
 var addStudentText = document.getElementById("add-student-text");
-
+var addStudentModal = document.getElementById("add-student-modal");
 var addStudentFormElements = getFormElements(addStudentForm);
 
 var collegeSelect = addStudentFormElements.find(function (el) {
@@ -102,6 +102,9 @@ addStudentForm.onsubmit = function (e) {
             element.classList.remove("is-invalid");
           }
         }
+      } else {
+        addStudentModal.click();
+        alert("Student created.");
       }
 
       handleButtonSpinner(
