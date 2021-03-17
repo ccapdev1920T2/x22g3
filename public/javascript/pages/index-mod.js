@@ -29,8 +29,8 @@ axios.get("/api/colleges").then(function (response) {
   }
 });
 
-var programSelect = addStudentFormElements.find(function (el) {
-  return el.id === "program";
+var degreeSelect = addStudentFormElements.find(function (el) {
+  return el.id === "degree";
 });
 
 collegeSelect.onchange = function (e) {
@@ -39,19 +39,19 @@ collegeSelect.onchange = function (e) {
     .then(function (response) {
       var data = response.data[0].degrees;
 
-      programSelect.innerHTML = "";
+      degreeSelect.innerHTML = "";
       var span = document.createElement("option");
       span.value = "";
-      span.innerText = "Select a program...";
+      span.innerText = "Select a degree...";
       span.disabled = true;
-      programSelect.appendChild(span);
+      degreeSelect.appendChild(span);
 
       for (let i = 0; i < data.length; i++) {
         const element = data[i];
         span = document.createElement("option");
         span.value = element.code;
         span.innerText = `${element.name} (${element.code})`;
-        programSelect.appendChild(span);
+        degreeSelect.appendChild(span);
       }
     });
 };

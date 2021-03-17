@@ -6,6 +6,10 @@ const {
 const router = express.Router();
 
 router.post("/", validate(addStudentValidator), (req, res) => {
+  const { first, middle, last, ...student } = req.body;
+  student.name = { first, middle, last };
+
+  console.log(student);
   res.send(req.originalUrl);
 });
 module.exports = router;

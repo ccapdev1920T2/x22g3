@@ -53,11 +53,11 @@
       </div>
       <div class="form-row">
         <div class="form-group col-12">
-          <label for="program">Program<span class="text-danger">*</span></label>
-          <select name="program" id="program" class="custom-select">
+          <label for="degree">Degree<span class="text-danger">*</span></label>
+          <select name="degree" id="degree" class="custom-select">
             <option value="">Select a college...</option>
           </select>
-          <div id="program-error" class="invalid-feedback"></div>
+          <div id="degree-error" class="invalid-feedback"></div>
         </div>
       </div>
       <div class="form-row">
@@ -68,7 +68,7 @@
         </div>
         <div class="form-group col-md-3">
           <label for="year">Year<span class="text-danger">*</span></label>
-          <input type="number" class="form-control" name="year" id="year">
+          <input type="number" min="1" class="form-control" name="year" id="year">
           <div id="year-error" class="invalid-feedback"></div>
         </div>
         <div class="form-group col-md-3">

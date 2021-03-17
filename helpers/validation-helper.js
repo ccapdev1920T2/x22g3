@@ -38,7 +38,7 @@ exports.addStudentValidator = [
     .matches(/^[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)+@dlsu\.edu\.ph$/)
     .withMessage("Please input a valid DLSU email address"),
   check("college", "College required").trim().notEmpty(),
-  check("program", "Program required").trim().notEmpty(),
+  check("degree", "Degree required").trim().notEmpty(),
   check("idNum", "Invalid DLSU ID Number")
     .trim()
     .notEmpty()
