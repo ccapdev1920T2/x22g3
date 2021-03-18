@@ -10,7 +10,7 @@ exports.postStudent = async (req, res) => {
 
     console.log(saved);
 
-    await sendCreatePasswordMail(saved);
+    await sendCreatePasswordMail(saved, req.protocol, req.get("host"));
 
     res.send(saved);
   } catch (error) {
