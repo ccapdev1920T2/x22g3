@@ -80,3 +80,18 @@ exports.addStudentValidator = [
     .isUppercase()
     .matches(/[0-9]$/),
 ];
+
+exports.createPasswordValidator = [
+  check("password")
+    .notEmpty()
+    .withMessage("Password required")
+    .isLength({ min: 8 })
+    .withMessage("Password must be at least 8 characters"),
+  check("confirm-password").custom((value, { req }) => {
+    if (value !== req.body.password) {
+      throw new Error("Must match the password");
+    }
+
+    return true;
+  }),
+];
