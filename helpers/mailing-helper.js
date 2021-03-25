@@ -7,7 +7,7 @@ exports.sendCreatePasswordMail = async (student, protocol, host) => {
     const token = jwt.sign({ studentId: student._id }, process.env.JWT_KEY);
 
     await transporter.sendMail({
-      from: "animosys022@gmail.com",
+      from: "animosys114@gmail.com",
       to: student.email,
       subject: "Animo.sys - Finish your account registration",
       html: `
