@@ -10,6 +10,21 @@
  */
 function handleButtonSpinner(isLoading, buttonEl, spinnerEl, textEl) {
   buttonEl.disabled = isLoading;
-  spinnerEl.classList.toggle('d-none', !isLoading);
-  textEl.classList.toggle('d-none', isLoading);
+  spinnerEl.classList.toggle("d-none", !isLoading);
+  textEl.classList.toggle("d-none", isLoading);
+}
+
+/**
+ * Removes the `is-valid` and `is-invalid` class names
+ * (which are used for styling after validation)
+ * from each input element in the form.
+ * @param  formEl the HTML \<form\> element
+ */
+function resetFormValidationStyles(formEl) {
+  var elements = getFormElements(formEl);
+
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i];
+    element.classList.remove("is-valid", "is-invalid");
+  }
 }

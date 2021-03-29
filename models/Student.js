@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const studentSchema = mongoose.Schema({
-  account: { type: mongoose.Types.ObjectId, ref: "Account", required: true },
+  account: { type: mongoose.Types.ObjectId, ref: "Account" },
   name: {
     first: { type: String, required: true },
     middle: { type: String, required: true },
@@ -14,6 +14,7 @@ const studentSchema = mongoose.Schema({
   year: { type: Number, required: true },
   college: { type: String, required: true },
   degree: { type: String, required: true },
+  hasAccess: { type: Boolean, default: true },
 });
 
 module.exports = mongoose.model("Student", studentSchema);

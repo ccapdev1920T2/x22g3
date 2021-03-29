@@ -70,7 +70,6 @@ module.exports = (passport) => {
         .populate("account", "-password")
         .exec();
 
-      console.log(user);
       done(null, user);
     } catch (error) {
       done(error);
