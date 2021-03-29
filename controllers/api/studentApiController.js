@@ -29,3 +29,35 @@ exports.postStudent = async (req, res) => {
     res.status(500).send({ message: error });
   }
 };
+
+exports.disableAccess = async (req, res) => {
+  try {
+    const student = await Student.findById(req.params.studentId);
+
+    if (!student) return res.status(404).send({ message: "Not found" });
+
+    student.hasAccess = false;
+    await student.save();
+
+    return res.send(student);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: error });
+  }
+};
+
+exports.enableAccess = async (req, res) => {
+  try {
+    const student = await Student.findById(req.params.studentId);
+
+    if (!student) return res.status(404).send({ message: "Not found" });
+
+    student.hasAccess = true;
+    await student.save();
+
+    return res.send(student);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: error });
+  }
+};
