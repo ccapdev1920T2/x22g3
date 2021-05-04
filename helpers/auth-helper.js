@@ -48,3 +48,11 @@ exports.isStudent = (req, res, next) => {
 
   res.redirect("/login");
 };
+
+exports.isAllowedAccess = (req, res, next) => {
+  if (req.user.hasAccess) {
+    return next();
+  }
+
+  res.send("You are not allowed to access Animo.sys");
+};
