@@ -1,59 +1,76 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-var enrollmentController = require('../controllers/enrollmentController');
-const { isAuth, isStudent } = require('../helpers/auth-helper');
+var enrollmentController = require("../controllers/enrollmentController");
+const {
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+} = require("../helpers/auth-helper");
 
 // /enrollment landing page
-router.get('/', isAuth, isStudent, enrollmentController.renderEnrollmentPage);
-
 router.get(
-  '/class-schedule',
+  "/",
   isAuth,
   isStudent,
-  enrollmentController.renderClassSchedulePage,
+  isAllowedAccess,
+  enrollmentController.renderEnrollmentPage
 );
 
 router.get(
-  '/add-class',
+  "/class-schedule",
   isAuth,
   isStudent,
-  enrollmentController.renderAddClassPage,
+  isAllowedAccess,
+  enrollmentController.renderClassSchedulePage
 );
 
 router.get(
-  '/drop-class',
+  "/add-class",
   isAuth,
   isStudent,
-  enrollmentController.renderDropClassPage,
+  isAllowedAccess,
+  enrollmentController.renderAddClassPage
 );
 
 router.get(
-  '/drop-class/checkout',
+  "/drop-class",
   isAuth,
   isStudent,
-  enrollmentController.renderDropClassListPage,
+  isAllowedAccess,
+  enrollmentController.renderDropClassPage
 );
 
 router.get(
-  '/request-class',
+  "/drop-class/checkout",
   isAuth,
   isStudent,
-  enrollmentController.renderRequestClassPage,
+  isAllowedAccess,
+  enrollmentController.renderDropClassListPage
 );
 
 router.get(
-  '/courseofferings',
+  "/request-class",
   isAuth,
   isStudent,
-  enrollmentController.renderCourseOfferingsPage,
+  isAllowedAccess,
+  enrollmentController.renderRequestClassPage
 );
 
 router.get(
-  '/courseofferings/search',
+  "/courseofferings",
   isAuth,
   isStudent,
-  enrollmentController.enrollment_course_offerings_search_get,
+  isAllowedAccess,
+  enrollmentController.renderCourseOfferingsPage
+);
+
+router.get(
+  "/courseofferings/search",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  enrollmentController.enrollment_course_offerings_search_get
 );
 
 module.exports = router;
