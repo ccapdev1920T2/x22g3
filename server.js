@@ -62,7 +62,11 @@ app.use("/logout", logoutRoute);
 // API ROUTES
 app.use("/api/students", require("./routes/api/studentApi"));
 app.use("/api/colleges", require("./routes/api/collegeApi"));
+<<<<<<< Updated upstream
 app.use("/api/document-requests", require("./routes/api/documentApi"));
+=======
+app.use('/api/subject-requests', require('./routes/api/studentrequestApi'));
+>>>>>>> Stashed changes
 
 app.listen(port, () => {
   console.log(`App listening at port ${port}`);

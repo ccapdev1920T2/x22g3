@@ -15,9 +15,27 @@ exports.validate = (validations) => {
 };
 
 exports.addStudentValidator = [
+<<<<<<< Updated upstream
   check("first").trim().notEmpty().withMessage("First name required"),
   check("middle").trim().notEmpty().withMessage("Middle name required"),
   check("last").trim().notEmpty().withMessage("Last name required"),
+=======
+  check("first", "First name required")
+    .trim()
+    .notEmpty()
+//    .isAlpha()
+    .withMessage("Invalid first name"),
+  check("middle", "Middle name required")
+    .trim()
+    .notEmpty()
+//    .isAlpha()
+    .withMessage("Invalid middle name"),
+  check("last", "Last name required")
+    .trim()
+    .notEmpty()
+    .isAlphanumeric()
+    .withMessage("Invalid last name"),
+>>>>>>> Stashed changes
   check("email")
     .trim()
     .isEmail()
@@ -34,4 +52,29 @@ exports.addStudentValidator = [
     .isLength({ min: 8, max: 8 })
     .withMessage("Invalid DLSU ID Number"),
   check("section").trim().notEmpty().withMessage("Section required"),
+];
+
+exports.requestClassValidator = [
+  check("fullname")
+    .notEmpty()
+    .withMessage("Full Name required"),
+    
+  check("idnumber", "Invalid DLSU ID Number")
+    .trim()
+    .notEmpty()
+    .withMessage("ID Number required")
+    .isInt()
+    .isLength({ min: 8, max: 8 })
+    ,
+    
+  check("degree")
+  .trim()
+  .notEmpty()
+  .withMessage("Degree required"),
+  
+  check("subject")
+  .trim()
+  .notEmpty()
+  .withMessage("Subject to be requested required")
+
 ];

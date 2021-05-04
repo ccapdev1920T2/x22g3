@@ -1,4 +1,4 @@
-var addStudentButton = document.getElementById("add-student-modal-btn");
+var requestClassButton = document.getElementById("add-student-modal-btn");
 var addStudentForm = document.getElementById("add-student-form");
 var addStudentSubmit = document.getElementById("add-student-submit");
 var addStudentSpinner = document.getElementById("add-student-spinner");
@@ -56,7 +56,7 @@ collegeSelect.onchange = function (e) {
     });
 };
 
-addStudentButton.onclick = function (e) {
+requestClassButton.onclick = function (e) {
   resetFormValidationStyles(addStudentForm);
   resetFormInputs(addStudentForm);
 };

@@ -1,3 +1,13 @@
+{{#section "head"}}
+
+<!-- MATERIAL ICONS -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- AXIOS -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+{{/section}}
+
 <h1>Request a Class</h1>
 <br>
 <p>Students are allowed to petition for a subject to be offered for the next academic term. Fill out the form below and
@@ -8,31 +18,36 @@
   <li>ID of Legal Guardian</li>
 </ol>
 
-<form class="bg-white border rounded p-4">
+<form class="bg-white border rounded p-4" id="request-class-form">
   <div class="form-row">
     <div class="form-group col-md-8">
       <label class="" for="fullname">Full name</label>
       <input class="form-control" type="text" id="fullname" name="fullname">
+      <div id="fullname-error" class="invalid-feedback"></div>
     </div>
     <div class="form-group col-md-4">
       <label class="" for="idnumber">ID Number</label>
       <input class="form-control" type="text" id="idnumber" name="idnumber">
+      <div id="idnumber-error" class="invalid-feedback"></div>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-12">
       <label class="" for="degree">Year/Degree Program</label>
       <input class="form-control" type="text" id="degree" name="degree">
+      <div id="degree-error" class="invalid-feedback"></div>
     </div>
   </div>
   <div class="form-row align-items-end">
     <div class="form-group col-md-4">
       <label class="" for="subject">Subject to be Requested</label>
       <input class="form-control" type="text" id="subject" name="subject">
+      <div id="subject-error" class="invalid-feedback"></div>
     </div>
     <div class="form-group col-md-8">
       <label class="" for="fileupload">Upload Files</label>
       <input class="form-control-file" type="file" id="fileupload" name="fileupload">
+      <div id="fileupload-error" class="invalid-feedback"></div>
     </div>
   </div>
   {{!-- <button class="btn btn-outline-primary" type="button" style="text-align:right;" onclick="addMoreFiles()">Add
@@ -40,29 +55,11 @@
     files</button> --}}
   <div class="form-row">
     <div class="form-group col">
-      <button type="submit" id="submit" class="btn btn-primary" onclick="myFunctionAlertPetition()">Submit
+      <button type="submit" id="request-class-btn" class="btn btn-primary">Submit
         Petition</button>
     </div>
   </div>
 </form>
 
-<script>
-  function myFunctionAlert() {
-    alert("File Uploaded!");
-  }
-
-  function myFunctionAlertPetition() {
-    alert("Petition submitted!");
-  }
-
-  function addMoreFiles() {
-    var input = document.createElement('input');
-    input.classList.add('res-12');
-    input.type = "file";
-    input.id = "fileupload";
-    input.name = "fileupload";
-
-    document.querySelector('form.form-container').insertBefore(input, document.querySelector('button'));
-    responsiveFontSize('input[type=file]');
-  }
-</script>
+<script src="/javascript/helpers/form-helper.js"></script>
+<script src="/javascript/pages/request-class.js"></script>
