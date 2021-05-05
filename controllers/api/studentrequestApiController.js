@@ -1,4 +1,4 @@
-const Request = require("../../models/Request");
+const Request = require("../../models/SubjectRequest");
 
 exports.postRequest = async (req, res) => {
   console.log(req.body);

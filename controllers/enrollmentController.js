@@ -1,6 +1,4 @@
 const Student = require("../models/Student");
-const Course = require("../models/course");
-const Request = require("../models/request");
 
 // Landing page for /enrollment route
 exports.renderEnrollmentPage = (req, res) => {
