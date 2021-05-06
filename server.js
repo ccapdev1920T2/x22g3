@@ -66,6 +66,7 @@ app.use("/register", registerRoute);
 // API ROUTES
 app.use("/api/students", require("./routes/api/studentApi"));
 app.use("/api/colleges", require("./routes/api/collegeApi"));
+app.use("/api/preenlistment-courses", require("./routes/api/preenlistmentApi"));
 
 app.listen(port, () => {
   console.log(`App listening at port ${port}`);
