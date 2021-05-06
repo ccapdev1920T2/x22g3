@@ -1,4 +1,4 @@
-const passport = require('passport');
+const passport = require("passport");
 
 /**
  * Renders the student login page.
@@ -7,9 +7,9 @@ const passport = require('passport');
  * @param  res response
  */
 exports.renderStudentLogin = (req, res) => {
-  res.render('login', {
+  res.render("login", {
     layout: false,
-    title: 'Login | Animo.sys',
+    title: "Login | Animo.sys",
   });
 };
 
@@ -21,7 +21,7 @@ exports.renderStudentLogin = (req, res) => {
  * @param  next function to call the next middleware
  */
 exports.postStudentLogin = (req, res, next) => {
-  passport.authenticate('local-student', (authErr, account, info) => {
+  passport.authenticate("local-student", (authErr, account, info) => {
     if (authErr) return next(authErr);
 
     // if credentials are invalid, set the status code to 401 Unauthorized
@@ -30,19 +30,19 @@ exports.postStudentLogin = (req, res, next) => {
       return res
         .status(401)
         .render(
-          'partials/alert',
-          { layout: false, message: info.message },
+          "partials/alert",
+          { layout: false, message: info.message, variant: "danger" },
           (err, html) => {
             if (err) console.log(err);
             else {
               res.send(html);
             }
-          },
+          }
         );
     }
 
     // else, send an empty object to the client
-    req.login(account, loginErr => {
+    req.login(account, (loginErr) => {
       if (loginErr) return next(loginErr);
 
       return res.status(200).send({});
@@ -57,9 +57,9 @@ exports.postStudentLogin = (req, res, next) => {
  * @param  res response
  */
 exports.renderModeratorLogin = (req, res) => {
-  res.render('login-mod', {
+  res.render("login-mod", {
     layout: false,
-    title: 'Login | Animo.sys',
+    title: "Login | Animo.sys",
   });
 };
 
@@ -71,7 +71,7 @@ exports.renderModeratorLogin = (req, res) => {
  * @param  next function to call the next middleware
  */
 exports.postModeratorLogin = async (req, res, next) => {
-  passport.authenticate('local-moderator', (authErr, account, info) => {
+  passport.authenticate("local-moderator", (authErr, account, info) => {
     if (authErr) return next(authErr);
 
     // if credentials are invalid, set the status code to 401 Unauthorized
@@ -80,19 +80,19 @@ exports.postModeratorLogin = async (req, res, next) => {
       return res
         .status(401)
         .render(
-          'partials/alert',
-          { layout: false, message: info.message },
+          "partials/alert",
+          { layout: false, message: info.message, variant: "danger" },
           (err, html) => {
             if (err) console.log(err);
             else {
               res.send(html);
             }
-          },
+          }
         );
     }
 
     // else, send an empty object to the client
-    req.login(account, loginErr => {
+    req.login(account, (loginErr) => {
       if (loginErr) return next(loginErr);
 
       return res.status(200).send({});
