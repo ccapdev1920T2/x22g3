@@ -2,7 +2,9 @@ const PreenlistmentCourse = require("../../models/PreenlistmentCourse");
 
 exports.getAllPreenlistmentCourses = async (req, res) => {
   try {
-    const preenlistments = await PreenlistmentCourse.find();
+    let options = req.query || {};
+
+    const preenlistments = await PreenlistmentCourse.find(options);
     res.send(preenlistments);
   } catch (error) {
     console.log(error);

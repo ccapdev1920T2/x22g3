@@ -62,3 +62,7 @@ exports.enableAccess = async (req, res) => {
     res.status(500).send({ message: error });
   }
 };
+
+exports.preenlist = (req, res) => {
+  res.send("preenlisted");
+};

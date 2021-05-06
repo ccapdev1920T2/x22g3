@@ -1,4 +1,7 @@
 {{#section "head"}}
+<!-- AXIOS -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <!-- TABULATOR -->
 <link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
 <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
@@ -6,52 +9,33 @@
 
 <h1>Pre-Enlistment</h1>
 <br>
-{{!-- <form action="/cart/preenlistment" method="GET"> --}}
-  <div class="container px-0">
-    <div class="row">
-      <div class="col-12 col-lg-8">
-        <form action="/cart/preenlistment" method="GET">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="search" id="courseCode" placeholder="Search course code..." name="courseCode"
-                class="form-control">
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-primary">Search</span>
-              </div>
+<div class="container px-0">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <form id="search-course-form" method="GET">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="search" id="search-courses-tf" placeholder="Search course code..." name="courseCode"
+              class="form-control">
+            <div class="input-group-append">
+              <button type="submit" id="search-course-btn" class="btn btn-primary">Search</span>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="col-12 col-lg-4  text-center text-md-left">
-        <a href="/cart/preenlistment" class="btn btn-outline-primary w-100">View your pre-enlisted courses</a>
-      </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-12 col-lg-4  text-center text-md-left">
+      <a href="/cart/preenlistment" class="btn btn-outline-primary w-100">View your pre-enlisted courses</a>
     </div>
   </div>
-  <br>
+</div>
+<br>
 
-  <div id="preenlistment-courses-table"></div>
-  <br>
-  {{!-- <input type="submit" id="submit" value="Proceed to Pre-Enlistment Cart"> --}}
-  {{!--
-</form> --}}
+<div id="preenlistment-courses-table"></div>
+<br>
 
-<script>
-  var table = new Tabulator('#preenlistment-courses-table', {
-    autoColumns: true,
-    autoColumnsDefinitions: [{ field: 'courseCode', formatter: 'html' }],
-    layout: 'fitColumns',
-    pagination: 'local',
-    paginationSize: 10,
-    ajaxURL: '/data/preenlistment-courses.json',
-    ajaxResponse(url, params, response) {
-      return response.map(course => {
-        return {
-          courseCode: `${course.courseCode}<button class="btn btn-primary py-0 float-right">Pre-enlist</button>`
-        }
-      })
-    },
-  });
-</script>
+<script src="/javascript/helpers/form-helper.js"></script>
+<script src="/javascript/pages/preenlistment.js"></script>
 
 {{!--
 <script>

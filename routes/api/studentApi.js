@@ -4,6 +4,7 @@ const {
   getAllStudents,
   disableAccess,
   enableAccess,
+  preenlist,
 } = require("../../controllers/api/studentApiController");
 const {
   validate,
@@ -19,5 +20,7 @@ router.post("/", validate(addStudentValidator), postStudent);
 router.post("/:studentId/disable-access", disableAccess);
 
 router.post("/:studentId/enable-access", enableAccess);
+
+router.post("/:studentId/preenlist", preenlist);
 
 module.exports = router;
