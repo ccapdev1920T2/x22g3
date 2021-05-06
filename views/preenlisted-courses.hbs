@@ -1,0 +1,16 @@
+{{#section "head"}}
+<!-- TABULATOR -->
+<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+{{/section}}
+<h1>My Pre-enlisted Courses</h1>
+<br>
+<div id="preenlisted-courses-table"></div>
+<br>
+
+{{!-- TODO: connect this to database by wrapping to a form --}}
+<form id="save-preenlistment-form">
+  <button type="submit" id="save-preenlistment-btn" class="btn btn-primary">Save Pre-enlistment</button>
+</form>
+
+<script src="/javascript/pages/preenlisted-courses.js"></script>

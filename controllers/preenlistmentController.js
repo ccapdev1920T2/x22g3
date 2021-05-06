@@ -5,3 +5,10 @@ exports.renderPreenlistmentPage = (req, res) => {
     _id: req.user._id,
   });
 };
+
+// Respond to /preenlistment/preenlisted-courses
+exports.renderPreenlistedCoursesPage = (req, res) => {
+  res.render("preenlisted-courses", {
+    title: "Preenlisted Courses | Animo.sys",
+  });
+};

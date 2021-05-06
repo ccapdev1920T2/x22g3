@@ -25,7 +25,8 @@
       </form>
     </div>
     <div class="col-12 col-lg-4  text-center text-md-left">
-      <a href="/cart/preenlistment" class="btn btn-outline-primary w-100">View your pre-enlisted courses</a>
+      <a href="/preenlistment/preenlisted-courses" class="btn btn-outline-primary w-100">View your pre-enlisted
+        courses</a>
     </div>
   </div>
 </div>
@@ -37,71 +38,3 @@
 
 <script src="/javascript/helpers/form-helper.js"></script>
 <script src="/javascript/pages/preenlistment.js"></script>
-
-{{!--
-<script>
-  // course and ecourse will get data from database
-  var course = [
-    { name: "CSARCH1" },
-    { name: "GEETHIC" },
-    { name: "STMATH" },
-    { name: "STALGCM" },
-    { name: "CCAPDEV" },
-    { name: "GESPORT" }
-  ];
-
-  var ecourse = [
-    { name: "NATLANG" }
-  ];
-
-  function addClass(input) {
-    if (document.querySelector(input).value)
-      alert("Class added to cart!");
-  }
-
-  var tableList = document.querySelector('table#list');
-  tableList.style.border = 'none';
-
-  for (let i = 0; i < course.length; i++) {
-    var row = tableList.insertRow(-1);
-    for (const key in course[i]) {
-      if (course[i].hasOwnProperty(key)) {
-        const element = course[i][key];
-        var cell = row.insertCell(-1);
-
-        // Append an input element for each cell so that the data can be submitted
-        var input = document.createElement('input');
-        input.classList.add('res-12');
-        input.type = "text";
-        input.readOnly = true;
-        input.name = key;
-
-        console.log(input);
-
-        cell.append(input);
-        input.value = element;
-      }
-    }
-  }
-
-  for (let i = 0; i < ecourse.length; i++) {
-    var row = tableList.insertRow(-1);
-    for (const key in ecourse[i]) {
-      if (ecourse[i].hasOwnProperty(key)) {
-        const element = ecourse[i][key];
-        var cell = row.insertCell(-1);
-        // Append an input element for each cell so that the data can be submitted
-        var input = document.createElement('input');
-        input.classList.add('res-12');
-        input.type = "text";
-        input.readOnly = true;
-        input.name = key;
-
-        console.log(input);
-
-        cell.append(input);
-        input.value = element;
-      }
-    }
-  }
-</script> --}}
