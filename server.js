@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var port = process.env.PORT || 8080;
 var express = require("express");
 var app = express();
@@ -46,6 +48,7 @@ var degreeprocessRoute = require("./routes/degree-process");
 var modRoute = require("./routes/mod");
 var loginRoute = require("./routes/login");
 var logoutRoute = require("./routes/logout");
+var registerRoute = require("./routes/register");
 
 app.use(favicon(path.join(__dirname, "public", "assets", "favicon.ico")));
 app.use("/", indexRoute);
@@ -58,6 +61,7 @@ app.use("/degree-process", degreeprocessRoute);
 app.use("/mod", modRoute);
 app.use("/login", loginRoute);
 app.use("/logout", logoutRoute);
+app.use("/register", registerRoute);
 
 // API ROUTES
 app.use("/api/students", require("./routes/api/studentApi"));

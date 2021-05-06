@@ -1,4 +1,5 @@
-const { check, validationResult } = require("express-validator");
+const { check, validationResult, query } = require("express-validator");
+const Student = require("../models/Student");
 
 exports.validate = (validations) => {
   return async (req, res, next) => {
@@ -18,12 +19,14 @@ exports.addStudentValidator = [
   check("first", "First name required")
     .trim()
     .notEmpty()
-    //    .isAlpha()
+
+    .isAlpha()
     .withMessage("Invalid first name"),
   check("middle", "Middle name required")
     .trim()
     .notEmpty()
-    //    .isAlpha()
+
+    .isAlpha()
     .withMessage("Invalid middle name"),
   check("last", "Last name required")
     .trim()
@@ -36,16 +39,76 @@ exports.addStudentValidator = [
     .withMessage("Invalid email address syntax")
     .bail()
     .matches(/^[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)+@dlsu\.edu\.ph$/)
-    .withMessage("Please input a valid DLSU email address"),
-  check("college").trim().notEmpty().withMessage("College required"),
-  check("program").trim().notEmpty().withMessage("Program required"),
-  check("idNum")
+    .withMessage("Please input a valid DLSU email address")
+    .custom(async (value) => {
+      try {
+        const student = await Student.findOne({ email: value });
+
+        if (student) return Promise.reject("Email already exists");
+      } catch (error) {
+        console.log(error);
+        return Promise.reject(error);
+      }
+    }),
+  check("college", "College required").trim().notEmpty(),
+  check("degree", "Degree required").trim().notEmpty(),
+  check("idNum", "Invalid DLSU ID Number")
     .trim()
-    .isNumeric()
+    .notEmpty()
     .withMessage("ID Number required")
+    .isInt()
     .isLength({ min: 8, max: 8 })
-    .withMessage("Invalid DLSU ID Number"),
-  check("section").trim().notEmpty().withMessage("Section required"),
+    .custom(async (value) => {
+      try {
+        const student = await Student.findOne({ idNum: value });
+
+        if (student) return Promise.reject("ID Number already exists");
+      } catch (error) {
+        console.log(error);
+        return Promise.reject(error);
+      }
+    }),
+  check("year", "Year required")
+    .trim()
+    .notEmpty()
+    .isInt({ min: 1 })
+    .withMessage("Year must be at least 1"),
+  check("section", "Invalid section")
+    .trim()
+    .notEmpty()
+    .withMessage("Section required")
+    .isLength({ min: 3 })
+    .isAlphanumeric()
+    .isUppercase()
+    .matches(/[0-9]$/),
+];
+
+exports.createPasswordValidator = [
+  check("password")
+    .notEmpty()
+    .withMessage("Password required")
+    .isLength({ min: 8 })
+    .withMessage("Password must be at least 8 characters"),
+  check("confirm-password").custom((value, { req }) => {
+    if (value !== req.body.password) {
+      throw new Error("Must match the password");
+    }
+
+    return true;
+  }),
+];
+
+exports.searchStudentsValidator = [
+  query("idNum")
+    .optional()
+    .trim()
+    .customSanitizer((val, { req }) => {
+      if (val === "") {
+        return new RegExp("[0-9]");
+      }
+
+      return new RegExp(val);
+    }),
 ];
 
 exports.requestClassValidator = [
