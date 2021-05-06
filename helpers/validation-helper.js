@@ -19,11 +19,13 @@ exports.addStudentValidator = [
   check("first", "First name required")
     .trim()
     .notEmpty()
+
     .isAlpha()
     .withMessage("Invalid first name"),
   check("middle", "Middle name required")
     .trim()
     .notEmpty()
+
     .isAlpha()
     .withMessage("Invalid middle name"),
   check("last", "Last name required")
@@ -107,4 +109,21 @@ exports.searchStudentsValidator = [
 
       return new RegExp(val);
     }),
+];
+
+exports.requestClassValidator = [
+  check("fullname").notEmpty().withMessage("Full Name required"),
+
+  check("idnumber", "Invalid DLSU ID Number")
+    .trim()
+    .notEmpty()
+    .withMessage("ID Number required")
+    .isInt()
+    .isLength({ min: 8, max: 8 }),
+  check("degree").trim().notEmpty().withMessage("Degree required"),
+
+  check("subject")
+    .trim()
+    .notEmpty()
+    .withMessage("Subject to be requested required"),
 ];
