@@ -63,7 +63,16 @@ exports.enableAccess = async (req, res) => {
   }
 };
 
-exports.preenlist = (req, res) => {
-  console.log(req.params.studentId, req.body);
-  res.send("preenlisted");
+exports.preenlist = async (req, res) => {
+  try {
+    const student = await Student.updateOne(
+      { _id: req.params.studentId },
+      { $addToSet: { preenlistedCourses: req.body._id } }
+    );
+
+    res.status(200).send(student);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
 };

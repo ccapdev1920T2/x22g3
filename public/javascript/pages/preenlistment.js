@@ -10,9 +10,22 @@ var preenlistBtn = function (cell, formatterParams, onRendered) {
     body._id = rowData._id;
 
     axios
-      .post(`/api/students/${studentId.value}/preenlist`, body)
+      .post(`/api/students/${studentId.value}/preenlist`, body, {
+        validateStatus: function (status) {
+          // resolve the promise when this condition is true
+          return (status >= 200 && status < 300) || status == 400;
+        },
+      })
       .then(function (response) {
-        alert(`Successfully preenlisted ${rowData.courseCode}.`);
+        if (response.status == 400) {
+          alert(
+            response.data.errors.map(function (err) {
+              return err.msg;
+            })
+          );
+        } else {
+          alert(`Successfully preenlisted ${rowData.courseCode}.`);
+        }
       })
       .catch(function (err) {
         console.log(err);

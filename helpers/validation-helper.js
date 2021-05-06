@@ -142,6 +142,11 @@ exports.preenlistValidator = [
         if (!course) {
           return Promise.reject("Course does not exist.");
         }
+
+        const student = await Student.findById(req.params.studentId);
+        if (student.preenlistedCourses.includes(val)) {
+          return Promise.reject("Already preenlisted.");
+        }
       } catch (error) {
         console.log(error);
         return Promise.reject(error);
