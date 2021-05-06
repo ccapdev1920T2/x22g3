@@ -1,4 +1,5 @@
 const { check, validationResult, query } = require("express-validator");
+const PreenlistmentCourse = require("../models/PreenlistmentCourse");
 const Student = require("../models/Student");
 
 exports.validate = (validations) => {
@@ -120,5 +121,30 @@ exports.searchCourseCodeValidator = [
       }
 
       return new RegExp(val);
+    }),
+];
+
+exports.preenlistValidator = [
+  check("studentId")
+    .trim()
+    .notEmpty()
+    .isMongoId()
+    .custom((val, { req }) => {
+      return val == req.user._id;
+    }),
+  check("_id")
+    .trim()
+    .notEmpty()
+    .isMongoId()
+    .custom(async (val, { req }) => {
+      try {
+        const course = await PreenlistmentCourse.findById(val);
+        if (!course) {
+          return Promise.reject("Course does not exist.");
+        }
+      } catch (error) {
+        console.log(error);
+        return Promise.reject(error);
+      }
     }),
 ];

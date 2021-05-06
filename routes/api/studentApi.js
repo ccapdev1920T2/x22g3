@@ -10,6 +10,7 @@ const {
   validate,
   addStudentValidator,
   searchStudentsValidator,
+  preenlistValidator,
 } = require("../../helpers/validation-helper");
 const router = express.Router();
 
@@ -21,6 +22,6 @@ router.post("/:studentId/disable-access", disableAccess);
 
 router.post("/:studentId/enable-access", enableAccess);
 
-router.post("/:studentId/preenlist", preenlist);
+router.post("/:studentId/preenlist", validate(preenlistValidator), preenlist);
 
 module.exports = router;

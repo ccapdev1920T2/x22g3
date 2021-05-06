@@ -64,5 +64,6 @@ exports.enableAccess = async (req, res) => {
 };
 
 exports.preenlist = (req, res) => {
+  console.log(req.params.studentId, req.body);
   res.send("preenlisted");
 };
