@@ -1,4 +1,4 @@
-const { check, validationResult } = require("express-validator");
+const { check, validationResult, query } = require("express-validator");
 const Student = require("../models/Student");
 
 exports.validate = (validations) => {
@@ -94,4 +94,17 @@ exports.createPasswordValidator = [
 
     return true;
   }),
+];
+
+exports.searchStudentsValidator = [
+  query("idNum")
+    .optional()
+    .trim()
+    .customSanitizer((val, { req }) => {
+      if (val === "") {
+        return new RegExp("[0-9]");
+      }
+
+      return new RegExp(val);
+    }),
 ];

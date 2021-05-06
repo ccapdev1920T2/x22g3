@@ -8,10 +8,11 @@ const {
 const {
   validate,
   addStudentValidator,
+  searchStudentsValidator,
 } = require("../../helpers/validation-helper");
 const router = express.Router();
 
-router.get("/", getAllStudents);
+router.get("/", validate(searchStudentsValidator), getAllStudents);
 
 router.post("/", validate(addStudentValidator), postStudent);
 

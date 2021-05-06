@@ -229,3 +229,9 @@ var studentsTable = new Tabulator("#students-table", {
     });
   },
 });
+
+var searchStudentTextfield = document.getElementById("search-student-tf");
+
+searchStudentTextfield.oninput = function (e) {
+  studentsTable.setData(`/api/students?idNum=${searchStudentTextfield.value}`);
+};

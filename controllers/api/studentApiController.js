@@ -3,7 +3,8 @@ const Student = require("../../models/Student");
 
 exports.getAllStudents = async (req, res) => {
   try {
-    const students = await Student.find({});
+    let options = req.query || {};
+    const students = await Student.find(options);
 
     return res.send(students);
   } catch (error) {
