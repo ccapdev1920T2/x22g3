@@ -90,3 +90,19 @@ exports.getAllPreenlistedCourses = async (req, res) => {
     res.status(500).send(error);
   }
 };
+
+exports.removePreenlistedCourse = async (req, res) => {
+  try {
+    const student = await Student.findById(req.params.studentId);
+
+    student.preenlistedCourses = student.preenlistedCourses.filter(
+      (course) => course != req.body._id
+    );
+    await student.save();
+
+    res.status(200).send(student);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};

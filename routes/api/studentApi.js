@@ -6,6 +6,7 @@ const {
   enableAccess,
   preenlist,
   getAllPreenlistedCourses,
+  removePreenlistedCourse,
 } = require("../../controllers/api/studentApiController");
 const {
   validate,
@@ -26,4 +27,7 @@ router.post("/:studentId/enable-access", enableAccess);
 router.post("/:studentId/preenlist", validate(preenlistValidator), preenlist);
 
 router.get("/:studentId/preenlisted-courses", getAllPreenlistedCourses);
+
+router.post("/:studentId/preenlisted-courses", removePreenlistedCourse);
+
 module.exports = router;
