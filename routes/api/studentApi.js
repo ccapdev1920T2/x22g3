@@ -13,6 +13,7 @@ const {
   addStudentValidator,
   searchStudentsValidator,
   preenlistValidator,
+  removePreenlistedCourseValidator,
 } = require("../../helpers/validation-helper");
 const router = express.Router();
 
@@ -28,6 +29,10 @@ router.post("/:studentId/preenlist", validate(preenlistValidator), preenlist);
 
 router.get("/:studentId/preenlisted-courses", getAllPreenlistedCourses);
 
-router.post("/:studentId/preenlisted-courses", removePreenlistedCourse);
+router.post(
+  "/:studentId/preenlisted-courses",
+  validate(removePreenlistedCourseValidator),
+  removePreenlistedCourse
+);
 
 module.exports = router;

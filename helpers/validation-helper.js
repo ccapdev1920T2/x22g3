@@ -153,3 +153,38 @@ exports.preenlistValidator = [
       }
     }),
 ];
+
+exports.removePreenlistedCourseValidator = [
+  check("studentId", "Invalid student ID.")
+    .trim()
+    .notEmpty()
+    .isMongoId()
+    .custom((val, { req }) => {
+      return val == req.user._id;
+    }),
+  check("_id")
+    .trim()
+    .notEmpty()
+    .withMessage("No course specified.")
+    .isMongoId()
+    .withMessage("Invalid course ID.")
+    .custom(async (val, { req }) => {
+      try {
+        const student = await Student.findById(
+          req.params.studentId,
+          "preenlistedCourses"
+        );
+
+        if (!student) return Promise.reject("Student does not exist.");
+
+        if (!student.preenlistedCourses)
+          return Promise.reject("No preenlisted courses available.");
+
+        if (!student.preenlistedCourses.includes(val))
+          return Promise.reject("Not preenlisted for that subject.");
+      } catch (error) {
+        console.log(error);
+        return Promise.reject(error);
+      }
+    }),
+];
