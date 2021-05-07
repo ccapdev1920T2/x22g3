@@ -10,5 +10,6 @@ exports.renderPreenlistmentPage = (req, res) => {
 exports.renderPreenlistedCoursesPage = (req, res) => {
   res.render("preenlisted-courses", {
     title: "Preenlisted Courses | Animo.sys",
+    _id: req.user._id,
   });
 };

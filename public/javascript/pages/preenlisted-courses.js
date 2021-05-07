@@ -1,10 +1,12 @@
+var studentId = document.getElementById("student-id-hidden");
+
 var table = new Tabulator("#preenlisted-courses-table", {
   autoColumns: true,
   autoColumnsDefinitions: [{ field: "courseCode", formatter: "html" }],
   layout: "fitColumns",
   pagination: "local",
   paginationSize: 10,
-  ajaxURL: "/data/preenlistment-courses.json", // TODO: change this to get student's preenlisted courses from db
+  ajaxURL: `/api/students/${studentId.value}/preenlisted-courses`, // TODO: change this to get student's preenlisted courses from db
   ajaxResponse(url, params, response) {
     return response.map((course) => {
       return {
