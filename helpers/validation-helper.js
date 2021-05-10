@@ -125,7 +125,7 @@ exports.searchCourseCodeValidator = [
 ];
 
 exports.preenlistValidator = [
-  check("studentId")
+  check("studentId", "Invalid student ID.")
     .trim()
     .notEmpty()
     .isMongoId()
@@ -135,7 +135,11 @@ exports.preenlistValidator = [
   check("_id")
     .trim()
     .notEmpty()
+    .withMessage("No course specified.")
+    .bail()
     .isMongoId()
+    .withMessage("Invalid course ID.")
+    .bail()
     .custom(async (val, { req }) => {
       try {
         const course = await PreenlistmentCourse.findById(val);
@@ -144,12 +148,17 @@ exports.preenlistValidator = [
         }
 
         const student = await Student.findById(req.params.studentId);
+
+        if (!student) return Promise.reject("Student does not exist.");
+
         if (student.preenlistedCourses.includes(val)) {
-          return Promise.reject("Already preenlisted.");
+          return Promise.reject(
+            "Already preenlisted for the selected subject."
+          );
         }
       } catch (error) {
         console.log(error);
-        return Promise.reject(error);
+        return Promise.reject();
       }
     }),
 ];
