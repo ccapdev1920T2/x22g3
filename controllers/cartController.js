@@ -1,17 +1,8 @@
-require('../models/PreenlistmentCourse');
+require("../models/PreenlistmentCourse");
 
 exports.renderCartPage = (req, res) => {
   res.render("cart", {
     title: "Cart | Animo.sys",
-  });
-};
-
-// Respond to /cart/preenlistment
-exports.renderPreenlistmentCartPage = (req, res) => {
-  console.log("TODO: get data from PreenlistedCourses");
-
-  res.render("cart_preenlistment", {
-    title: "Preenlistment Cart | Animo.sys",
   });
 };
 

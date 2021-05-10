@@ -1,4 +1,5 @@
 const { check, validationResult, query } = require("express-validator");
+const PreenlistmentCourse = require("../models/PreenlistmentCourse");
 const Student = require("../models/Student");
 
 exports.validate = (validations) => {
@@ -108,6 +109,94 @@ exports.searchStudentsValidator = [
       }
 
       return new RegExp(val);
+    }),
+];
+
+exports.searchCourseCodeValidator = [
+  query("courseCode")
+    .optional()
+    .trim()
+    .toUpperCase()
+    .customSanitizer((val, { req }) => {
+      if (val === "") {
+        return new RegExp("[A-Z0-9]");
+      }
+
+      return new RegExp(val);
+    }),
+];
+
+exports.preenlistValidator = [
+  check("studentId", "Invalid student ID.")
+    .trim()
+    .notEmpty()
+    .isMongoId()
+    .custom((val, { req }) => {
+      return val == req.user._id;
+    }),
+  check("_id")
+    .trim()
+    .notEmpty()
+    .withMessage("No course specified.")
+    .bail()
+    .isMongoId()
+    .withMessage("Invalid course ID.")
+    .bail()
+    .custom(async (val, { req }) => {
+      try {
+        const course = await PreenlistmentCourse.findById(val);
+        if (!course) {
+          return Promise.reject("Course does not exist.");
+        }
+
+        const student = await Student.findById(req.params.studentId);
+
+        if (!student) return Promise.reject("Student does not exist.");
+
+        if (student.preenlistedCourses.includes(val)) {
+          return Promise.reject(
+            "Already preenlisted for the selected subject."
+          );
+        }
+      } catch (error) {
+        console.log(error);
+        return Promise.reject();
+      }
+    }),
+];
+
+exports.removePreenlistedCourseValidator = [
+  check("studentId", "Invalid student ID.")
+    .trim()
+    .notEmpty()
+    .isMongoId()
+    .custom((val, { req }) => {
+      return val == req.user._id;
+    }),
+  check("_id")
+    .trim()
+    .notEmpty()
+    .withMessage("No course specified.")
+    .isMongoId()
+    .withMessage("Invalid course ID.")
+    .custom(async (val, { req }) => {
+      try {
+        const student = await Student.findById(
+          req.params.studentId,
+          "preenlistedCourses"
+        );
+
+        if (!student) return Promise.reject("Student does not exist.");
+
+        if (!student.preenlistedCourses)
+          return Promise.reject("No preenlisted courses available.");
+
+        if (!student.preenlistedCourses.includes(val))
+          return Promise.reject("Not preenlisted for that subject.");
+      } catch (error) {
+        console.log(error);
+        return Promise.reject(error);
+      }
     }),
 ];
 

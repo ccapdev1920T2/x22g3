@@ -63,6 +63,48 @@ exports.enableAccess = async (req, res) => {
   }
 };
 
-exports.postDrop = async (req,res) => {
+exports.preenlist = async (req, res) => {
+  try {
+    const student = await Student.updateOne(
+      { _id: req.params.studentId },
+      { $addToSet: { preenlistedCourses: req.body._id } }
+    );
 
-}
+    res.status(200).send(student);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
+
+exports.getAllPreenlistedCourses = async (req, res) => {
+  try {
+    const student = await Student.findById(
+      req.params.studentId,
+      "preenlistedCourses"
+    ).populate("preenlistedCourses");
+
+    res.status(200).send(student.preenlistedCourses);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
+
+exports.removePreenlistedCourse = async (req, res) => {
+  try {
+    const student = await Student.findById(req.params.studentId);
+
+    student.preenlistedCourses = student.preenlistedCourses.filter(
+      (course) => course != req.body._id
+    );
+    await student.save();
+
+    res.status(200).send(student);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
+
+exports.postDrop = async (req, res) => {};

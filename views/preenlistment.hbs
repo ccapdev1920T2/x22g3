@@ -1,4 +1,7 @@
 {{#section "head"}}
+<!-- AXIOS -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <!-- TABULATOR -->
 <link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
 <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
@@ -6,117 +9,32 @@
 
 <h1>Pre-Enlistment</h1>
 <br>
-{{!-- <form action="/cart/preenlistment" method="GET"> --}}
-  <div class="container px-0">
-    <div class="row">
-      <div class="col-12 col-lg-8">
-        <form action="/cart/preenlistment" method="GET">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="search" id="courseCode" placeholder="Search course code..." name="courseCode"
-                class="form-control">
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-primary">Search</span>
-              </div>
+<div class="container px-0">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <form id="search-course-form" method="GET">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="search" id="search-courses-tf" placeholder="Search course code..." name="courseCode"
+              class="form-control">
+            <div class="input-group-append">
+              <button type="submit" id="search-course-btn" class="btn btn-primary">Search</span>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="col-12 col-lg-4  text-center text-md-left">
-        <a href="/cart/preenlistment" class="btn btn-outline-primary w-100">View your pre-enlisted courses</a>
-      </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-12 col-lg-4  text-center text-md-left">
+      <a href="/preenlistment/preenlisted-courses" class="btn btn-outline-primary w-100">View your pre-enlisted
+        courses</a>
     </div>
   </div>
-  <br>
+</div>
+<br>
 
-  <div id="preenlistment-courses-table"></div>
-  <br>
-  {{!-- <input type="submit" id="submit" value="Proceed to Pre-Enlistment Cart"> --}}
-  {{!--
-</form> --}}
+<input type="hidden" id="student-id-hidden" name="_id" value="{{_id}}">
+<div id="preenlistment-courses-table"></div>
+<br>
 
-<script>
-  var table = new Tabulator('#preenlistment-courses-table', {
-    autoColumns: true,
-    autoColumnsDefinitions: [{ field: 'courseCode', formatter: 'html' }],
-    layout: 'fitColumns',
-    pagination: 'local',
-    paginationSize: 10,
-    ajaxURL: '/data/preenlistment-courses.json',
-    ajaxResponse(url, params, response) {
-      return response.map(course => {
-        return {
-          courseCode: `${course.courseCode}<button class="btn btn-primary py-0 float-right">Pre-enlist</button>`
-        }
-      })
-    },
-  });
-</script>
-
-{{!--
-<script>
-  // course and ecourse will get data from database
-  var course = [
-    { name: "CSARCH1" },
-    { name: "GEETHIC" },
-    { name: "STMATH" },
-    { name: "STALGCM" },
-    { name: "CCAPDEV" },
-    { name: "GESPORT" }
-  ];
-
-  var ecourse = [
-    { name: "NATLANG" }
-  ];
-
-  function addClass(input) {
-    if (document.querySelector(input).value)
-      alert("Class added to cart!");
-  }
-
-  var tableList = document.querySelector('table#list');
-  tableList.style.border = 'none';
-
-  for (let i = 0; i < course.length; i++) {
-    var row = tableList.insertRow(-1);
-    for (const key in course[i]) {
-      if (course[i].hasOwnProperty(key)) {
-        const element = course[i][key];
-        var cell = row.insertCell(-1);
-
-        // Append an input element for each cell so that the data can be submitted
-        var input = document.createElement('input');
-        input.classList.add('res-12');
-        input.type = "text";
-        input.readOnly = true;
-        input.name = key;
-
-        console.log(input);
-
-        cell.append(input);
-        input.value = element;
-      }
-    }
-  }
-
-  for (let i = 0; i < ecourse.length; i++) {
-    var row = tableList.insertRow(-1);
-    for (const key in ecourse[i]) {
-      if (ecourse[i].hasOwnProperty(key)) {
-        const element = ecourse[i][key];
-        var cell = row.insertCell(-1);
-        // Append an input element for each cell so that the data can be submitted
-        var input = document.createElement('input');
-        input.classList.add('res-12');
-        input.type = "text";
-        input.readOnly = true;
-        input.name = key;
-
-        console.log(input);
-
-        cell.append(input);
-        input.value = element;
-      }
-    }
-  }
-</script> --}}
+<script src="/javascript/helpers/form-helper.js"></script>
+<script src="/javascript/pages/preenlistment.js"></script>
