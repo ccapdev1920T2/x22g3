@@ -3,13 +3,14 @@ const Course = require("../../models/Course");
 
 exports.getAllCourses = async (req, res) => {
   try {
-    let options = req.query || {};
+    let { courseCode = /[A-Z0-9]/, ...rest } = req.query;
+    let options = rest;
 
     let terms = (await TermDetail.find(options, "_id")).map((term) =>
       String(term._id)
     );
 
-    const courses = (await Course.find()).filter((course) => {
+    const courses = (await Course.find({ courseCode })).filter((course) => {
       return terms.includes(String(course.termOffered));
     });
 

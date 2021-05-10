@@ -238,4 +238,15 @@ exports.getAllCoursesValidator = [
 
       return Number(val);
     }),
+  query("courseCode")
+    .optional()
+    .trim()
+    .toUpperCase()
+    .customSanitizer((val, { req }) => {
+      if (!val) {
+        return new RegExp("[A-Z0-9]");
+      }
+
+      return new RegExp(val);
+    }),
 ];
