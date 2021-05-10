@@ -1,5 +1,8 @@
 [
-  { "name": "St. Mutien Marie Scholarship Grant (Graduate)" },
+  {
+    "name": "St. Mutien Marie Scholarship Grant (Graduate)",
+    "description": "N/A"
+  },
   {
     "name": "Archer Achiever Scholarship",
     "description": "The Archer Achiever Scholarship Program aims to provide scholarship to students who top the DLSU College Admission Test. Qualified students will be automatically awarded full tuition and fee waiver. This is available for students who graduated from Philippine Private/Public and Science High Schools."
@@ -20,7 +23,7 @@
     "name": "Br. Andrew Gonzalez Academic Scholarship",
     "description": "High school students who ranked Top 1 (with highest honors) for each strand (STEM, ABM, HUMMS) of La Salle district schools and have passed the entrance exam will be awarded a full academic scholarship (tuition and fees) starting in their freshman year."
   },
-  { "name": "St. La Salle Financial Assistance Grant" },
+  { "name": "St. La Salle Financial Assistance Grant", "description": "N/A" },
   {
     "name": "Brother President Scholarship Program (BPSP)",
     "description": "This is awarded to the legitimate or legally-adopted children of married, permanent and full-time faculty, and administrative service personnel who joined DLSU in May 1987 or after and have served the University for at least three years and are in active University Service while availing of the grant. These students should have passed the entrance requirements of La Salle Green Hills, De La Salle-Santiago Zobel School, De La Salle-Canlubang, De La Salle-Araneta University, De La Salle University-Dasmariñas, De La Salle-College of St. Benilde, or De La Salle University."
