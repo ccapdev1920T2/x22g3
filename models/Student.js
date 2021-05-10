@@ -16,6 +16,11 @@ const studentSchema = mongoose.Schema({
   degree: { type: String, required: true },
   hasAccess: { type: Boolean, default: true },
   preenlistedCourses: [{ type: mongoose.Types.ObjectId, ref: "PreEnlist" }],
+  scholarship: {
+    type: mongoose.Types.ObjectId,
+    ref: "Scholarships",
+    default: null,
+  },
 });
 
 module.exports = mongoose.model("Student", studentSchema);

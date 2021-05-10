@@ -13,5 +13,10 @@
     "username": "test1",
     "password": "test1",
     "type": "moderator"
+  },
+  {
+    "username": "11976543",
+    "password": "mypassword",
+    "type": "student"
   }
 ]

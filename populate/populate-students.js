@@ -6,6 +6,7 @@ const Account = require("../models/Account");
 const Student = require("../models/Student");
 const connect = require("../config/db-config");
 const { salt } = require("../config/bcrypt-config");
+const Scholarship = require("../models/Scholarship");
 
 /**
  * Populates the students collection in the database.
@@ -47,6 +48,13 @@ module.exports = async () => {
         if (!savedAccount) throw new Error("account not found");
 
         student.account = savedAccount._id;
+
+        const scholarship = await Scholarship.findOne({
+          name: student.scholarship,
+        });
+        if (!scholarship) throw new Error("scholarship not found");
+
+        student.scholarship = scholarship._id;
 
         await Student.create(student);
         console.log("Student created.");
