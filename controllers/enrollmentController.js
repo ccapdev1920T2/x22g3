@@ -18,6 +18,7 @@ exports.renderClassSchedulePage = (req, res) => {
 exports.renderAddClassPage = (req, res) => {
   res.render("add-class", {
     title: "Add a Class | Animo.sys",
+    studentId: req.user._id,
   });
 };
 

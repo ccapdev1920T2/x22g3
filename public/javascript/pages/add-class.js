@@ -1,9 +1,37 @@
+var studentId = document.getElementById("student-id-hidden");
+
 var addIcon = function (cell, formatterParams, onRendered) {
   var span = document.createElement("span");
   span.classList.add("material-icons", "btn", "btn-outline-primary");
   span.innerText = "school";
   span.onclick = function (e) {
-    console.log("test");
+    var rowData = cell.getData();
+    var body = {};
+    body.courseId = rowData._id;
+
+    axios
+      .post(`/api/students/${studentId.value}/enroll`, body, {
+        validateStatus: function (status) {
+          // resolve the promise when this condition is true
+          return (status >= 200 && status < 300) || status == 400;
+        },
+      })
+      .then(function (response) {
+        if (response.status == 400) {
+          alert(
+            response.data.errors
+              .map(function (err) {
+                return err.msg;
+              })
+              .join("\n")
+          );
+        } else {
+          alert(`Successfully enrolled to ${rowData.courseCode}.`);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   return span;
 };

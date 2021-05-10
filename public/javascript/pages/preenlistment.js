@@ -19,9 +19,11 @@ var preenlistBtn = function (cell, formatterParams, onRendered) {
       .then(function (response) {
         if (response.status == 400) {
           alert(
-            response.data.errors.map(function (err) {
-              return err.msg;
-            })
+            response.data.errors
+              .map(function (err) {
+                return err.msg;
+              })
+              .join("\n")
           );
         } else {
           alert(`Successfully preenlisted ${rowData.courseCode}.`);
