@@ -21,10 +21,9 @@
     ],
     "room": "GT202",
     "instructor": "ESTEVES, M.",
-    "offeredDuring": "ghi",
     "enlCap": 40,
-    "enrollees" : [],
-    "termOffered": "2020-2021/2" 
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   },
   {
     "section": "X22",
@@ -36,8 +35,8 @@
     "room": "GT203",
     "instructor": "LAWAS, C.",
     "enlCap": 40,
-    "enrollees" : [],
-    "termOffered": "2020-2021/2" 
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   },
   {
     "section": "X22",
@@ -48,8 +47,8 @@
     ],
     "room": "GT204",
     "enlCap": 40,
-    "enrollees" : [],
-    "termOffered": "2020-2021/2" 
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   },
   {
     "section": "X22",
@@ -60,8 +59,8 @@
     ],
     "room": "GT205",
     "enlCap": 40,
-    "enrollees" : [],
-    "termOffered": "2020-2021/2" 
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   },
   {
     "section": "X22",
@@ -69,7 +68,7 @@
     "schedules": [{ "day": "T", "startTime": "13:00", "endTime": "15:00" }],
     "room": "GT206",
     "enlCap": 40,
-    "enrollees" : [],
-    "termOffered": "2020-2021/2" 
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   }
 ]
