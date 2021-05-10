@@ -216,3 +216,26 @@ exports.requestClassValidator = [
     .notEmpty()
     .withMessage("Subject to be requested required"),
 ];
+
+exports.getAllCoursesValidator = [
+  query("academicYear")
+    .optional()
+    .trim()
+    .customSanitizer((val, { req }) => {
+      if (val === "") {
+        return new RegExp("[0-9]*-[0-9]*");
+      }
+
+      return new RegExp(val);
+    }),
+  query("term")
+    .optional()
+    .trim()
+    .customSanitizer((val, { req }) => {
+      if (val === "") {
+        return { $gt: 0 };
+      }
+
+      return Number(val);
+    }),
+];
