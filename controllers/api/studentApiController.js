@@ -106,3 +106,5 @@ exports.removePreenlistedCourse = async (req, res) => {
     res.status(500).send(error);
   }
 };
+
+exports.postDrop = async (req, res) => {};
