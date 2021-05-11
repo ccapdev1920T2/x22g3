@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const termDetailSchema = mongoose.Schema({
   academicYear: { type: String, required: true },
@@ -7,4 +7,4 @@ const termDetailSchema = mongoose.Schema({
   endDate: { type: String, required: true },
 });
 
-module.exports = mongoose.model('TermDetail', termDetailSchema);
+module.exports = mongoose.model("TermDetail", termDetailSchema);

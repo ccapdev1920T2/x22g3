@@ -1,56 +1,94 @@
+var studentId = document.getElementById("student-id-hidden");
+
 var addIcon = function (cell, formatterParams, onRendered) {
-  var span = document.createElement('span');
-  span.classList.add('material-icons', 'btn', 'btn-outline-primary');
-  span.innerText = 'add_shopping_cart';
+  var span = document.createElement("span");
+  span.classList.add("material-icons", "btn", "btn-outline-primary");
+  span.innerText = "school";
   span.onclick = function (e) {
-    console.log('test');
+    var rowData = cell.getData();
+    var body = {};
+    body.courseId = rowData._id;
+
+    axios
+      .post(`/api/students/${studentId.value}/enroll`, body, {
+        validateStatus: function (status) {
+          // resolve the promise when this condition is true
+          return (status >= 200 && status < 300) || status == 400;
+        },
+      })
+      .then(function (response) {
+        if (response.status == 400) {
+          alert(
+            response.data.errors
+              .map(function (err) {
+                return err.msg;
+              })
+              .join("\n")
+          );
+        } else {
+          alert(`Successfully enrolled to ${rowData.courseCode}.`);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   return span;
 };
 
 var addIconTooltip = function (cell) {
-  return 'Add to enrollment cart';
+  return "Enroll to this class";
 };
 
-var courseOfferingsTable = new Tabulator('#course-offerings-table', {
+var courseOfferingsTable = new Tabulator("#course-offerings-table", {
   columns: [
-    { title: 'Class No.', field: 'classNo', sorter: 'number' },
-    { title: 'Course Code', field: 'courseCode', sorter: 'string' },
-    { title: 'Section', field: 'section', sorter: 'string' },
+    { title: "Class ID", field: "_id", sorter: "number" },
+    { title: "Course Code", field: "courseCode", sorter: "string" },
+    { title: "Section", field: "section", sorter: "string" },
     {
-      title: 'Schedules',
-      field: 'schedules',
-      sorter: 'string',
-      formatter: 'html',
+      title: "Schedules",
+      field: "schedules",
+      sorter: "string",
+      formatter: "html",
     },
-    { title: 'Room', field: 'room', sorter: 'string' },
-    { title: 'Instructor', field: 'instructor', sorter: 'string' },
+    { title: "Room", field: "room", sorter: "string" },
+    { title: "Instructor", field: "instructor", sorter: "string" },
     {
-      title: 'Action',
+      title: "Action",
       formatter: addIcon,
       tooltip: addIconTooltip,
       headerSort: false,
-      hozAlign: 'center',
-      vertAlign: 'middle',
+      hozAlign: "center",
+      vertAlign: "middle",
     },
-    // { title: 'Action', field: 'action', formatter: 'html', headerSort: false },
   ],
-  layout: 'fitColumns',
-  pagination: 'local',
+  layout: "fitColumns",
+  pagination: "local",
   paginationSize: 10,
-  ajaxURL: '/data/courses.json',
+  ajaxURL: "/api/courses",
   ajaxResponse(url, params, response) {
-    return response.map(course => {
+    return response.map((course) => {
       const obj = Object.assign({}, course);
       obj.schedules = obj.schedules.reduce(
         (prev, cur, i, arr) =>
-          `${prev}${i > 0 && i < arr.length ? '<br>' : ''}` +
+          `${prev}${i > 0 && i < arr.length ? "<br>" : ""}` +
           `${cur.day} ${cur.startTime}-${cur.endTime}`,
-        ``,
+        ``
       );
-      obj.action = `<button class="btn btn-primary py-0">Add to Cart</button>`;
 
       return obj;
     });
   },
 });
+
+var searchCourseOfferings = document.getElementById(
+  "search-course-offerings-tf"
+);
+
+searchCourseOfferings.oninput = function (e) {
+  e.preventDefault();
+
+  courseOfferingsTable.setData(courseOfferingsTable.getAjaxUrl(), {
+    courseCode: this.value,
+  });
+};

@@ -1,4 +1,6 @@
+const mongoose = require("mongoose");
 const { check, validationResult, query } = require("express-validator");
+const Course = require("../models/Course");
 const PreenlistmentCourse = require("../models/PreenlistmentCourse");
 const Student = require("../models/Student");
 
@@ -215,4 +217,118 @@ exports.requestClassValidator = [
     .trim()
     .notEmpty()
     .withMessage("Subject to be requested required"),
+];
+
+exports.getAllCoursesValidator = [
+  query("academicYear")
+    .optional()
+    .trim()
+    .customSanitizer((val, { req }) => {
+      if (val === "") {
+        return new RegExp("[0-9]*-[0-9]*");
+      }
+
+      return new RegExp(val);
+    }),
+  query("term")
+    .optional()
+    .trim()
+    .customSanitizer((val, { req }) => {
+      if (val === "") {
+        return { $gt: 0 };
+      }
+
+      return Number(val);
+    }),
+  query("courseCode")
+    .optional()
+    .trim()
+    .toUpperCase()
+    .customSanitizer((val, { req }) => {
+      if (!val) {
+        return new RegExp("[A-Z0-9]");
+      }
+
+      return new RegExp(val);
+    }),
+];
+
+exports.enrollValidator = [
+  check("studentId", "Invalid student ID.")
+    .trim()
+    .notEmpty()
+    .bail()
+    .isMongoId()
+    .bail()
+    .custom((val, { req }) => {
+      return val == req.user._id;
+    }),
+  check("courseId")
+    .trim()
+    .isMongoId()
+    .withMessage("Invalid course ID.")
+    .bail()
+    .custom(async (val, { req }) => {
+      try {
+        const course = await Course.findById(val);
+
+        if (!course) {
+          return Promise.reject("Course does not exist.");
+        }
+
+        let count = course.enrollees.length;
+
+        if (count == course.enlCap) {
+          return Promise.reject("Class already full.");
+        }
+
+        if (course.enrollees.includes(req.params.studentId)) {
+          return Promise.reject("Already enrolled to this class.");
+        }
+
+        console.log(count);
+      } catch (error) {
+        console.log(error);
+        return Promise.reject();
+      }
+    })
+    .custom(async (val, { req }) => {
+      try {
+        const courses = await Course.find(
+          { enrollees: req.params.studentId },
+          "schedules"
+        );
+
+        const temp = courses.map((course) => course.schedules).flat();
+        temp.sort((a, b) => a.startTime.localeCompare(b.startTime));
+
+        const course = await Course.findById(val);
+
+        for (let i = 0; i < temp.length; i++) {
+          const t = temp[i];
+          for (let j = 0; j < course.schedules.length; j++) {
+            const c = course.schedules[j];
+            if (t.day == c.day) {
+              if (t.startTime == c.startTime || t.endTime == c.endTime) {
+                return Promise.reject(
+                  "This course has conflicts with your current schedule."
+                );
+              }
+
+              if (
+                (t.startTime <= c.startTime && c.startTime <= t.endTime) ||
+                (t.startTime <= c.endTime && c.endTime <= t.endTime)
+              ) {
+                return Promise.reject(
+                  "This course has conflicts with your current schedule."
+                );
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.log(error);
+        return Promise.reject();
+      }
+    }),
 ];

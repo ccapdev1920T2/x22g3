@@ -1,4 +1,5 @@
 const { sendCreatePasswordMail } = require("../../helpers/mailing-helper");
+const Course = require("../../models/Course");
 const Student = require("../../models/Student");
 
 exports.getAllStudents = async (req, res) => {
@@ -24,10 +25,10 @@ exports.postStudent = async (req, res) => {
 
     await sendCreatePasswordMail(saved, req.protocol, req.get("host"));
 
-    res.send(saved);
+    return res.send(saved);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: error });
+    return res.status(500).send({ message: error });
   }
 };
 
@@ -43,7 +44,7 @@ exports.disableAccess = async (req, res) => {
     return res.send(student);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: error });
+    return res.status(500).send({ message: error });
   }
 };
 
@@ -59,7 +60,7 @@ exports.enableAccess = async (req, res) => {
     return res.send(student);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: error });
+    return res.status(500).send({ message: error });
   }
 };
 
@@ -70,10 +71,10 @@ exports.preenlist = async (req, res) => {
       { $addToSet: { preenlistedCourses: req.body._id } }
     );
 
-    res.status(200).send(student);
+    return res.status(200).send(student);
   } catch (error) {
     console.log(error);
-    res.status(500).send(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -84,10 +85,10 @@ exports.getAllPreenlistedCourses = async (req, res) => {
       "preenlistedCourses"
     ).populate("preenlistedCourses");
 
-    res.status(200).send(student.preenlistedCourses);
+    return res.status(200).send(student.preenlistedCourses);
   } catch (error) {
     console.log(error);
-    res.status(500).send(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -100,11 +101,29 @@ exports.removePreenlistedCourse = async (req, res) => {
     );
     await student.save();
 
-    res.status(200).send(student);
+    return res.status(200).send(student);
   } catch (error) {
     console.log(error);
-    res.status(500).send(error);
+    return res.status(500).send(error);
   }
 };
 
 exports.postDrop = async (req, res) => {};
+
+exports.enroll = async (req, res) => {
+  try {
+    const course = await Course.updateOne(
+      { _id: req.body.courseId },
+      {
+        $addToSet: { enrollees: req.params.studentId },
+      }
+    );
+
+    if (!course) return res.status(404).send({ message: "Not found" });
+
+    return res.send(course);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
