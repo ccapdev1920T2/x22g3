@@ -9,73 +9,29 @@
 
 <h1>Degree Process</h1>
 <br>
-<h3>Document Checklist</h3>
-<br>
-<div class="overflow-auto">
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>Document</th>
-        <th>Submitted (Y/N)</th>
-        <th>Submission Date</th>
-        <th>Submitted to</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Transcript of Records</td>
-        <td>Yes</td>
-        <td>02/29/2020</td>
-        <td>Ms. Mylene</td>
-      </tr>
-      <tr>
-        <td>Random Document</td>
-        <td>No</td>
-        <td> </td>
-        <td> </td>
-      </tr>
-    </tbody>
-
-  </table>
-</div>
-
-<br><br>
 
 <h3>Request a Document</h3>
-<form method = "POST" action = "/api/document-requests/new" id = "documentform">
-<input type="hidden" id="student-id-hidden" name="_id" value="{{_id}}">
-<br>
-<label for="documents" class="input-bar-label">Select a document to request</label>
-<div class="input-group">
-  <select class="custom-select" id="documentType" name = "documentType">
-    <option value="Transcript of Records">Transcript of Records</option>
-    <option value="Certificate of Good Morals">Certificate of Good Morals</option>
-  </select>
-  <div class="input-group-append">
-    <button type = "submit" class="btn btn-primary" id ="request-document-btn">Request</button>
+<form method="POST" action="/api/document-requests/new" id="documentform">
+  <input type="hidden" id="student-id-hidden" name="_id" value="{{_id}}">
+  <br>
+  <label for="documents" class="input-bar-label">Select a document to request</label>
+  <div class="input-group">
+    <select class="custom-select" id="documentType" name="documentType">
+      <option value="Transcript of Records">Transcript of Records</option>
+      <option value="Certificate of Good Morals">Certificate of Good Morals</option>
+    </select>
+    <div class="input-group-append">
+      <button type="submit" class="btn btn-primary" id="request-document-btn">Request</button>
+    </div>
+
+
   </div>
-  
-   
-</div>
 </form>
 <br>
 <p>{{details.msg}}</p>
-{{!-- <br>
-<div class="overflow-auto">
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>Date/Time</th>
-        <th>Document</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-  </table>
-</div> --}}
-
-<br><br>
 
 <br>
+
 <h3>Documents Overview</h3>
 <br>
 <div class="overflow-auto">
@@ -85,7 +41,7 @@
       <tr>
         <th>Request Date</th>
         <th>Document Type</th>
-        <th>Request Date</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -96,26 +52,13 @@
         {{#if this.isApproved}}
         <td>Approved</td>
         {{else}}
-        <td>Rejected</td>
+        <td>For approval</td>
         {{/if}}
       </tr>
       {{/each}}
-      
+
     </tbody>
 
   </table>
   {{/if}}
 </div>
-
-<script>
-  function NewDoc() {
-    var table = document.getElementById("reqs");
-    var row = table.insertRow(table.getElementsByTagName('tr').length);
-    var cell0 = row.insertCell(0);
-    var cell1 = row.insertCell(1);
-    var cell2 = row.insertCell(2);
-    cell0.innerHTML = new Date();
-    cell1.innerHTML = document.getElementById("documents").value;
-    cell2.innerHTML = "Request Sent";
-  }
-</script>
