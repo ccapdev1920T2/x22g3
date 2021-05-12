@@ -54,5 +54,10 @@ exports.isAllowedAccess = (req, res, next) => {
     return next();
   }
 
-  res.send("You are not allowed to access Animo.sys");
+  res.status(403).render("error", {
+    title: "Error",
+    statusCode: 403,
+    message: "Your account has been disabled by the moderators.",
+    layout: false,
+  });
 };
