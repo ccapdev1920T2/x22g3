@@ -1,8 +1,23 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-var preenlistment_controller = require('../controllers/preenlistmentController');
+const {
+  renderPreenlistmentPage,
+  renderPreenlistedCoursesPage,
+} = require("../controllers/preenlistmentController");
+const {
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+} = require("../helpers/auth-helper");
 
-router.get('/', preenlistment_controller.preenlisted_courses_list);
+router.get("/", isAuth, isStudent, isAllowedAccess, renderPreenlistmentPage);
 
+router.get(
+  "/preenlisted-courses",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  renderPreenlistedCoursesPage
+);
 module.exports = router;

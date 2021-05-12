@@ -1,6 +1,5 @@
 [
   {
-    "classNo": "111111",
     "section": "X22",
     "courseCode": "CSARCH1",
     "schedules": [
@@ -9,10 +8,11 @@
     ],
     "room": "GT201",
     "instructor": "PERADILLA, M.",
-    "offeredDuring": "ghi"
+    "enlCap": 40,
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   },
   {
-    "classNo": "222222",
     "section": "X22",
     "courseCode": "GEETHIC",
     "schedules": [
@@ -21,10 +21,11 @@
     ],
     "room": "GT202",
     "instructor": "ESTEVES, M.",
-    "offeredDuring": "ghi"
+    "enlCap": 40,
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   },
   {
-    "classNo": "333333",
     "section": "X22",
     "courseCode": "STMATH",
     "schedules": [
@@ -33,10 +34,11 @@
     ],
     "room": "GT203",
     "instructor": "LAWAS, C.",
-    "offeredDuring": "ghi"
+    "enlCap": 40,
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   },
   {
-    "classNo": "444444",
     "section": "X22",
     "courseCode": "STALGCM",
     "schedules": [
@@ -44,11 +46,11 @@
       { "day": "H", "startTime": "09:15", "endTime": "10:45" }
     ],
     "room": "GT204",
-    "instructor": "AZCARRAGA, A.",
-    "offeredDuring": "ghi"
+    "enlCap": 40,
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   },
   {
-    "classNo": "555555",
     "section": "X22",
     "courseCode": "CCAPDEV",
     "schedules": [
@@ -56,16 +58,17 @@
       { "day": "H", "startTime": "14:30", "endTime": "16:00" }
     ],
     "room": "GT205",
-    "instructor": "ANTIOQUIA, A.",
-    "offeredDuring": "ghi"
+    "enlCap": 40,
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   },
   {
-    "classNo": "666666",
     "section": "X22",
     "courseCode": "GESPORT",
     "schedules": [{ "day": "T", "startTime": "13:00", "endTime": "15:00" }],
     "room": "GT206",
-    "instructor": "CALABIO, V.",
-    "offeredDuring": "ghi"
+    "enlCap": 40,
+    "enrollees": [],
+    "termOffered": "2020-2021/2"
   }
 ]

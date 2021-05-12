@@ -1,8 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-var profile_controller = require('../controllers/profileController'); 
+const { renderProfilePage } = require("../controllers/profileController");
+const {
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+} = require("../helpers/auth-helper");
 
-router.get('/', profile_controller.student_detail);
+router.get("/", isAuth, isStudent, isAllowedAccess, renderProfilePage);
 
 module.exports = router;

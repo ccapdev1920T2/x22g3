@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const url = 'mongodb://localhost:27017/animo-sys';
+const url = process.env.MONGODB_URL_REMOTE;
 
 const options = {
   useUnifiedTopology: true,
@@ -13,7 +13,9 @@ const options = {
 module.exports = async () => {
   try {
     await mongoose.connect(url, options);
-    console.log(`Connected at ${url}`);
+    console.log(
+      `Connected at ${mongoose.connection.host}/${mongoose.connection.name}`
+    );
   } catch (error) {
     console.log(error);
     process.exit(1);

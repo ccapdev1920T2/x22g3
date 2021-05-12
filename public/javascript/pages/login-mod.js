@@ -1,13 +1,18 @@
 var loginModForm = document.getElementById('login-mod-form');
 var loginModSubmit = document.getElementById('login-mod-submit');
+var loginModSpinner = document.getElementById('login-mod-spinner');
+var loginModText = document.getElementById('login-mod-text');
 var loginModErrorContainer = document.getElementById(
   'login-mod-error-container',
 );
 
+var isLoading = false;
+
 loginModForm.onsubmit = function (e) {
   e.preventDefault();
 
-  loginModSubmit.disabled = true;
+  isLoading = true;
+  handleButtonSpinner(isLoading, loginModSubmit, loginModSpinner, loginModText);
 
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
@@ -31,11 +36,25 @@ loginModForm.onsubmit = function (e) {
         window.location.pathname = `/mod`;
       } else {
         loginModErrorContainer.innerHTML = response.data;
-        loginModSubmit.disabled = false;
+
+        isLoading = false;
+        handleButtonSpinner(
+          isLoading,
+          loginModSubmit,
+          loginModSpinner,
+          loginModText,
+        );
       }
     })
     .catch(function (err) {
       console.log(err);
-      loginModSubmit.disabled = false;
+
+      isLoading = false;
+      handleButtonSpinner(
+        isLoading,
+        loginModSubmit,
+        loginModSpinner,
+        loginModText,
+      );
     });
 };

@@ -1,38 +1,76 @@
 var express = require("express");
 var router = express.Router();
 
-var enrollment_controller = require("../controllers/enrollmentController");
+var enrollmentController = require("../controllers/enrollmentController");
+const {
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+} = require("../helpers/auth-helper");
 
 // /enrollment landing page
-router.get("/", enrollment_controller.enrollment_landing_page_get);
-
-// TEST CREATE COURSES
-//router.get('/create', enrollment_controller.course_create_sample);
-
 router.get(
-    "/class-schedule",
-    enrollment_controller.enrollment_class_schedule_get
-);
-
-router.get("/add-class", enrollment_controller.enrollment_add_class_get);
-
-router.get("/drop-class", enrollment_controller.enrollment_drop_class_get);
-
-router.get(
-    "/drop-class/checkout",
-    enrollment_controller.enrollment_dropclass_list_get
-);
-
-router.get("/request-class", enrollment_controller.renderRequestClass);
-
-router.get(
-    "/courseofferings",
-    enrollment_controller.enrollment_course_offerings_list_get
+  "/",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  enrollmentController.renderEnrollmentPage
 );
 
 router.get(
-    "/courseofferings/search",
-    enrollment_controller.enrollment_course_offerings_search_get
+  "/class-schedule",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  enrollmentController.renderClassSchedulePage
+);
+
+router.get(
+  "/add-class",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  enrollmentController.renderAddClassPage
+);
+
+router.get(
+  "/drop-class",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  enrollmentController.renderDropClassPage
+);
+
+router.get(
+  "/drop-class/checkout",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  enrollmentController.renderDropClassListPage
+);
+
+router.get(
+  "/request-class",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  enrollmentController.renderRequestClassPage
+);
+
+router.get(
+  "/courseofferings",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  enrollmentController.renderCourseOfferingsPage
+);
+
+router.get(
+  "/courseofferings/search",
+  isAuth,
+  isStudent,
+  isAllowedAccess,
+  enrollmentController.enrollment_course_offerings_search_get
 );
 
 module.exports = router;

@@ -1,0 +1,453 @@
+[
+  {
+    "name": "Brother Andrew Gonzales College of Education",
+    "code": "BAGCED",
+    "degrees": [
+      {
+        "name": "Bachelor of Science, Major in Early Childhood Education",
+        "code": "BEED-ECED"
+      },
+      {
+        "name": "Bachelor of Secondary Education, major in English",
+        "code": "BSED-ENGL"
+      },
+      {
+        "name": "Bachelor of Secondary Education major in Science with specialization in Biology",
+        "code": "BSED-BIO"
+      },
+      {
+        "name": "Bachelor of Secondary Education major in Science with specialization in Chemistry",
+        "code": "BSED-CHY"
+      },
+      {
+        "name": "Bachelor of Secondary Education, major in Mathematics",
+        "code": "BSED-MTH"
+      },
+      {
+        "name": "Bachelor of Secondary Education Major in Physics",
+        "code": "BSED-PHY"
+      }
+    ]
+  },
+  { "name": "College of Computer Studies", 
+    "code": "CCS",
+    "degrees": [
+      {
+        "name": "Bachelor of Science in Computer Science Major in Software Technology",
+        "code": "BSCS-ST"
+      },
+      {
+        "name": "Major in Software Technology Major in Network and Information Security",
+        "code": "BSCS-NIS"
+      },
+      {
+        "name": "Bachelor of Science in Computer Science Major in Computer Systems Engineering",
+        "code": "BSCSE"
+      },
+      {
+        "name": "Bachelor of Science in Information Systems",
+        "code": "BSICT"
+      },
+      {
+        "name": "Bachelor of Science in Information Technology",
+        "code": "BSIT"
+      },
+      {
+        "name": "Bachelor of Science in Interactive Entertainment Major in Game Art and Design",
+        "code": "BSIET-AD"
+      },
+      {
+        "name": "Bachelor of Science in Interactive Entertainment Major in Game Development",
+        "code": "BSIET-GD"
+      },
+      {
+        "name": "Bachelor of Science (Honors) in Computer Science and Master of Science in Computer Science",
+        "code": "BSCS-ST-MSCS"
+      }
+    ]
+  },
+  { "name": "College of Liberal Arts", 
+    "code": "CLA",
+    "degrees": [
+      {
+        "name": "Bachelor of Arts in Behavioral Sciences, Major in Organizational and Social Systems Development",
+        "code": "ABBHS-OSSD"
+      },
+      {
+        "name": "Bachelor of Arts in Development Studies",
+        "code": "AB-DVS"
+      },
+      {
+        "name": "Bachelor of Arts in History",
+        "code": "AB-HIS"
+      },
+      {
+        "name": "Bachelor of Arts in Southeast Asian Studies",
+        "code": "AB-SEA"
+      },
+      {
+        "name": "AB in International Studies, Major in American Studies",
+        "code": "ABIS-AMS"
+      },
+      {
+        "name": "AB in International Studies, Major in European Studies",
+        "code": "ABIS-EUS"
+      },
+      {
+        "name": "AB in International Studies, Major in Japanese Studies",
+        "code": "ABIS-JPS"
+      },
+      {
+        "name": "AB in International Studies major in Chinese Studies",
+        "code": "ABIS-CNS"
+      },
+      {
+        "name": "Bachelor of Arts in Literature Major in Creative Writing",
+        "code": "ABLit-CW"
+      },
+      {
+        "name": "Bachelor of Arts in Philippine Studies, Major in Filipino in Mass Media (AB-PHS)",
+        "code": "AB-PHS"
+      },
+      {
+        "name": "Bachelor of Arts in Political Science",
+        "code": "AB-PLS"
+      },
+      {
+        "name": "Bachelor of Arts in Communication Arts",
+        "code": "AB-CA"
+      },
+      {
+        "name": "Bachelor of Arts in Organizational Communication",
+        "code": "AB-OC"
+      },
+      {
+        "name": "AB, Major in Philosophy",
+        "code": "AB-PHL"
+      },
+      {
+        "name": "Bachelor of Arts in Psychology",
+        "code": "AB-PSY"
+      },
+      {
+        "name": "Bachelor of Science in Psychology",
+        "code": "BSPSY"
+      },
+      {
+        "name": "AB Sociology",
+        "code": "AB-SOC"
+      },
+      {
+        "name": "Bachelor of Arts (Honors) and Master of Arts in Behavioral Sciences with Specialization in Organizational and Social Systems Development (Ladderized Program)",
+        "code": "MBHSL-OSSD"
+      }
+    ]},
+  { "name": "College of Science", 
+    "code": "COS",
+    "degrees": [
+      {
+        "name": "Bachelor of Science (BS) in Biochemistry",
+        "code": "BS-BCHEM"
+      },
+      {
+        "name": "BS in Biology major in Medical Biology ",
+        "code": "BIO-MED"
+      },
+      {
+        "name": "BS in Biology major in Molecular Biology and Biotechnology",
+        "code": "BIO-MBB"
+      },
+      {
+        "name": "BS in Biology major in Systematics and Ecology",
+        "code": "BIO-SEC"
+      },
+      {
+        "name": "BS in Chemistry",
+        "code": "BS-CHY"
+      },
+      {
+        "name": "BS in Chemistry major in Food Science",
+        "code": "BS-CHYFS"
+      },
+      {
+        "name": "BS in Chemistry minor in Business Studies",
+        "code": "BS-CHY"
+      },
+      {
+        "name": "BS in Human Biology",
+        "code": "BHBIO"
+      },
+      {
+        "name": "BS in Mathematics with specialization in Business Applications",
+        "code": "BSMTH-BAP"
+      },
+      {
+        "name": "BS in Mathematics with specialization in Computer Applications",
+        "code": "BSMTH-CAP"
+      },
+      {
+        "name": "BS in Statistics Major in Actuarial Science",
+        "code": "BSSTT"
+      },
+      {
+        "name": "BS in Physics Minor in Economics",
+        "code": "PHY-ECO"
+      },
+      {
+        "name": "BS in Physics Minor in Finance",
+        "code": "PHY-FIN"
+      },
+      {
+        "name": "BS in Physics with specialization in Materials Science",
+        "code": "PHY-MAT"
+      },
+      {
+        "name": "BS in Physics with specialization in Medical Instrumentation",
+        "code": "PHY-MED"
+      },
+      {
+        "name": "BS in Premed Physics",
+        "code": "BPMPH"
+      },
+      {
+        "name": "BS with Specialization in Business Applications",
+        "code": "MTH-BAP"
+      },
+      {
+        "name": "BS with Specialization in Computer Applications",
+        "code": "MTH-CAP"
+      },
+      {
+        "name": "BS in Statistics Major in Actural Science",
+        "code": "BS-STAT"
+      }
+    ]},
+  { "name": "Gokongwei College of Engineering", 
+    "code": "GCOE",
+    "degrees": [
+      {
+        "name": "Bachelor of Science in Chemical Engineering",
+        "code": "BS-CHE"
+      },
+      {
+        "name": "BS in Civil Engineering w/ Specializations in Structural Engineering",
+        "code": "BSCE-STE"
+      },
+      {
+        "name": "BS in Civil Engineering w/ Specializations in Construction Technology and Management",
+        "code": "BSCE-CTM"
+      },
+      {
+        "name": "BS in Civil Engineering w/ Specializations in Geotechnical Engineering",
+        "code": "BSCE-GTE"
+      },
+      {
+        "name": "BS in Civil Engineering w/ Specializations in Hydraulics and Water Resources Engineering",
+        "code": "BSCE-HWR"
+      },
+      {
+        "name": "BS in Civil Engineering w/ Specializations in Transportation Engineering",
+        "code": "BSCE-TRE"
+      },
+      {
+        "name": "BS in Computer Engineering",
+        "code": "BS-CPE"
+      },
+      {
+        "name": "BS in Electronics Engineering",
+        "code": "BS-ECE"
+      },
+      {
+        "name": "BS in Industrial Engineering",
+        "code": "BS-IE"
+      },
+      {
+        "name": "Bachelor of Science in Industrial Engineering with specialization in Information Technology",
+        "code": "BS IME-IT"
+      },
+      {
+        "name": "Bachelor of Science in Industrial Engineering with specialization in Service Management",
+        "code": "BS IME-SM"
+      },
+      {
+        "name": "BS/MS Honors Program for Industrial Engineering (BS/MS IE)",
+        "code": "BS/MS IE"
+      },
+      {
+        "name": "Bachelor of Science in Industrial Engineering (Honors) and Master of Science in Industrial Engineering",
+        "code": "BSIE-MSIE"
+      },
+      {
+        "name": "BS in Manufacturing Engineering and Management with specialization in Mechatronics and Robotics Engineering",
+        "code": "BSMEM-MRE"
+      },
+      {
+        "name": "Bachelor of Science in Mechanical Engineering with Specialization in Mechatronics Engineering",
+        "code": "BSME-ME"
+      },
+      {
+        "name": "Bachelor of Science  (Honors) and Masters of Science in Mechanical Engineering",
+        "code": "BS-MS ME"
+      },
+      {
+        "name": "Bachelor of Science (Honors) and Masters of Science in Chemical Engineering",
+        "code": "BS-MS CHE"
+      },
+      {
+        "name": "Bachelor of Science (Honors) and Masters of Science in Computer Engineering",
+        "code": "BS-MS CPE"
+      },
+      {
+        "name": "Bachelor of Science (Honors) and Masters of Science in Electronics Engineering",
+        "code": "BS-MS-ECE"
+      },
+      {
+        "name": "Bachelor of Science (Honors) and Masters of Science in Manufacturing Engineering and Management",
+        "code": "BS-MS-MEM"
+      }
+    ]},
+  { "name": "Ramon V. Del Rosario College of Business",
+    "code": "RVRCOB",
+    "degrees": [
+      {
+        "name": "Bachelor of Science in Accountancy",
+        "code": "BSA"
+      },
+      {
+        "name": "Bachelor of Science in Advertising Management",
+        "code": "BSADV"
+      },
+      {
+        "name": "Bachelor of Science in Applied Corporate Management",
+        "code": "BSAPC"
+      },
+      {
+        "name": "Bachelor of Science in Business Management",
+        "code": "BSMGT"
+      },
+      {
+        "name": "Bachelor of Science in Entrepreneurship",
+        "code": "BSENT"
+      },
+      {
+        "name": "Bachelor of Science in Interdisciplinary Business Studies",
+        "code": "BSIBS"
+      },
+      {
+        "name": "Bachelor of Science in Legal Management",
+        "code": "BSLGL"
+      },
+      {
+        "name": "Bachelor of Science in Management of Financial Institutions",
+        "code": "BSFIN"
+      },
+      {
+        "name": "Bachelor of Science in Marketing Management",
+        "code": "BSMKT"
+      }
+    ]},
+  { "name": "School of Economics",
+    "code": "SOE",
+    "degrees": [
+      {
+        "name": "Bachelor of Science in Applied Economics (Honors) and Master of Science in Economics",
+        "code": "BSAEC"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics",
+        "code": "BSAEC-IE"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Accountancy",
+        "code": "BSAE-I/ACC"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Advertising Management",
+        "code": "BSAE-I/ADV"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Applied Corporate Management",
+        "code": "BSAE-I/APC"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Business Management",
+        "code": "BSAE-I/MGT"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Legal Management",
+        "code": "BSAE-I/LGL"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Management of Financial Institutions",
+        "code": "BSAE-I/FIN"
+      },
+      {
+        "name": "BS in Applied Economics Major in Industrial Economics and BS in Marketing Management",
+        "code": "BSAE-I/MKT"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics",
+        "code": "BSAE-FE"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Accountancy",
+        "code": "BSAE-F/ACC"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Advertising Management",
+        "code": "BSAE-F/ADV"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Applied Corporate Management",
+        "code": "BSAE-F/APC"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Business Management",
+        "code": "BSAE-F/MGT"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Legal Management",
+        "code": "BSAE-F/LGL"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Management of Financial Institutions",
+        "code": "BSAE-F/FIN"
+      },
+      {
+        "name": "BS in Applied Economics Major in Financial Economics and BS in Marketing Management",
+        "code": "BSAE-F/MKT"
+      },
+      {
+        "name": "Bachelor of Arts (AB) Major in Economics",
+        "code": "ABECO"
+      },
+      {
+        "name": "AB Major in Economics and BS in Accountancy",
+        "code": "AB-ECO/BSA"
+      },
+      {
+        "name": "AB Major in Economics and BS in Advertising Management",
+        "code": "AB-ECO/ADV"
+      },
+      {
+        "name": "AB Major in Economics and BS in Applied Corporate Management",
+        "code": "AB-ECO/APC"
+      },
+      {
+        "name": "AB Major in Economics and BS in Business Management",
+        "code": "AB-ECO/MGT"
+      },
+      {
+        "name": "AB Major in Economics and BS in Legal Management",
+        "code": "AB-ECO/LGL"
+      },
+      {
+        "name": "AB Major in Economics and BS in Management of Financial Institutions",
+        "code": "AB-ECO/FIN"
+      },
+      {
+        "name": "AB Major in Economics and BS in Marketing Management",
+        "code": "AB-ECO/MKT"
+      }
+    ]}
+]

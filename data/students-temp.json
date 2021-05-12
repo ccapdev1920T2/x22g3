@@ -1,0 +1,32 @@
+[
+  {
+    "account": "11823456",
+    "idNum": "11823456",
+    "name": {
+      "first": "Juan",
+      "middle": "Santos",
+      "last": "Dela Cruz"
+    },
+    "email": "juan_dela_cruz@dlsu.edu.ph",
+    "section": "X22",
+    "college": "CCS",
+    "degree": "BSCS-ST",
+    "year": 3,
+    "scholarship": "St. La Salle Financial Assistance Grant"
+  },
+  {
+    "account": "11976543",
+    "idNum": "11976543",
+    "name": {
+      "first": "Bennett",
+      "middle": "Olivares",
+      "last": "Quintero"
+    },
+    "email": "bennett_quintero@dlsu.edu.ph",
+    "section": "X22",
+    "college": "CCS",
+    "degree": "BSCS-ST",
+    "year": 2,
+    "scholarship": "Military Scholarship (PD 577)"
+  }
+]

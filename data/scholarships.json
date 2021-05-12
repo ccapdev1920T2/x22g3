@@ -1,0 +1,47 @@
+[
+  {
+    "name": "St. Mutien Marie Scholarship Grant (Graduate)",
+    "description": "N/A"
+  },
+  {
+    "name": "Archer Achiever Scholarship",
+    "description": "The Archer Achiever Scholarship Program aims to provide scholarship to students who top the DLSU College Admission Test. Qualified students will be automatically awarded full tuition and fee waiver. This is available for students who graduated from Philippine Private/Public and Science High Schools."
+  },
+  {
+    "name": "The Star Scholars Program",
+    "description": "The Star Scholars Program is an innovative program that offers a integrated undergraduate and graduate scholarship to high-achieving students from around the country. Students selected for the program have the unique opportunity to earn a master’s degree or go into medicine proper (BS Human Biology students) or enroll in the College of Law on full scholarship after finishing their undergraduate degree."
+  },
+  {
+    "name": "Vaugirard Scholarship Program",
+    "description": "In line with its mission of nurturing a community of distinguished scholars, De La Salle University launches the Vaugirard Scholarship Program. Through this scholarship, the University will provide fifty (50) new scholarship every year exclusively for students who graduated from Philippine public high schools. The scholarship program provides an opportunity for these students to access the Lasallian education through any baccalaureate degree program at DLSU."
+  },
+  {
+    "name": "Gokongwei Grants",
+    "description": "With its commitment to the task of nation-building through excellence and service in education, the Gokongwei Brothers Foundation, Inc. will award the Gokongwei Grants to students who wish to pursue priority fields of study in any undergraduate engineering degree program as offered by the college. The scholarship privileges are full tuition and fees waiver, monthly stipend, and book allowance."
+  },
+  {
+    "name": "Br. Andrew Gonzalez Academic Scholarship",
+    "description": "High school students who ranked Top 1 (with highest honors) for each strand (STEM, ABM, HUMMS) of La Salle district schools and have passed the entrance exam will be awarded a full academic scholarship (tuition and fees) starting in their freshman year."
+  },
+  { "name": "St. La Salle Financial Assistance Grant", "description": "N/A" },
+  {
+    "name": "Brother President Scholarship Program (BPSP)",
+    "description": "This is awarded to the legitimate or legally-adopted children of married, permanent and full-time faculty, and administrative service personnel who joined DLSU in May 1987 or after and have served the University for at least three years and are in active University Service while availing of the grant. These students should have passed the entrance requirements of La Salle Green Hills, De La Salle-Santiago Zobel School, De La Salle-Canlubang, De La Salle-Araneta University, De La Salle University-Dasmariñas, De La Salle-College of St. Benilde, or De La Salle University."
+  },
+  {
+    "name": "Centennial Scholarship Program (CSP)",
+    "description": "The CSP serves as a supplement to the Brother President Scholarship Program (BPSP). The CSP for De La Salle University (DLSU) Manila was formulated to provide scholarships to qualified children of full-time permanent faculty (teaching and academic service faculty) and administrative service personnel (ASP) of the University. Children of permanent and full-time faculty and ASP must have passed the DLSU entrance requirements in order to qualify for the scholarship that is only offered at DLSU-Manila."
+  },
+  {
+    "name": "Scholarship for Children of Faculty (SCF)",
+    "description": "This scholarship is granted to qualified children of full-time, part-time, and retired faculty members who joined DLSU before May 1987. Their children must have passed the entrance requirements of DLSU, De La Salle-College of St. Benilde, La Salle Green Hills, or De La Salle Santiago-Zobel School."
+  },
+  {
+    "name": "Scholarship for Children of Co-Academic Personnel (SCC)",
+    "description": "This scholarship is awarded to dependents of Co-Academic Personnel. Their children should have passed the entrance requirements of De La Salle University."
+  },
+  {
+    "name": "Military Scholarship (PD 577)",
+    "description": "Dependents of military personnel who died or became incapacitated in the line of duty are exempted from the payment of tuition. Qualified applicants are granted tuition waiver based on availability of slots."
+  }
+]

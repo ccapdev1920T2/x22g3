@@ -5,8 +5,18 @@
     "type": "moderator"
   },
   {
-    "username": "11839864",
+    "username": "11823456",
     "password": "passwords",
+    "type": "student"
+  },
+  {
+    "username": "test1",
+    "password": "test1",
+    "type": "moderator"
+  },
+  {
+    "username": "11976543",
+    "password": "mypassword",
     "type": "student"
   }
 ]

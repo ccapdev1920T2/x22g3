@@ -32,14 +32,19 @@
         <form method="POST" id="login-mod-form">
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username">
+            <input type="text" class="form-control" id="username" name="username">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" name="password">
           </div>
 
-          <button id="login-mod-submit" type="submit" class="btn btn-primary text-right">Log in</button>
+          <button id="login-mod-submit" type="submit" class="btn btn-primary text-right">
+            <div id="login-mod-spinner" class="spinner-border spinner-border-sm d-none" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <span id="login-mod-text">Log in</span>
+          </button>
         </form>
         <br>
       </div>
@@ -48,30 +53,7 @@
 
 </body>
 
+<script src="/javascript/helpers/ui-helper.js"></script>
 <script src="/javascript/pages/login-mod.js"></script>
 
 </html>
-
-{{!-- <div class="form-container">
-  <h2 id="session-form-header">Log in (Moderator)</h2>
-  <br><br>
-  <form method="POST" action="/login/mod">
-    <div class="flex-container">
-      <div class="input-container">
-        <label class='res-8' for="username">USERNAME</label><br>
-        <input class='res-12' type="username" id="username" name="username"><br>
-      </div>
-      <div class="input-container">
-        <label class='res-8' for="password">PASSWORD</label><br>
-        <input class='res-12' type="password" id="password" name="password"><br>
-      </div>
-    </div>
-    <br>
-    <p id="errMsg"></p>
-    <br><br>
-    <div class="center-button">
-      <input type="submit" class='res-8' id="submit" value="LOG IN">
-    </div>
-  </form>
-  <br><br>
-</div> --}}

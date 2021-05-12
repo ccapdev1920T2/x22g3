@@ -5,234 +5,105 @@
 
 <!-- MATERIAL ICONS -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- AXIOS -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 {{/section}}
 
 <h1>Moderator Home</h1>
 <br><br>
 
-<!-- Modal -->
-<div class="modal fade" id="add-student-modal" tabindex="-1" aria-labelledby="add-a-student" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="add-a-student">Add a Student</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" id="add-student-form">
-          <div class="form-row">
-            <div class="form-group col-md-4">
-              <label for="first">First Name</label>
-              <input type="text" class="form-control" name="first" id="first">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="middle">Middle Name</label>
-              <input type="text" class="form-control" name="middle" id="middle">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="last">Last Name</label>
-              <input type="text" class="form-control" name="last" id="last">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-12">
-              <label for="program">Program</label>
-              <input type="text" class="form-control" name="program" id="program">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-9">
-              <label for="idNum">ID Number</label>
-              <input type="text" class="form-control" name="idNum" id="idNum">
-            </div>
-            <div class="form-group col-md-3">
-              <label for="section">Section</label>
-              <input type="text" class="form-control" name="section" id="section">
-            </div>
-          </div>
+{{#> modal id="add-student" header-text="Add a Student"}}
+{{#*inline "modal-body"}}
+<form method="POST" id="add-student-form">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="first">First Name<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" name="first" id="first">
+      <div id="first-error" class="invalid-feedback"></div>
 
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="submit" form="add-student-form" class="btn btn-primary">Submit</button>
-      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="middle">Middle Name<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" name="middle" id="middle">
+      <div id="middle-error" class="invalid-feedback"></div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="last">Last Name<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" name="last" id="last">
+      <div id="last-error" class="invalid-feedback"></div>
     </div>
   </div>
-</div>
-
-{{!-- Click the 'Add a Student' button to display the modal --}}
-{{!-- <div class="modal" id="addstudent-modal">
-  <div class="modal-content">
-    <span class="modal-close">&times;</span>
-    <h2 id="add-student-header">Add a Student</h2>
-    <br>
-    <div class='form-container'>
-      <p id="errMsg"></p>
-      <form action="/mod" method="POST">
-        <label class='res-8' for="fname">First Name</label>
-        <input class='res-12' type="text" name='fname'><br>
-        <label class='res-8' for="mname">Middle Name</label>
-        <input class='res-12' type="text" name='mname'><br>
-        <label class='res-8' for="lname">Last Name</label>
-        <input class='res-12' type="text" name='lname'><br>
-        <br>
-        <div class="flex-container">
-          <div class="input-container">
-            <label class='res-8' for="idnum">Id Number</label>
-            <input class='res-12' type="text" name='idnum'><br>
-          </div>
-          <!-- for milestone 2, back-end will automatically set college depending on program-->
-          <div class="input-container">
-            <label class='res-8' for="program">Program</label>
-            <input class='res-12' type="text" name='program'><br>
-          </div>
-          <div class="input-container">
-            <label class='res-8' for="section">Section</label>
-            <input class='res-12' type="text" name='section'><br>
-          </div>
-        </div>
-        <br>
-        <div class='center-button'>
-          <input class="res-8" type="submit" value="Submit" onclick='return checkFields()' id='submit'>
-        </div>
-        <br>
-      </form>
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label for="email">Email<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" name="email" id="email">
+      <div id="email-error" class="invalid-feedback"></div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label for="college">College<span class="text-danger">*</span></label>
+      <select name="college" id="college" class="custom-select">
+        <option value="">Loading...</option>
+      </select>
+      <div id="college-error" class="invalid-feedback"></div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label for="degree">Degree<span class="text-danger">*</span></label>
+      <select name="degree" id="degree" class="custom-select">
+        <option value="">Select a college...</option>
+      </select>
+      <div id="degree-error" class="invalid-feedback"></div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="idNum">ID Number<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" name="idNum" id="idNum">
+      <div id="idNum-error" class="invalid-feedback"></div>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="year">Year<span class="text-danger">*</span></label>
+      <input type="number" min="1" class="form-control" name="year" id="year">
+      <div id="year-error" class="invalid-feedback"></div>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="section">Section<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" name="section" id="section">
+      <div id="section-error" class="invalid-feedback"></div>
     </div>
   </div>
 
-</div> --}}
+</form>
+{{/inline}}
+
+{{#*inline "modal-footer"}}
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+<button type="submit" form="add-student-form" class="btn btn-primary" id="add-student-submit">
+  <div id="add-student-spinner" class="spinner-border spinner-border-sm d-none" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <span id="add-student-text">Submit</span>
+</button>
+{{/inline}}
+{{/modal}}
 
 <div id="student-list-header-container">
   <h2>Students
-    <button class="btn btn-primary ml-3" id="addstudent-modal-btn" data-toggle="modal"
+    <button class="btn btn-primary ml-3" id="add-student-modal-btn" data-toggle="modal"
       data-target="#add-student-modal">Add A Student</button>
   </h2>
 </div>
 
-
 <br>
-<label for="idNum">Search for a student</label>
-<input type="search" id="idNum" name="idNum" class="form-control" placeholder="Enter student's ID Number">
+<label for="search-student-tf">Search for a student</label>
+<input type="search" id="search-student-tf" name="idNum" class="form-control" placeholder="Enter student's ID Number">
 <br>
-<div class="table-striped table-bordered" id="students-table">
-  {{!-- <table class='res-12' id="students-table">
-    <tr>
-      <th>ID Number</th>
-      <th>First Name</th>
-      <th>Middle Name</th>
-      <th>Last Name</th>
-      <th>College</th>
-      <th>Course</th>
-      <th>Section</th>
-      <th>Status</th>
-      <th>Graduating</th>
-    </tr>
-    <tr>
-      <td>11839864</td>
-      <td>Rethaniel</td>
-      <td>Abanes</td>
-      <td>Dela Gubat</td>
-      <td>CCS</td>
-      <td>CSS</td>
-      <td>X22</td>
-      <td>Enrolled</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>11839406</td>
-      <td>Gabriel</td>
-      <td>Romero</td>
-      <td>Dela Cruz</td>
-      <td>CCS</td>
-      <td>CSS</td>
-      <td>X22</td>
-      <td>Enrolled</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>11839139</td>
-      <td>Renz Rafael</td>
-      <td>Cabigting</td>
-      <td>Cordero</td>
-      <td>CCS</td>
-      <td>IET-ADS</td>
-      <td>X22</td>
-      <td>Enrolled</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>11827629</td>
-      <td>Angeline</td>
-      <td>Mendoza</td>
-      <td>Gubat</td>
-      <td>CCS</td>
-      <td>CSS</td>
-      <td>X22</td>
-      <td>Enrolled</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>11834567</td>
-      <td>Some</td>
-      <td>Other</td>
-      <td>Person</td>
-      <td>BAGCED</td>
-      <td>ABELS</td>
-      <td>XL1</td>
-      <td>Not Enrolled</td>
-      <td>No</td>
-    </tr>
-  </table> --}}
-</div>
+<div class="table-striped table-bordered" id="students-table"></div>
 
+<script src="/javascript/helpers/form-helper.js"></script>
+<script src="/javascript/helpers/ui-helper.js"></script>
 <script src="/javascript/pages/index-mod.js"></script>
-<script src='/javascript/table-scripts.js' type='text/javascript'></script>
-
-<script>
-  addBtn(document.getElementById('students-table'), 'remove');
-  addBtnListener();
-  configureModal(document.querySelector('#addstudent-modal-btn'), document.querySelector('#addstudent-modal'));
-  function checkFields() {
-    var form = document.forms[0];
-    //var inputs = form.querySelectorAll('input');
-    var err = 0;
-    for (let i = 0; i < form.length - 1; i++) {
-      var input = form.elements[i];
-      if (input.value === "") {
-        err++;
-        input.style.borderColor = 'red';
-      } else {
-        input.style.borderColor = '#373b4485';
-      }
-    }
-
-    if (err > 0) {
-      document.querySelector('p#errMsg').innerHTML = 'Some fields are blank.';
-      return false;
-    } else {
-      form.submit();
-    }
-
-
-  }
-
-  function configureModal(triggerElement, modalElement) {
-    triggerElement.onclick = () => {
-      modalElement.style.display = "block";
-    }
-
-    modalElement.querySelector('.modal-close').onclick = () => {
-      modalElement.style.display = 'none';
-    }
-
-    window.onclick = (e) => {
-      if (e.target == modalElement)
-        modalElement.style.display = "none";
-    }
-  }
-
-  responsiveFontSize('.modal-close', 24);
-</script>
