@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
-const url = process.env.MONGODB_URL_REMOTE;
+const url =
+  process.env.NODE_ENV === "development"
+    ? process.env.MONGODB_URL
+    : process.env.MONGODB_URL_REMOTE;
 
 const options = {
   useUnifiedTopology: true,
