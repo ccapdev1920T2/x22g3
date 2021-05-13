@@ -7,7 +7,6 @@ exports.renderCartPage = (req, res) => {
 };
 
 exports.renderEnrollmentCartPage = (req, res) => {
-  console.log("TODO: get data from EnrolledCourses");
   res.render("cart_enrollment", {
     title: "Enrollment Cart | Animo.sys",
   });
