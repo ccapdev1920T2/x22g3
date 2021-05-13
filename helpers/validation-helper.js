@@ -3,6 +3,7 @@ const { check, validationResult, query } = require("express-validator");
 const Course = require("../models/Course");
 const PreenlistmentCourse = require("../models/PreenlistmentCourse");
 const Student = require("../models/Student");
+const { currentYear, currentTerm } = require("../config/term-config");
 
 exports.validate = (validations) => {
   return async (req, res, next) => {
@@ -285,8 +286,6 @@ exports.enrollValidator = [
         if (course.enrollees.includes(req.params.studentId)) {
           return Promise.reject("Already enrolled to this class.");
         }
-
-        console.log(count);
       } catch (error) {
         console.log(error);
         return Promise.reject();
@@ -331,4 +330,9 @@ exports.enrollValidator = [
         return Promise.reject();
       }
     }),
+];
+
+exports.getAllEnrolledCoursesValidator = [
+  query("academicYear").default(currentYear),
+  query("term").default(currentTerm),
 ];

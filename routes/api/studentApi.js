@@ -8,6 +8,8 @@ const {
   getAllPreenlistedCourses,
   removePreenlistedCourse,
   enroll,
+  getAllEnrolledCourses,
+  postDrop,
 } = require("../../controllers/api/studentApiController");
 const {
   validate,
@@ -16,6 +18,7 @@ const {
   preenlistValidator,
   removePreenlistedCourseValidator,
   enrollValidator,
+  getAllEnrolledCoursesValidator,
 } = require("../../helpers/validation-helper");
 const router = express.Router();
 
@@ -39,4 +42,11 @@ router.post(
 
 router.post("/:studentId/enroll", validate(enrollValidator), enroll);
 
+router.post("/:studentId/courses/drop", postDrop);
+
+router.get(
+  "/:studentId/courses",
+  validate(getAllEnrolledCoursesValidator),
+  getAllEnrolledCourses
+);
 module.exports = router;

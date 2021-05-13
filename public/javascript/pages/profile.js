@@ -1,4 +1,6 @@
 var studentId = document.getElementById("student-id-hidden");
+var classesNav = document.querySelector(`a[href="#classes"]`);
+var calendar;
 
 Promise.all([
   axios.get(`/api/students/${studentId.value}/courses`),
@@ -10,13 +12,12 @@ Promise.all([
       (el) => el._id === courses[0].termOffered
     );
 
-    var calendarEl = document.getElementById("enrollment-calendar");
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    var calendarEl = document.getElementById("weekly-schedule");
+    calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: "timeGridWeek",
       events: toEvent(courses, testTerm),
       slotMinTime: getEarliestStartTime(courses),
       slotMaxTime: getLatestEndTime(courses),
-      initialDate: testTerm.startDate,
       stickyHeaderDates: false,
       allDaySlot: false,
       height: "auto",
@@ -25,9 +26,30 @@ Promise.all([
 
     calendar.render();
   })
+  .then(function () {
+    // Logic for toggling tabs
+
+    window.location.hash = "#personal-information";
+    var listGroupItems = document.querySelector(".list-group").children;
+    var containers = document.querySelectorAll("div.list-group-target");
+
+    window.onhashchange = function (e) {
+      var hash = window.location.hash;
+      for (let i = 0; i < listGroupItems.length; i++) {
+        var item = listGroupItems.item(i);
+        var container = containers.item(i);
+
+        var force = hash === item.hash;
+        item.classList.toggle("active", force);
+        container.classList.toggle("d-none", !force);
+      }
+
+      calendar.render();
+    };
+  })
   .catch((err) => console.log(err));
 
-var table = new Tabulator("#enrolled-courses-table", {
+var table = new Tabulator("#tabular-schedule", {
   columns: [
     { title: "Class ID", field: "_id", sorter: "number" },
     { title: "Course Code", field: "courseCode", sorter: "string" },

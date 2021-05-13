@@ -17,6 +17,7 @@ exports.renderProfilePage = async (req, res) => {
       idNum: req.user.idNum,
       scholarshipName: scholarship.name,
       scholarshipDesc: scholarship.description,
+      studentId: req.user._id,
     });
   } catch (error) {
     console.log(error);

@@ -1,6 +1,8 @@
+const { currentYear, currentTerm } = require("../../config/term-config");
 const { sendCreatePasswordMail } = require("../../helpers/mailing-helper");
 const Course = require("../../models/Course");
 const Student = require("../../models/Student");
+const TermDetail = require("../../models/TermDetail");
 
 exports.getAllStudents = async (req, res) => {
   try {
@@ -108,7 +110,25 @@ exports.removePreenlistedCourse = async (req, res) => {
   }
 };
 
-exports.postDrop = async (req, res) => {};
+exports.postDrop = async (req, res) => {
+  try {
+    const course = await Course.updateOne(
+      { _id: req.body.courseId },
+      {
+        $pull: { enrollees: req.params.studentId },
+      },
+      {multi: true}
+    );
+
+
+    if (!course) return res.status(404).send({ message: "Not found" });
+
+    return res.send(course);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
 
 exports.enroll = async (req, res) => {
   try {
@@ -125,5 +145,21 @@ exports.enroll = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);
+  }
+};
+
+exports.getAllEnrolledCourses = async (req, res) => {
+  try {
+    const { academicYear, term } = req.query;
+    const termDetails = await TermDetail.find({ academicYear, term }, "_id");
+
+    const courses = await Course.find({
+      enrollees: req.params.studentId,
+      termOffered: termDetails,
+    });
+    res.status(200).send(courses);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
   }
 };

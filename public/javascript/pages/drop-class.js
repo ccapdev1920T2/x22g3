@@ -1,9 +1,33 @@
+var studentId = document.getElementById("student-id-hidden");
+
 var dropIcon = function (cell, formatterParams, onRendered) {
   var span = document.createElement('span');
   span.classList.add('material-icons', 'btn', 'btn-outline-danger');
   span.innerText = 'delete_outline';
   span.onclick = function (e) {
-    console.log('test');
+    var rowData = cell.getData();
+    var body = {};
+    body.courseId = rowData._id;
+    axios
+    .post(`/api/students/${studentId.value}/courses/drop`, body, {
+    })
+    .then(function (response){
+      if (response.status == 400) {
+          alert(
+            response.data.errors
+              .map(function (err) {
+                return err.msg;
+              })
+              .join("\n")
+          );
+        } else {
+          alert(`Successfully dropped from ${rowData.courseCode}.`);
+          dropClassTable.setData();
+        }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   };
   return span;
 };
@@ -17,7 +41,7 @@ var dropClassTable = new Tabulator('#enrolled-courses-table', {
   // autoColumns: true,
   // autoColumnsDefinitions: [{ field: 'schedules', formatter: 'html' }],
   columns: [
-    { title: 'Class No.', field: 'classNo', sorter: 'number' },
+    // { title: 'Class No.', field: 'classNo', sorter: 'number' },
     { title: 'Course Code', field: 'courseCode', sorter: 'string' },
     { title: 'Section', field: 'section', sorter: 'string' },
     {
@@ -38,7 +62,7 @@ var dropClassTable = new Tabulator('#enrolled-courses-table', {
     },
   ],
   layout: 'fitColumns',
-  ajaxURL: '/data/courses.json',
+  ajaxURL: `/api/students/${studentId.value}/courses`, 
   ajaxResponse(url, params, response) {
     return response.map(course => {
       const obj = Object.assign({}, course);

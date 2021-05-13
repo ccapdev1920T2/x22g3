@@ -70,6 +70,7 @@ app.use("/api/preenlistment-courses", require("./routes/api/preenlistmentApi"));
 app.use("/api/document-requests", require("./routes/api/documentApi"));
 app.use("/api/subject-requests", require("./routes/api/studentrequestApi"));
 app.use("/api/courses", require("./routes/api/courseApi"));
+app.use("/api/term-details", require("./routes/api/termDetailsApi"));
 
 app.listen(port, () => {
   console.log(`App listening at port ${port}`);
