@@ -9,6 +9,7 @@ const {
   removePreenlistedCourse,
   enroll,
   getAllEnrolledCourses,
+  postDrop,
 } = require("../../controllers/api/studentApiController");
 const {
   validate,
@@ -40,6 +41,8 @@ router.post(
 );
 
 router.post("/:studentId/enroll", validate(enrollValidator), enroll);
+
+router.post("/:studentId/courses/drop", postDrop);
 
 router.get(
   "/:studentId/courses",

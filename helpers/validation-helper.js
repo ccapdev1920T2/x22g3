@@ -286,8 +286,6 @@ exports.enrollValidator = [
         if (course.enrollees.includes(req.params.studentId)) {
           return Promise.reject("Already enrolled to this class.");
         }
-
-        console.log(count);
       } catch (error) {
         console.log(error);
         return Promise.reject();

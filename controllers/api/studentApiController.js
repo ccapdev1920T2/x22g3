@@ -110,7 +110,25 @@ exports.removePreenlistedCourse = async (req, res) => {
   }
 };
 
-exports.postDrop = async (req, res) => {};
+exports.postDrop = async (req, res) => {
+  try {
+    const course = await Course.updateOne(
+      { _id: req.body.courseId },
+      {
+        $pull: { enrollees: req.params.studentId },
+      },
+      {multi: true}
+    );
+
+
+    if (!course) return res.status(404).send({ message: "Not found" });
+
+    return res.send(course);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
 
 exports.enroll = async (req, res) => {
   try {
