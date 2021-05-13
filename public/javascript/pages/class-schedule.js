@@ -7,7 +7,7 @@ Promise.all([
   .then(function (response) {
     var courses = response[0].data;
     var testTerm = response[1].data.find(
-      (el) => el._id === courses[0].termOffered
+      (el) => el.academicYear === "2020-2021" && el.term == 2
     );
 
     var calendarEl = document.getElementById("enrollment-calendar");

@@ -23,19 +23,14 @@ exports.addStudentValidator = [
   check("first", "First name required")
     .trim()
     .notEmpty()
-
-    .isAlpha()
     .withMessage("Invalid first name"),
   check("middle", "Middle name required")
     .trim()
     .notEmpty()
-
-    .isAlpha()
     .withMessage("Invalid middle name"),
   check("last", "Last name required")
     .trim()
     .notEmpty()
-    .isAlphanumeric()
     .withMessage("Invalid last name"),
   check("email")
     .trim()
@@ -204,15 +199,15 @@ exports.removePreenlistedCourseValidator = [
 ];
 
 exports.requestClassValidator = [
-  check("fullname").notEmpty().withMessage("Full Name required"),
+  // check("fullname").notEmpty().withMessage("Full Name required"),
 
-  check("idnumber", "Invalid DLSU ID Number")
-    .trim()
-    .notEmpty()
-    .withMessage("ID Number required")
-    .isInt()
-    .isLength({ min: 8, max: 8 }),
-  check("degree").trim().notEmpty().withMessage("Degree required"),
+  // check("idnumber", "Invalid DLSU ID Number")
+  //   .trim()
+  //   .notEmpty()
+  //   .withMessage("ID Number required")
+  //   .isInt()
+  //   .isLength({ min: 8, max: 8 }),
+  // check("degree").trim().notEmpty().withMessage("Degree required"),
 
   check("subject")
     .trim()
