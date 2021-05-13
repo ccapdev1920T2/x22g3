@@ -28,8 +28,6 @@ Promise.all([
   .catch((err) => console.log(err));
 
 var table = new Tabulator("#enrolled-courses-table", {
-  // autoColumns: true,
-  // autoColumnsDefinitions: [{ field: "schedules", formatter: "html" }],
   columns: [
     { title: "Class ID", field: "_id", sorter: "number" },
     { title: "Course Code", field: "courseCode", sorter: "string" },
