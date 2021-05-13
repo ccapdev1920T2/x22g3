@@ -1,6 +1,8 @@
+const { currentYear, currentTerm } = require("../../config/term-config");
 const { sendCreatePasswordMail } = require("../../helpers/mailing-helper");
 const Course = require("../../models/Course");
 const Student = require("../../models/Student");
+const TermDetail = require("../../models/TermDetail");
 
 exports.getAllStudents = async (req, res) => {
   try {
@@ -148,8 +150,13 @@ exports.enroll = async (req, res) => {
 
 exports.getAllEnrolledCourses = async (req, res) => {
   try {
-    const courses = await Course.find({ enrollees: req.params.studentId });
+    const { academicYear, term } = req.query;
+    const termDetails = await TermDetail.find({ academicYear, term }, "_id");
 
+    const courses = await Course.find({
+      enrollees: req.params.studentId,
+      termOffered: termDetails,
+    });
     res.status(200).send(courses);
   } catch (error) {
     console.log(error);

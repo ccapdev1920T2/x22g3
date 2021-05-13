@@ -36,7 +36,6 @@
     {{/ nav-group}}
 
     {{#> nav-group}}
-    {{> nav-item href="/cart" text="Cart"}}
     {{> nav-item href="/profile" text="Profile"}}
     {{> nav-item href="/logout" text="Log out"}}
     {{/ nav-group}}
@@ -48,7 +47,6 @@
 <script>
   // select window pathname
   var pathname = window.location.pathname.split('/');
-  // TODO: fix this, pass regex to match from server to client per route
   // check the 'active' nav item
   var navItems = document.querySelectorAll('#header li')
   navItems.forEach(li => {

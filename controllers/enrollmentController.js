@@ -9,9 +9,9 @@ exports.renderEnrollmentPage = (req, res) => {
 };
 
 exports.renderClassSchedulePage = (req, res) => {
-  console.log("TODO: get data from Student");
   res.render("class-schedule", {
     title: "Class Schedule | Animo.sys",
+    studentId: req.user._id,
   });
 };
 
