@@ -26,6 +26,7 @@ exports.renderAddClassPage = (req, res) => {
 exports.renderDropClassPage = (req, res) => {
   res.render("drop-class", {
     title: "Drop a Class | Animo.sys",
+    _id: req.user._id
   });
 };
 
