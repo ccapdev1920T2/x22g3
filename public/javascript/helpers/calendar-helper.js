@@ -1,7 +1,7 @@
 // returns the parseable FullCalendar events of a given course array and its termDetails
 // TODO: change params function when db is implemented
 function toEvent(coursesArr, termDetails) {
-  return normalizeCourses(coursesArr).map(course => {
+  return normalizeCourses(coursesArr).map((course) => {
     return {
       title: course.courseCode,
       start: termDetails.startDate,
@@ -19,10 +19,10 @@ function normalizeCourses(coursesArr) {
   // normalize
   const normalized = [];
 
-  coursesArr.forEach(course => {
+  coursesArr.forEach((course) => {
     const { schedules, ...rest } = course;
 
-    schedules.forEach(schedule => {
+    schedules.forEach((schedule) => {
       const obj = { schedule, ...rest };
       normalized.push(obj);
     });
@@ -33,17 +33,17 @@ function normalizeCourses(coursesArr) {
 
 function mapDay(dayChar) {
   switch (dayChar) {
-    case 'M':
+    case "M":
       return 1;
-    case 'T':
+    case "T":
       return 2;
-    case 'W':
+    case "W":
       return 3;
-    case 'H':
+    case "H":
       return 4;
-    case 'F':
+    case "F":
       return 5;
-    case 'S':
+    case "S":
       return 6;
     default:
       return 0;
@@ -51,13 +51,21 @@ function mapDay(dayChar) {
 }
 
 function getEarliestStartTime(coursesArr) {
-  return normalizeCourses(coursesArr).sort((a, b) =>
-    a.schedule.startTime.localeCompare(b.schedule.startTime),
-  )[0].schedule.startTime;
+  if (coursesArr && coursesArr.length) {
+    return normalizeCourses(coursesArr).sort((a, b) =>
+      a.schedule.startTime.localeCompare(b.schedule.startTime)
+    )[0].schedule.startTime;
+  }
+
+  return "07:00";
 }
 
 function getLatestEndTime(coursesArr) {
-  return normalizeCourses(coursesArr).sort((a, b) =>
-    b.schedule.endTime.localeCompare(a.schedule.endTime),
-  )[0].schedule.endTime;
+  if (coursesArr && coursesArr.length) {
+    return normalizeCourses(coursesArr).sort((a, b) =>
+      b.schedule.endTime.localeCompare(a.schedule.endTime)
+    )[0].schedule.endTime;
+  }
+
+  return "21:00";
 }
