@@ -199,15 +199,15 @@ exports.removePreenlistedCourseValidator = [
 ];
 
 exports.requestClassValidator = [
-  check("fullname").notEmpty().withMessage("Full Name required"),
+  // check("fullname").notEmpty().withMessage("Full Name required"),
 
-  check("idnumber", "Invalid DLSU ID Number")
-    .trim()
-    .notEmpty()
-    .withMessage("ID Number required")
-    .isInt()
-    .isLength({ min: 8, max: 8 }),
-  check("degree").trim().notEmpty().withMessage("Degree required"),
+  // check("idnumber", "Invalid DLSU ID Number")
+  //   .trim()
+  //   .notEmpty()
+  //   .withMessage("ID Number required")
+  //   .isInt()
+  //   .isLength({ min: 8, max: 8 }),
+  // check("degree").trim().notEmpty().withMessage("Degree required"),
 
   check("subject")
     .trim()

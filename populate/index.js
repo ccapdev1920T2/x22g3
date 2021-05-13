@@ -9,5 +9,4 @@
   await require("./populate-colleges")();
   await require("./populate-termdetails")();
   await require("./populate-courses")();
-  await require("./populate-documents")();
 })();

@@ -1,27 +1,21 @@
 const Document = require("../../models/Document");
 
 exports.sendDocumentRequest = async (req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
   try {
     let document = new Document({
-      requestDate: new Date(),
-      document: req.body["documentType"],
+      requestDate: Date.now(),
+      document: req.body.documentType,
       isApproved: false,
-      requestedBy: req.user.idNum,
+      requestedBy: req.user._id,
     });
     await document.save();
-    console.log("BIG BUANCHO");
 
     var details = {
       msg: "Document requested",
     };
-    // res.render('degree-process', {
-    //     details
-    // });
-    res.redirect("/degree-process");
 
-    //res.send( await document.save());
-    //alert("Succesful request!");
+    res.redirect("/degree-process");
   } catch (err) {
     console.log(err);
   }

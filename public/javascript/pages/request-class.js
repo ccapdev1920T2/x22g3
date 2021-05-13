@@ -1,26 +1,25 @@
 var requestClassForm = document.getElementById("request-class-form");
 var requestClassButton = document.getElementById("request-class-btn");
 
-var requestClassElements  = getFormElements(requestClassForm);
+var requestClassElements = getFormElements(requestClassForm);
 
-
-requestClassButton.onclick = function(e) {
+requestClassButton.onclick = function (e) {
   e.preventDefault();
 
   var body = createRequestBody(requestClassForm);
 
-  axios.post('/api/subject-requests/new', body, {
-    validateStatus: function (status) {
-      // resolve the promise when this condition is true
-      return (status >= 200 && status < 300) || status == 400;
-    },
-  }).then(function(response) {
-    //console.log(response);
-
-    if (response.status == 400) {
+  axios
+    .post("/api/subject-requests/new", body, {
+      validateStatus: function (status) {
+        // resolve the promise when this condition is true
+        return (status >= 200 && status < 300) || status == 400;
+      },
+    })
+    .then(function (response) {
+      if (response.status == 400) {
         var errors = response.data.errors;
 
-        for (let i = 0; i < requestClassElements.length - 1; i++) {
+        for (let i = 0; i < requestClassElements.length; i++) {
           var element = requestClassElements[i];
           var errorTextContainer = document.getElementById(
             `${element.id}-error`
@@ -40,18 +39,10 @@ requestClassButton.onclick = function(e) {
           }
         }
       } else {
-        //requestClassButton.click();
         alert("Succesful request!");
       }
-
-
-
-    // if status == 400
-    // update frontend with errors
-
-    // else
-    // show success
-  }).catch(function(err) {
-    console.log(err);
-  })
-}
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+};
