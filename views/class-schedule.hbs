@@ -17,6 +17,8 @@
 <h1>Class Schedule</h1>
 <br>
 
+<input type="hidden" name="studentId" id="student-id-hidden" value="{{studentId}}">
+
 <div class="">
   <h2>Weekly View</h2><br>
   <div id="enrollment-calendar"></div>
@@ -24,11 +26,6 @@
   <br><br><br>
   <h3>Tabular View</h3><br>
   <div id="enrolled-courses-table" class="table-striped table-bordered"></div>
-
-  <br><br>
-  <a href="/assets/weeklyschedule.jpg" download>
-    <button type="button" title="Download Calendar View" class="btn btn-primary">Download</button>
-  </a>
 </div>
 
 <script src="/javascript/helpers/calendar-helper.js"></script>
