@@ -127,3 +127,14 @@ exports.enroll = async (req, res) => {
     return res.status(500).send(error);
   }
 };
+
+exports.getAllEnrolledCourses = async (req, res) => {
+  try {
+    const courses = await Course.find({ enrollees: req.params.studentId });
+
+    res.status(200).send(courses);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
