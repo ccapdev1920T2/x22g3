@@ -33,6 +33,14 @@ Open your browser and go to `localhost:8080`. You should see the page below:
 
 `npm run populate` - populates the database with dummy data from the `data` folder by running the script found in `/populate/index.js`.
 
+### Dummy accounts
+
+| Username | Password   | User type |
+| -------- | ---------- | --------- |
+| johndoe  | admineer   | Moderator |
+| 11823456 | passwords  | Student   |
+| 11976543 | mypassword | Student   |
+
 ### Deployment
 
 This application is deployed at https://animo-sys.herokuapp.com/
