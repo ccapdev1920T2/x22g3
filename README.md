@@ -13,8 +13,9 @@ Redesigned animo.sys - the enrollment system of DLSU.
 
 1. Open your terminal
 1. Clone the repository: https://github.com/ccapdev1920T2/x22g3
+1. Edit the values of `.env.example` and rename it to `.env` (contact the authors for the value of each key)
 1. `npm install` - installs all dependencies
-1. `npm run build` - compiles the sass files into a `main.css` file in `/public/css`.
+1. `npm run build` - compiles the sass files into a `main.css` file in `/public/css`
 1. `npm start` - starts the server
 
 After running the above steps, you should see the following on the terminal:
